@@ -1,0 +1,15 @@
+﻿##var,id,name,description,icon,kind,difficulty,isDefault,sort,items
+##type,string,string,string,string,string,int,bool,int,"list,ItemCount"
+##comment,方案定义唯一标识；preset_*为预设，custom_*为固定自定义位；玩家编辑内容独立保存。,方案或固定自定义位名称，由配置提供；玩家只编辑携带内容,界面详情或说明文案,图标资源标识，引用Asset表的id,方案类型：preset配置预设、custom固定自定义位；两类均跨地图共用,预设战备价值档位：1普通、2困难、3极限；与地图关卡难度无关；自定义位填0表示跨档位共用,本战备价值档位的推荐预设，每档位一个；不自动使用套装,界面排序值，按从小到大排列,预设默认战备，列表，itemId引用Item、count为份数；自定义位必须为空，玩家选择另存；每项字段顺序：itemId:count；多项用竖线（|）分隔；嵌套权重用括号分组
+,preset_1_1,稳健探索,四类战备均衡携带,icon_4,preset,1,true,1,equipment_1:1|potion_1:2|card_2:1|gold_pack:1
+,preset_1_2,轻装寻宝,降低开局采购需求,icon_4,preset,1,false,2,potion_1:1|card_3:1
+,preset_1_3,深入挑战,携带更高档装备和药水,icon_4,preset,1,false,3,equipment_2:1|potion_2:3|card_5:2|gold_pack:2
+,preset_2_1,稳健探索,四类战备均衡携带,icon_4,preset,2,true,1,equipment_3:1|potion_3:3|card_2:1|gold_pack:2
+,preset_2_2,轻装寻宝,降低开局采购需求,icon_4,preset,2,false,2,equipment_2:1|potion_2:2|card_3:1
+,preset_2_3,深入挑战,携带更高档装备和药水,icon_4,preset,2,false,3,equipment_4:1|potion_4:4|card_5:2|gold_pack:2
+,preset_3_1,稳健探索,四类战备均衡携带,icon_4,preset,3,true,1,equipment_5:1|potion_5:4|card_2:2|gold_pack:2
+,preset_3_2,轻装寻宝,降低开局采购需求,icon_4,preset,3,false,2,equipment_4:1|potion_4:3|card_3:1
+,preset_3_3,深入挑战,携带更高档装备和药水,icon_4,preset,3,false,3,equipment_6:1|potion_6:6|card_5:3|gold_pack:4
+,custom_1,自定义方案1,编辑本方案携带战备,,custom,0,false,1,
+,custom_2,自定义方案2,编辑本方案携带战备,,custom,0,false,2,
+,custom_3,自定义方案3,编辑本方案携带战备,,custom,0,false,3,

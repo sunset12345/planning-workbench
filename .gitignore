@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+._*
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+*.log
+
+# Local credentials and private runtime data
+.env
+.env.*
+!.env.example
+!.env.*.example
+/database/
+/resources/
+/originals/
+/tmp/
+/logs/
+/private-config/
+/backups/
+
+# Empty nested repository created locally
+/方案文档/未命名/

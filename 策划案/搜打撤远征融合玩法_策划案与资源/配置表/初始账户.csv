@@ -1,0 +1,12 @@
+﻿字段名,中文说明,类型,当前值
+testOnly,仅用于测试,bool,true
+balance,初始代币,int,20000
+stamina,初始体力,int,100
+staminaMax,体力上限,int,100
+simulationActionCost,战斗耗能模拟参数，当前胜败按钮只演示结果,int,1
+inventory,初始库存，按物品ID与份数配置,"list,ItemCount",equipment_1:1|potion_1:2|card_2:1|gold_pack:1
+collection,初始收藏，空表示尚未收集,list,
+difficultyUnlocks,初始难度解锁，按区域ID与难度列表配置,map,A:(1)|B:(1)|C:(1)
+customPlans,初始自定义方案，空表示尚未编辑,map,
+activeRun,初始进行中探索，null表示没有旧局,optional,null
+settledRunIds,已经结算的探索ID列表，用于避免重复发奖,"list,string",

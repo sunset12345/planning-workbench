@@ -1,0 +1,13 @@
+﻿##var,index,description,value,key,type
+##type,int,string,string,string,string
+##comment,序号,中文说明,值,字段名,类型
+,1,每次新局的初始能量，全地图全难度共用，与名义上限独立,60,initialEnergy,int
+,2,名义能量上限，药水回复允许超过此值,100,maxEnergy,int
+,3,普通宝物背包格数，全地图全难度共用,12,normalSlots,int
+,4,战前黄金包最多携带份数，每份在本局增加一个安全格,4,goldCarryMax,int
+,5,能量药水最多携带份数，各型号共用该上限,6,potionCarryMax,int
+,6,技能卡最多携带份数，各型号共用该上限,3,cardCarryMax,int
+,7,黄金自动入包品质阈值X，品质严格大于X或价格严格大于Y即可优先填空格,4,autoGoldQuality,int
+,8,黄金自动入包价格阈值Y，价格严格大于Y或品质严格大于X即可优先填空格,2000,autoGoldValue,int
+,9,所有藏品类型共用的可用星级清单，整数列表，填写1|2|3|4|5；不同星级使用不同物品ID,1|2|3|4|5,availableStars,"list,int"
+,10,战前装备最多携带份数，全部装备型号合计；当前测试值,1,equipmentCarryMax,int
