@@ -23,4 +23,13 @@ coverage/
 /backups/
 
 # Empty nested repository created locally
-/方案文档/未命名/
+/工作台开发/方案文档/未命名/
+
+# Same private runtime paths under the development workspace
+/工作台开发/database/
+/工作台开发/resources/
+/工作台开发/originals/
+/工作台开发/tmp/
+/工作台开发/logs/
+/工作台开发/private-config/
+/工作台开发/backups/

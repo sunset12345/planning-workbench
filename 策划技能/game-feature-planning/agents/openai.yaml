@@ -1,0 +1,4 @@
+interface:
+  display_name: "游戏功能策划"
+  short_description: "按统一格式整理 Google 文档策划案，配套 XMind 图示、逐页 UI 与配置字段"
+  default_prompt: "使用 $game-feature-planning，基于当前方案按统一格式整理 Google 文档策划案，配套 XMind 源文件链接与图示预览，理清逐页 UI、配置字段及业务打点，未明确的规则在对应位置简短标注。"
