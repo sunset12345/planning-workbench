@@ -1,0 +1,199 @@
+{
+  "LotteryPool": [
+    {
+      "field": "id",
+      "meaning": "奖池唯一标识",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；唯一；无默认"
+    },
+    {
+      "field": "enabled",
+      "meaning": "是否允许新抽取",
+      "type": "bool",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；true开放、false关闭；默认false"
+    },
+    {
+      "field": "unlockLevel",
+      "meaning": "最低角色等级",
+      "type": "int",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；角色等级≥1；无默认"
+    },
+    {
+      "field": "costResourceId",
+      "meaning": "单次付费抽取消耗的资源",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；引用Resource.id；无默认"
+    },
+    {
+      "field": "costCount",
+      "meaning": "固定消耗数量",
+      "type": "int",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；固定消耗正整数≥1；单位随costResourceId；无默认"
+    },
+    {
+      "field": "dailyFree",
+      "meaning": "每个刷新周期的免费次数上限",
+      "type": "int",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；本版0或1；每日免费次数；默认1"
+    },
+    {
+      "field": "resetHour",
+      "meaning": "每天刷新所在小时",
+      "type": "int",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；整点0—23；默认0"
+    },
+    {
+      "field": "timezone",
+      "meaning": "刷新时区",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；本版固定Asia/Shanghai；UTC+8"
+    }
+  ],
+  "LotteryReward": [
+    {
+      "field": "id",
+      "meaning": "条目唯一标识",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；唯一；无默认"
+    },
+    {
+      "field": "poolId",
+      "meaning": "所属奖池",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；引用LotteryPool.id"
+    },
+    {
+      "field": "resourceId",
+      "meaning": "发放的可叠加资源",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；引用Resource.id"
+    },
+    {
+      "field": "count",
+      "meaning": "此条目的固定发放数量",
+      "type": "int",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；单次获得量≥1；单位随Resource"
+    },
+    {
+      "field": "weight",
+      "meaning": "此条目的抽取权重",
+      "type": "int",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；正整数；概率=本行权重/同池总权重"
+    },
+    {
+      "field": "rare",
+      "meaning": "是否使用稀有结果表现",
+      "type": "bool",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；默认false；仅控制表现，不影响权重"
+    }
+  ],
+  "Resource": [
+    {
+      "field": "id",
+      "meaning": "可叠加资源唯一标识",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；唯一非空字符串；任意合法的可叠加资源ID；非固定枚举"
+    },
+    {
+      "field": "nameKey",
+      "meaning": "名称多语言键",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；引用UiText.key"
+    },
+    {
+      "field": "iconKey",
+      "meaning": "图标资源键",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；引用美术需求资源键；素材未制作"
+    },
+    {
+      "field": "unit",
+      "meaning": "数量显示单位",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；展示计量单位；无默认"
+    }
+  ],
+  "UiText": [
+    {
+      "field": "key",
+      "meaning": "文案唯一键",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；唯一；无默认"
+    },
+    {
+      "field": "zhCN",
+      "meaning": "中文模板",
+      "type": "string",
+      "shape": "scalar",
+      "cardinality": "1",
+      "nullable": false,
+      "constraints": "必填；中文原文；不可空"
+    },
+    {
+      "field": "params",
+      "meaning": "占位符定义列表",
+      "type": "string[]",
+      "shape": "list",
+      "cardinality": "0..N",
+      "nullable": false,
+      "constraints": "默认[]；元素为name:type，type为string/int；name唯一；无参数为[]"
+    }
+  ]
+}

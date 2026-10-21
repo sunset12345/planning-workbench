@@ -1,0 +1,50 @@
+[
+  {
+    "data": "pool",
+    "type": "LotteryPool",
+    "cardinality": "单对象，恰好1个",
+    "rules": "本期一个常驻池；不按奖励数量复制奖池。"
+  },
+  {
+    "data": "entries",
+    "type": "List<LotteryReward>",
+    "cardinality": "可变长；N≥1；无业务固定上限",
+    "rules": "按 poolId 关联，id 按字符码点升序；id不可重复，可重复引用相同 resourceId，按不同条目分别展示/抽取。N=0时禁止抽取。"
+  },
+  {
+    "data": "entries[i].resourceId",
+    "type": "ResourceId = string",
+    "cardinality": "单值，恰好1个",
+    "rules": "仅支持可叠加资源；本版不支持独立装备实例、直接属性加成、技能授予或多项礼包。"
+  },
+  {
+    "data": "entries[i].count",
+    "type": "int",
+    "cardinality": "单值，固定数量；≥1",
+    "rules": "每次命中此条目都发放 count；不是 list，不是随机 min/max，不接受小数。"
+  },
+  {
+    "data": "drawCount",
+    "type": "int 常量",
+    "cardinality": "固定为1",
+    "rules": "每次操作只抽取1个条目；无十连和多选。"
+  },
+  {
+    "data": "result",
+    "type": "DrawSuccess | null",
+    "cardinality": "可空单对象；成功时恰好1个",
+    "rules": "未成功或尚未确认时为 null；成功对象不是 List<Reward>。"
+  },
+  {
+    "data": "balances",
+    "type": "Map<ResourceId, int>",
+    "cardinality": "玩家信息，0..N个键",
+    "rules": "非负整数余额；不存在的合法资源键按0读取；不是静态策划配置。"
+  },
+  {
+    "data": "UiText.params",
+    "type": "List<string>",
+    "cardinality": "可变长；0..N",
+    "rules": "每项格式 name:type，type∈{string,int}；name唯一；[]表示无参数；不依赖数组顺序。"
+  }
+]

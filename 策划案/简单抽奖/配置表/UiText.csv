@@ -1,0 +1,24 @@
+﻿key,zhCN,params
+res.gold,金币,[]
+res.stone,强化石,[]
+res.gem,晶石,[]
+res.ticket,抽奖券,[]
+lottery.title,每日补给,[]
+lottery.free,免费抽一次,[]
+lottery.cost,抽一次（{count}{unit}{name}）,"[""count:int"", ""unit:string"", ""name:string""]"
+lottery.rate,奖池概率,[]
+lottery.refresh,免费次数每日{hour}:00刷新（UTC+8）,"[""hour:string""]"
+lottery.draw,抽取中…,[]
+lottery.result,获得 {name} × {count},"[""name:string"", ""count:int""]"
+lottery.done,奖励已到账,[]
+lottery.close,关闭,[]
+lottery.skip,跳过表现,[]
+lottery.insufficient,{name}不足，需要{count}{unit},"[""name:string"", ""count:int"", ""unit:string""]"
+lottery.closed,当前奖池暂未开放,[]
+lottery.locked,角色达到{level}级后开放,"[""level:int""]"
+lottery.pending,结果确认中，请稍后查看,[]
+lottery.failed,本次未完成抽奖，未消耗资源,[]
+lottery.confirm,确认,[]
+lottery.unavailable,奖池暂不可用,[]
+lottery.loading,加载中…,[]
+lottery.processing,处理中…,[]

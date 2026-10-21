@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>简单抽奖｜功能策划案</title><style>:root{--ink:#203b34;--muted:#65786e;--paper:#faf9f5;--line:#dce4db;--green:#27614f;--gold:#ad8241;font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:15px}*{box-sizing:border-box}body{margin:0;line-height:1.85}html{scroll-behavior:smooth;scroll-padding-top:90px}a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit}button,.button{border:1px solid var(--line);border-radius:7px;background:white;color:var(--ink);padding:7px 13px;cursor:pointer;font-size:13px}button:hover{border-color:var(--green)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #91c4aa;outline-offset:2px}[hidden]{display:none!important}.sidebar{position:fixed;inset:0 auto 0 0;width:245px;background:#183e31;color:white;padding:25px 20px;display:flex;flex-direction:column;z-index:10}.brand{color:white}.brand small,.brand span{display:block;color:#b6cebe;font-size:12px}.brand strong{font-size:28px;display:block;margin:9px 0}.sidebar nav{margin-top:25px;overflow:auto;flex:1}.sidebar nav a{display:block;font-size:13px;color:#d7e6da;padding:9px 10px;border-radius:6px}.sidebar nav a:hover{background:#315746;color:white}.sidebar p{font-size:11px;color:#a5c2ad}main{margin-left:245px;max-width:1660px;padding:0 45px 35px}.hero{padding:45px 0 28px;border-bottom:1px solid var(--line)}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--gold)}h1{font-size:42px;line-height:1.25;margin:15px 0}.lead{font-size:18px}.hero p{color:var(--muted)}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.button{background:var(--green);color:white}.secondary{background:white;color:var(--green)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px}.stats div{background:white;border:1px solid var(--line);border-radius:9px;padding:15px;color:var(--muted);font-size:12px}.stats b{display:block;font-size:27px;color:var(--ink);font-weight:600}.search-bar{position:sticky;top:0;z-index:8;background:#faf9f5f2;display:flex;align-items:center;gap:9px;padding:15px 0;border-bottom:1px solid var(--line)}.search-bar input{flex:1;min-width:80px;padding:8px 12px;border:1px solid var(--line);border-radius:6px}.search-bar label,.search-bar span{font-size:12px;white-space:nowrap}.chapter{padding:30px 0;border-bottom:1px solid var(--line)}h2{font-size:25px;margin:0 0 20px}h3{font-size:20px;margin:30px 0 14px}h4{font-size:16px;margin:25px 0 10px}p{margin:12px 0}.table-wrap{overflow-x:auto;background:white;border:1px solid var(--line);border-radius:9px;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.75}th,td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line);vertical-align:top;min-width:100px;overflow-wrap:anywhere}th{background:#edf2e9;font-weight:600}tr:last-child td{border-bottom:0}tr:hover td{background:#fafcf8}td:first-child{min-width:150px}code{background:#edf2e9;padding:2px 5px;border-radius:4px}.caption,figcaption{font-size:12px;color:var(--muted)}.graph-card,.ui-figure{margin:22px 0;background:white;border:1px solid var(--line);border-radius:10px;padding:15px}.graph-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}.graph-tools strong{flex:1;min-width:170px;font-size:14px}.graph-stage{overflow:auto;max-height:610px;background:#f5f8f2;border:1px solid var(--line);border-radius:6px}.graph-stage svg{display:block;width:100%;min-width:950px;height:auto}.node{cursor:pointer}.node.selected rect{stroke:#ba843b;stroke-width:3}.edge{opacity:.38}.edge.active{opacity:1}.ui-art{overflow:auto}.ui-art svg{display:block;width:100%;height:auto;min-width:650px}.attachments{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.attachment{border:1px solid var(--line);border-radius:9px;background:white;padding:20px}.attachment b,.attachment span{display:block}.attachment span{font-size:12px;color:var(--muted)}footer{font-size:12px;color:var(--muted);padding:30px 0}dialog{border:1px solid var(--line);border-radius:12px;width:min(1200px,95vw);max-height:94vh;padding:20px;overflow:auto}dialog::backdrop{background:#122b2566}dialog header{display:flex;justify-content:space-between;align-items:center}dialog header h2{font-size:19px;margin:0}.editor-grid{display:grid;grid-template-columns:320px 1fr;gap:18px}.editor-form label{display:block;font-size:12px;color:var(--muted);margin:10px 0}.editor-form input,.editor-form textarea,.editor-form select{display:block;width:100%;padding:7px;border:1px solid var(--line);border-radius:5px;background:white;color:var(--ink)}.editor-form textarea{height:120px}.editor-form .buttons{display:flex;gap:6px;flex-wrap:wrap}.editor-canvas{overflow:auto;height:60vh;background:#f5f8f2;border:1px solid var(--line)}.editor-canvas svg{min-width:1100px;touch-action:none}.source-area{width:100%;height:60vh;font:13px/1.6 monospace;white-space:pre;tab-size:2}#editor-error{color:#a33b28}#viewer{width:96vw;height:94vh}#viewer-body{overflow:auto;height:85vh}#viewer-body svg{width:1400px;max-width:none;height:auto}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#183e31;color:white;border-radius:8px;padding:10px 20px;z-index:100;display:none}#calculator label{display:inline-flex;align-items:center;gap:10px;margin-right:25px}#calculator output{display:block;padding:18px;background:#edf2e9;margin-top:15px;border-radius:8px}.deck-nav{position:fixed;bottom:0;left:0;right:0;background:#183e31;color:white;padding:14px;display:flex;justify-content:center;align-items:center;gap:15px;z-index:20}.deck main{margin:0 auto;max-width:1320px;padding:30px 40px 100px}.deck .slide{min-height:75vh}.deck .slide h1{font-size:40px}.deck .ui-art svg{max-height:65vh}.deck .slide nav{display:flex;gap:12px;flex-wrap:wrap}.deck .slide p{max-width:1000px}.deck select{max-width:42vw}.slide-counter{min-width:65px;text-align:center}@media(max-width:900px){.sidebar{position:static;width:100%;padding:15px 20px}.sidebar nav{display:flex;gap:8px;overflow:auto;margin:12px 0 0}.sidebar nav a{white-space:nowrap}.sidebar p,.brand span{display:none}.brand strong{font-size:22px;margin:0}.brand small{font-size:11px}main{margin-left:0;padding:0 18px 25px}.hero{padding-top:28px}h1{font-size:33px}.stats{grid-template-columns:repeat(2,1fr)}.search-bar{flex-wrap:wrap}.search-bar label{display:none}.attachments{grid-template-columns:1fr}.editor-grid{grid-template-columns:1fr}.editor-canvas{height:36vh}.graph-stage{max-height:450px}.deck main{padding:20px 18px 100px}}@media print{.sidebar,.toolbar,.search-bar,.graph-tools,dialog,#toast{display:none!important}main{margin:0;padding:0;max-width:none}.chapter{break-before:page}.table-wrap,.graph-stage,.ui-art{overflow:visible;max-height:none}.graph-stage svg,.ui-art svg{min-width:0;max-height:240mm}.hero{padding-top:0}tr{break-inside:avoid}a{color:inherit}.stats{grid-template-columns:repeat(4,1fr)}}
+/* Direct graph editing and node links */
+.node-jump{cursor:pointer}.node-jump:hover rect{fill:#d0e7d8}.node-jump text{pointer-events:none}.node>text{user-select:none}.node.selected>rect:first-child{stroke:#b17e32;stroke-width:3}.jump-target{animation:jump-flash 1.8s ease-out}@keyframes jump-flash{from{background:#f2df9f}to{background:transparent}}
+#editor.visual-editor{width:96vw;max-width:1600px;padding:18px;max-height:96vh}.visual-editor .editor-grid{grid-template-columns:minmax(0,1fr) 280px;gap:16px}.visual-editor .editor-canvas{position:relative;height:60vh;min-height:320px;overflow:auto;background-color:#f6f8f3;background-image:radial-gradient(#d8e4d7 1px,transparent 1px);background-size:18px 18px;outline-offset:-3px}.visual-editor .editor-canvas svg{display:block;width:100%;min-width:0;max-width:none;min-height:250px;height:auto;touch-action:none}.visual-editor .editor-form{max-height:60vh;overflow:auto;padding:0 8px}.editor-form textarea{height:90px}.editor-form details{margin:12px 0}.editor-form summary{cursor:pointer;font-size:13px;color:#456a56}.editor-form .buttons label{max-width:52px}.editor-form #node-link-label{overflow-wrap:anywhere}.mind-toolbar{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:16px 0 8px}.toolbar-space{flex:1}.mind-help{font-size:12px;color:#617768;margin:5px 0 12px}kbd{font-size:10px;color:#667f6c;margin-left:6px}#zoom-label{font-size:12px;min-width:40px;text-align:center}button:disabled{cursor:default;opacity:.45}.inline-node-text{position:absolute;z-index:3;resize:both;background:#fffef5;border:2px solid #b17e32;border-radius:8px;padding:12px;font:16px/1.6 "PingFang SC","Microsoft YaHei",Arial,sans-serif;box-shadow:0 4px 20px #203b3420;color:#203b34;outline:none}
+@media(max-width:900px){.visual-editor .editor-grid{grid-template-columns:1fr}.visual-editor .editor-canvas{height:42vh}.visual-editor .editor-form{max-height:35vh}.mind-toolbar button{font-size:11px;padding:5px 8px}.toolbar-space{display:none}.mind-help{font-size:11px}.editor-canvas svg{min-width:0}}
+
+.spec-code{background:#eef3ec;border:1px solid #d7e2d5;border-left:4px solid #49765b;border-radius:7px;padding:18px 20px;font:14px/1.8 ui-monospace,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto}.sample-config{padding:16px;background:#f0f3ed;border:1px solid #d7e2d5;border-radius:8px;margin:20px 0}.sample-config summary{cursor:pointer;color:#285c47;font-weight:600}.demo-controls{display:flex;gap:20px;flex-wrap:wrap}.demo-controls select{padding:7px 10px;border:1px solid #c6d8c9;border-radius:6px;background:white}.demo-entries{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-height:250px;overflow:auto;padding:4px 5px;margin:15px 0}.demo-entry{border:1px solid #c4d5c8;border-radius:8px;background:#fff;padding:15px;min-height:108px}.demo-entry strong{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.demo-entry small{color:#6a7c6e}.demo-result{background:#edf4ed;padding:12px;border-left:4px solid #387452}.demo-result.rare{background:#f0eafa;border-left-color:#7654a5}@media(max-width:700px){.demo-entries{grid-template-columns:repeat(2,minmax(0,1fr))}.demo-entry small{overflow-wrap:anywhere}}
+</style></head><body><aside class="sidebar"><a class="brand" href="#top"><small>功能策划 / V0.3</small><strong>简单抽奖</strong><span>每日免费 · 券抽 · 固定奖池</span></a><nav><a href="#section-1">1. 修订记录</a><a href="#section-2">2. 可编辑思维导图</a><a href="#section-3">3. 逻辑与公式</a><a href="#section-4">4. 配置类型与数量</a><a href="#section-5">5. UI示意图</a><a href="#section-6">6. 多语言</a><a href="#section-7">7. 音效需求</a><a href="#section-8">8. 红点逻辑</a><a href="#section-9">9. 业务打点</a><a href="#section-10">10. 制作附件</a></nav><p>HTML 正式维护入口<br>离线可读 / 图示可编辑</p></aside><main><header class="hero" id="top"><div class="eyebrow">GAME FEATURE DESIGN</div><h1>每日补给，单次抽奖</h1><p class="lead">单池、单抽；奖池为可变长列表，单次结果为一个对象。</p><p>V0.3 · 2026-10-22 · 设计草案 · 负责人待指定</p><p>程序阅读入口：类型与数量结构、计算公式、UI状态和表现。具体奖励仅作样例；素材与游戏功能尚未制作。</p><div class="toolbar"><a class="button" href="#section-2">查看导图</a><a class="button secondary" href="抽奖演示稿.html">打开演示</a><a class="button secondary" href="#section-10">制作需求 Excel</a><button id="save-html">下载当前 HTML</button><button id="print">打印</button></div><div class="stats"><div><b>List</b>奖池条目 N≥1</div><div><b>int</b>每条固定数量 count</div><div><b>4</b>UI 页面</div><div><b>1</b>单次结果对象</div></div></header><div class="search-bar"><label for="search">搜索全文</label><input id="search" placeholder="输入规则、UI、字段或奖励" style="" value=""><button id="clear-search">清除</button><button id="toggle-tables">折叠全部表格</button><span id="search-status" aria-live="polite"></span></div><section class="chapter search-unit" id="section-1"><h2>1. 修订记录</h2><div class="table-wrap"><table><thead><tr><th>版本 / 日期</th><th>来源与修改</th><th>状态</th></tr></thead><tbody><tr><td>V0.1 / 2026-10-22</td><td>用户要求简单抽奖案；自主设计玩法、HTML图示编辑、4页UI及3份制作需求Excel</td><td>设计草案；规格和数值为建议</td></tr><tr><td>V0.2 / 2026-10-22</td><td>根据用户反馈，增加双击编辑、快捷新增、拖动、撤销与节点超链接；玩法、配置及制作需求维持V0.1</td><td>交互改进；HTML为当前维护入口</td></tr><tr><td>V0.3 / 2026-10-22</td><td>按程序阅读重点补齐类型/列表基数、参数化公式、状态和UI布局；样例配置折叠；同步UI与特效需求及演示</td><td>结构及规则说明；设计初值待项目评审</td></tr></tbody></table></div></section><section class="chapter search-unit" id="section-2"><h2>2. 可编辑思维导图</h2><p>双击节点即可进入画布直接改字。选中节点后 Tab 新增子节点，Enter 新增同级，拖动调整位置；支持撤销/重做。右侧可选择正文、UI、附件或粘贴网页超链接。点击节点“↗ 跳转”直接查看关联内容。应用修改后，下载当前 HTML 保存；本地文件不提供多人实时协作。</p><div class="graph-card" data-graph="M01"><div class="graph-tools"><strong>功能导图</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage" id="stage-M01"><svg viewBox="0 0 1150 747" role="img" aria-label="抽奖功能导图"><defs><marker id="arrow-stage-M01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10Z" fill="#568b72"></path></marker></defs><g class="edge active"><path d="M154,292 C154,193.5 410,193.5 410,95" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>保存验证连线</title></path><text x="282" y="185.5" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">保存验证连线</text></g><g class="edge active"><path d="M154,292 C154,288.5 410,288.5 410,285" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>保存验证节点 → 消耗与抽取</title></path></g><g class="edge active"><path d="M154,367 C154,383.5 410,383.5 410,400" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>保存验证节点 → 结果与恢复</title></path></g><g class="edge active"><path d="M154,367 C154,478.5 410,478.5 410,590" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>保存验证节点 → 制作需求</title></path></g><g class="edge active"><path d="M540,57.5 C590,57.5 590,78.5 640,78.5" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>进入与每日免费 → 开放阈值 / F-01周期公式</title></path></g><g class="edge active"><path d="M540,247.5 C590,247.5 590,268.5 640,268.5" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>消耗与抽取 → entries：List，N≥1</title></path></g><g class="edge active"><path d="M540,437.5 C590,437.5 590,458.5 640,458.5" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>结果与恢复 → DrawSuccess：单对象</title></path></g><g class="edge active"><path d="M540,627.5 C590,627.5 590,648.5 640,648.5" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-M01)"><title>制作需求 → UI列表 / 单结果 / 状态变体</title></path></g><g class="node" data-node="root" transform="translate(64,292)" tabindex="0"><rect width="180" height="75" rx="8" fill="#285c47" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="white">保存验证节点</text><a href="#section-3" class="node-jump" aria-label="跳转：保存验证节点"><rect x="98" y="46" width="72" height="22" rx="5" fill="#dbeee1" stroke="none"></rect><text x="108" y="62" font-size="12" fill="#27614f">↗ 跳转</text><title>#section-3</title></a></g><g class="node" data-node="access" transform="translate(280,20)" tabindex="0"><rect width="260" height="75" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">进入与每日免费</text><a href="#r-01" class="node-jump" aria-label="跳转：进入与每日免费"><rect x="178" y="46" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="188" y="62" font-size="12" fill="#27614f">↗ 跳转</text><title>#r-01</title></a></g><g class="node" data-node="pay" transform="translate(280,210)" tabindex="0"><rect width="260" height="75" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">消耗与抽取</text><a href="#r-02" class="node-jump" aria-label="跳转：消耗与抽取"><rect x="178" y="46" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="188" y="62" font-size="12" fill="#27614f">↗ 跳转</text><title>#r-02</title></a></g><g class="node" data-node="reward" transform="translate(280,400)" tabindex="0"><rect width="260" height="75" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">结果与恢复</text><a href="#r-04" class="node-jump" aria-label="跳转：结果与恢复"><rect x="178" y="46" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="188" y="62" font-size="12" fill="#27614f">↗ 跳转</text><title>#r-04</title></a></g><g class="node" data-node="produce" transform="translate(280,590)" tabindex="0"><rect width="260" height="75" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">制作需求</text><a href="#section-10" class="node-jump" aria-label="跳转：制作需求"><rect x="178" y="46" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="188" y="62" font-size="12" fill="#27614f">↗ 跳转</text><title>#section-10</title></a></g><g class="node" data-node="access2" transform="translate(640,20)" tabindex="0"><rect width="360" height="117" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">开放阈值 / F-01周期公式</text><text x="15" y="53" font-size="16" fill="#27483b">免费数量：0或1</text><text x="15" y="78" font-size="16" fill="#27483b">UI-01状态优先级</text><a href="#ui-01" class="node-jump" aria-label="跳转：开放阈值 / F-01周期公式"><rect x="278" y="88" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="288" y="104" font-size="12" fill="#27614f">↗ 跳转</text><title>#ui-01</title></a></g><g class="node" data-node="pay2" transform="translate(640,210)" tabindex="0"><rect width="470" height="117" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">entries：List，N≥1</text><text x="15" y="53" font-size="16" fill="#27483b">单抽1条 / count固定整数</text><text x="15" y="78" font-size="16" fill="#27483b">F-02消耗 / F-03概率</text><a href="#ui-02" class="node-jump" aria-label="跳转：entries：List，N≥1"><rect x="388" y="88" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="398" y="104" font-size="12" fill="#27614f">↗ 跳转</text><title>#ui-02</title></a></g><g class="node" data-node="reward2" transform="translate(640,400)" tabindex="0"><rect width="410" height="117" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">DrawSuccess：单对象</text><text x="15" y="53" font-size="16" fill="#27483b">F-04结算 / F-05展示</text><text x="15" y="78" font-size="16" fill="#27483b">UI-03普通/稀有/恢复</text><a href="#ui-03" class="node-jump" aria-label="跳转：DrawSuccess：单对象"><rect x="328" y="88" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="338" y="104" font-size="12" fill="#27614f">↗ 跳转</text><title>#ui-03</title></a></g><g class="node" data-node="produce2" transform="translate(640,590)" tabindex="0"><rect width="410" height="117" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">UI列表 / 单结果 / 状态变体</text><text x="15" y="53" font-size="16" fill="#27483b">3份独立制作需求Excel</text><text x="15" y="78" font-size="16" fill="#27483b">具体资源只作样例</text><a href="需求表/简单抽奖_UI需求.xlsx" class="node-jump" aria-label="跳转：UI列表 / 单结果 / 状态变体" target="_blank" rel="noopener noreferrer"><rect x="328" y="88" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="338" y="104" font-size="12" fill="#27614f">↗ 跳转</text><title>需求表/简单抽奖_UI需求.xlsx</title></a></g></svg></div><p class="caption">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div></section><section class="chapter search-unit" id="section-3"><h2>3. 功能逻辑与计算公式</h2><p>本期：单池、单抽、可叠加资源奖励。正文定义类型、数量、计算与UI行为；具体资源和数量是附件中的示例配置。</p><div class="graph-card" data-graph="F01"><div class="graph-tools"><strong>抽奖主流程</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage" id="stage-F01"><svg viewBox="0 0 1170 630" role="img" aria-label="单次抽奖流程"><defs><marker id="arrow-stage-F01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10Z" fill="#568b72"></path></marker></defs><g class="edge active"><path d="M280,72.5 C315,72.5 315,85 350,85" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>点击抽一次 → 检查开放、等级</title></path></g><g class="edge active"><path d="M680,85 C730,85 730,100 780,100" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>满足条件</title></path><text x="730" y="84.5" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">满足条件</text></g><g class="edge active"><path d="M515,135 C515,202.5 515,202.5 515,270" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>未满足</title></path><text x="515" y="194.5" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">未满足</text></g><g class="edge active"><path d="M955,165 C955,217.5 955,217.5 955,270" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>已成功</title></path><text x="955" y="209.5" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">已成功</text></g><g class="edge active"><path d="M955,165 C955,327.5 515,327.5 515,490" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>暂未获知结果</title></path><text x="735" y="319.5" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">暂未获知结果</text></g><g class="edge active"><path d="M515,490 C515,430 955,430 955,370" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>原结果成功</title></path><text x="735" y="422" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">原结果成功</text></g><g class="edge active"><path d="M515,490 C515,430 515,430 515,370" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-F01)"><title>原结果失败</title></path><text x="515" y="422" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">原结果失败</text></g><g class="node" data-node="click" transform="translate(20,35)" tabindex="0"><rect width="260" height="75" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">点击抽一次</text><a href="#ui-01" class="node-jump" aria-label="跳转：点击抽一次"><rect x="178" y="46" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="188" y="62" font-size="12" fill="#27614f">↗ 跳转</text><title>#ui-01</title></a></g><g class="node" data-node="check" transform="translate(350,35)" tabindex="0"><rect width="330" height="100" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">检查开放、等级</text><text x="15" y="53" font-size="16" fill="#27483b">刷新免费资格 / 检查券数量</text><a href="#r-02" class="node-jump" aria-label="跳转：检查开放、等级"><rect x="248" y="71" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="258" y="87" font-size="12" fill="#27614f">↗ 跳转</text><title>#r-02</title></a></g><g class="node" data-node="commit" transform="translate(780,35)" tabindex="0"><rect width="350" height="130" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">消耗0或C个资源单位</text><text x="15" y="53" font-size="16" fill="#27483b">按权重从N条中选1条</text><text x="15" y="78" font-size="16" fill="#27483b">发放该条固定count</text><a href="#r-03" class="node-jump" aria-label="跳转：消耗0或C个资源单位"><rect x="268" y="101" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="278" y="117" font-size="12" fill="#27614f">↗ 跳转</text><title>#r-03</title></a></g><g class="node" data-node="result" transform="translate(780,270)" tabindex="0"><rect width="350" height="100" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">结果已确定</text><text x="15" y="53" font-size="16" fill="#27483b">播放表现 / UI-03展示</text><a href="#ui-03" class="node-jump" aria-label="跳转：结果已确定"><rect x="268" y="71" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="278" y="87" font-size="12" fill="#27614f">↗ 跳转</text><title>#ui-03</title></a></g><g class="node" data-node="fail" transform="translate(350,270)" tabindex="0"><rect width="330" height="100" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">条件不满足 / 明确失败</text><text x="15" y="53" font-size="16" fill="#27483b">UI-04提示；不消耗</text><a href="#ui-04" class="node-jump" aria-label="跳转：条件不满足 / 明确失败"><rect x="248" y="71" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="258" y="87" font-size="12" fill="#27614f">↗ 跳转</text><title>#ui-04</title></a></g><g class="node" data-node="pending" transform="translate(350,490)" tabindex="0"><rect width="330" height="100" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">结果不明</text><text x="15" y="53" font-size="16" fill="#27483b">确认原结果，禁止重新抽取</text><a href="#r-04" class="node-jump" aria-label="跳转：结果不明"><rect x="248" y="71" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="258" y="87" font-size="12" fill="#27614f">↗ 跳转</text><title>#r-04</title></a></g></svg></div><p class="caption">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div><h3 id="r-01">R-01 开放与刷新</h3><p>新抽取要求配置有效、pool.enabled=true、角色等级≥unlockLevel。每日免费上限 dailyFree 为0或1，周期按 F-01 判断。读取页面、点击抽奖和跨周期时刷新；依据游戏统一时间。</p><h3 id="r-02">R-02 选择消耗方式</h3><p>已接受的抽奖优先确认和展示，不能再发起一笔。新操作按配置有效→开放→等级→空闲→刷新免费→选择消耗校验。freeRemaining&gt;0 优先免费，否则检查抽奖前余额 B[costResourceId]≥costCount。资源不足不消耗。</p><h3 id="r-03">R-03 抽取、发放、表现</h3><p>按 F-03 从 N 个条目中选且只选1个；按 F-02消耗、F-04发放该条目的固定count。成功结果确定并入账后才播放0.8秒过程表现。跳过只结束表现，不改变结果；结果为单对象，不设置领取步骤。</p><h3 id="r-04">R-04 重复操作与恢复</h3><p>SUBMITTING、PENDING、ANIMATING、RESULT时禁止新抽。明确失败不扣免费次数和资源；不明状态显示PENDING，确认原结果，不当失败重抽。离开不撤销已接受的抽取；返回补展示未看过的成功结果，恢复时不重播动效、不重复发放。</p><h3 id="r-05">R-05 时间与配置边界</h3><p>使用接受时的配置和刷新周期；接受后关闭奖池或修改权重不改变原结果。旧周期最后一秒接受、新周期展示，消耗旧周期免费，新周期资格保留。N=0、非正整数权重/数量、重复条目ID或引用缺失使整池不可用，禁止悄悄删除坏行后重新归一化。</p><h3 id="formulas">计算公式、变量与边界</h3><div class="table-wrap"><table><thead><tr><th>变量</th><th>类型 / 单位</th><th>含义</th></tr></thead><tbody><tr><td>t / h</td><td>int / UTC秒、小时</td><td>t为接受抽奖的时间；h=resetHour∈[0,23]；固定UTC+8时区。</td></tr><tr><td>d / u / D</td><td>int|null / int / int</td><td>d=usedCycleKey，u=freeUsed∈{0,1}，D为当前周期键。</td></tr><tr><td>F / C / B[x]</td><td>int / 次、资源单位</td><td>F为可用免费次数，C=costCount≥1，B[x]为抽取前资源余额。</td></tr><tr><td>N / w_i / W</td><td>int / 条、无量纲</td><td>N为条目数；w_i&gt;0；W为总权重，必须&gt;0。</td></tr><tr><td>p_i / r / S_i</td><td>比例 / int / int</td><td>p_i范围(0,1]；r是均匀随机整数；S_i为累计权重。</td></tr></tbody></table></div><h4 id="f-01">F-01 周期与免费次数</h4><pre class="spec-code">D(t) = floor((t + 8×3600 - h×3600) / 86400)
+usedToday = (d == D(t)) ? u : 0
+F = max(0, dailyFree - usedToday)</pre><p>时间达到刷新整点即进入新周期，等号归新周期；不累计未用次数。免费成功后 d=D(t)、u=usedToday+1；失败保持原值。</p><h4 id="f-02">F-02 消耗</h4><pre class="spec-code">costType = (F &gt; 0) ? free : resource
+paidCost = (costType == free) ? 0 : C
+新抽取可支付 = (F &gt; 0) OR (B[costResourceId] &gt;= C)</pre><p>costCount是单个固定整数。余额等于C允许抽取；不使用尚未获得的奖励垫付本次消耗。</p><h4 id="f-03">F-03 概率与抽取</h4><pre class="spec-code">W = Σ(w_i), i = 1..N
+p_i = w_i / W
+S_0 = 0; S_i = Σ(w_j), j = 1..i
+r ∈ {0, 1, …, W-1}，每个整数等可能
+选择唯一满足 S_(i-1) &lt;= r &lt; S_i 的条目 i</pre><p>按id字符码点升序确定区间；采用左闭右开。r=0命中第一条，r=W-1命中最后一条。各次独立使用全池，同一条目可再次命中；无保底。</p><h4 id="f-04">F-04 数量与余额</h4><pre class="spec-code">rewardCount = entries[i].count
+B_after[x] = B_before[x]
+             - (x == costResourceId ? paidCost : 0)
+             + (x == result.resourceId ? rewardCount : 0)</pre><p>发放数量直接取正整数，不二次随机、不乘权重。消耗与奖励引用同一资源时合并计算净变化。一次成功只结算一次。本版假设可叠加资源无业务容量上限；项目若有上限，接入前补齐溢出规则，不默认截断或重抽。</p><h4 id="f-05">F-05 概率与数量的显示</h4><pre class="spec-code">若 0 &lt; 100×p_i &lt; 0.01：显示 &lt;0.01%
+否则 pct_i = floor(10000×w_i/W + 0.5) / 100
+按两位小数显示 pct_i + %
+数量：显示完整整数 + Resource.unit，不使用K/M缩写</pre><p>仅显示时四舍五入；实际抽取使用原始整数权重。四舍五入后合计可能不等于100.00%，不人为修改最后一项。名称和图标通过引用读取，不能按特定资源ID写表现分支。</p><details class="sample-config"><summary>展开一个纯权重边界算例</summary><p>权重[1,2,1]的区间是[0,1)、[1,3)、[3,4)，r=0/1/2/3分别命中第1/2/2/3条。把条目内容换成任意受支持资源，算法不变。算例不限制条目数。</p></details></section><section class="chapter search-unit" id="section-4"><h2>4. 配置类型与数量结构</h2><h3 id="data-shapes">单值、列表与数量约束</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>类型</th><th>形状 / 数量</th><th>边界与语义</th></tr></thead><tbody><tr><td>pool</td><td>LotteryPool</td><td>单对象，恰好1个</td><td>本期一个常驻池；不按奖励数量复制奖池。</td></tr><tr><td>entries</td><td>List&lt;LotteryReward&gt;</td><td>可变长；N≥1；无业务固定上限</td><td>按 poolId 关联，id 按字符码点升序；id不可重复，可重复引用相同 resourceId，按不同条目分别展示/抽取。N=0时禁止抽取。</td></tr><tr><td>entries[i].resourceId</td><td>ResourceId = string</td><td>单值，恰好1个</td><td>仅支持可叠加资源；本版不支持独立装备实例、直接属性加成、技能授予或多项礼包。</td></tr><tr><td>entries[i].count</td><td>int</td><td>单值，固定数量；≥1</td><td>每次命中此条目都发放 count；不是 list，不是随机 min/max，不接受小数。</td></tr><tr><td>drawCount</td><td>int 常量</td><td>固定为1</td><td>每次操作只抽取1个条目；无十连和多选。</td></tr><tr><td>result</td><td>DrawSuccess | null</td><td>可空单对象；成功时恰好1个</td><td>未成功或尚未确认时为 null；成功对象不是 List&lt;Reward&gt;。</td></tr><tr><td>balances</td><td>Map&lt;ResourceId, int&gt;</td><td>玩家信息，0..N个键</td><td>非负整数余额；不存在的合法资源键按0读取；不是静态策划配置。</td></tr><tr><td>UiText.params</td><td>List&lt;string&gt;</td><td>可变长；0..N</td><td>每项格式 name:type，type∈{string,int}；name唯一；[]表示无参数；不依赖数组顺序。</td></tr></tbody></table></div><pre class="spec-code">DrawSuccess {                // 成功结果的逻辑形状，不是接口协议
+  entryId: string;            // 选中的唯一条目
+  resourceId: string;         // 恰好一种可叠加资源
+  count: int;                 // 固定正整数，不是列表或范围
+  rare: bool;                 // 决定表现，不改变计算
+  recovered: bool;            // 恢复展示时不重播动效
+}
+result: DrawSuccess | null;    // 一次成功 = 一个对象
+phase: IDLE | SUBMITTING | PENDING | ANIMATING | RESULT;
+usedCycleKey: int | null;      // 玩家上次使用免费次数的周期
+freeUsed: int;                 // 该周期已用次数，0或1</pre><div class="graph-card" data-graph="C01"><div class="graph-tools"><strong>配置结构与引用基数</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage" id="stage-C01"><svg viewBox="0 0 940 710" role="img" aria-label="配置表结构与引用"><defs><marker id="arrow-stage-C01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10Z" fill="#568b72"></path></marker></defs><g class="edge active"><path d="M500,150 C450,150 450,175 400,175" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-C01)"><title>N:1 · poolId → id</title></path><text x="450" y="154.5" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">N:1 · poolId → id</text></g><g class="edge active"><path d="M215,320 C215,405 215,405 215,490" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-C01)"><title>costResourceId → id</title></path><text x="215" y="397" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">costResourceId → id</text></g><g class="edge active"><path d="M700,270 C700,380 215,380 215,490" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-C01)"><title>resourceId → id</title></path><text x="457.5" y="372" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">resourceId → id</text></g><g class="edge active"><path d="M400,580 C450,580 450,570 500,570" fill="none" stroke="#568b72" stroke-width="2" marker-end="url(#arrow-stage-C01)"><title>nameKey → key</title></path><text x="450" y="567" fill="#976a2c" font-size="14" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke">nameKey → key</text></g><g class="node" data-node="LotteryPool" transform="translate(30,30)" tabindex="0"><rect width="370" height="290" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">LotteryPool · 奖池</text><text x="15" y="53" font-size="16" fill="#27483b">id: string</text><text x="15" y="78" font-size="16" fill="#27483b">enabled: bool</text><text x="15" y="103" font-size="16" fill="#27483b">unlockLevel: int</text><text x="15" y="128" font-size="16" fill="#27483b">costResourceId: string</text><text x="15" y="153" font-size="16" fill="#27483b">costCount: int</text><text x="15" y="178" font-size="16" fill="#27483b">dailyFree: int</text><text x="15" y="203" font-size="16" fill="#27483b">resetHour: int</text><text x="15" y="228" font-size="16" fill="#27483b">timezone: string</text><a href="#cfg-LotteryPool" class="node-jump" aria-label="跳转：LotteryPool · 奖池"><rect x="288" y="261" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="298" y="277" font-size="12" fill="#27614f">↗ 跳转</text><title>#cfg-LotteryPool</title></a></g><g class="node" data-node="LotteryReward" transform="translate(500,30)" tabindex="0"><rect width="400" height="240" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">LotteryReward · 条目 [1..N]</text><text x="15" y="53" font-size="16" fill="#27483b">id: string</text><text x="15" y="78" font-size="16" fill="#27483b">poolId: string</text><text x="15" y="103" font-size="16" fill="#27483b">resourceId: string</text><text x="15" y="128" font-size="16" fill="#27483b">count: int</text><text x="15" y="153" font-size="16" fill="#27483b">weight: int</text><text x="15" y="178" font-size="16" fill="#27483b">rare: bool</text><a href="#cfg-LotteryReward" class="node-jump" aria-label="跳转：LotteryReward · 条目 [1..N]"><rect x="318" y="211" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="328" y="227" font-size="12" fill="#27614f">↗ 跳转</text><title>#cfg-LotteryReward</title></a></g><g class="node" data-node="Resource" transform="translate(30,490)" tabindex="0"><rect width="370" height="180" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">Resource · 资源</text><text x="15" y="53" font-size="16" fill="#27483b">id: string</text><text x="15" y="78" font-size="16" fill="#27483b">nameKey: string</text><text x="15" y="103" font-size="16" fill="#27483b">iconKey: string</text><text x="15" y="128" font-size="16" fill="#27483b">unit: string</text><a href="#cfg-Resource" class="node-jump" aria-label="跳转：Resource · 资源"><rect x="288" y="151" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="298" y="167" font-size="12" fill="#27614f">↗ 跳转</text><title>#cfg-Resource</title></a></g><g class="node" data-node="UiText" transform="translate(500,490)" tabindex="0"><rect width="400" height="160" rx="8" fill="#fff" stroke="#adc5b6"></rect><text x="15" y="28" font-size="19" fill="#27483b">UiText · 文案</text><text x="15" y="53" font-size="16" fill="#27483b">key: string</text><text x="15" y="78" font-size="16" fill="#27483b">zhCN: string</text><text x="15" y="103" font-size="16" fill="#27483b">params: string[]</text><a href="#cfg-UiText" class="node-jump" aria-label="跳转：UiText · 文案"><rect x="318" y="131" width="72" height="22" rx="5" fill="#edf4ef" stroke="none"></rect><text x="328" y="147" font-size="12" fill="#27614f">↗ 跳转</text><title>#cfg-UiText</title></a></g></svg></div><p class="caption">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div><p>本案共4张静态表。所有字段均必填且不可null；默认值用于新建配置，不把缺失字段默认为0。唯一ID字段不可空，按字符串保存。示例值不构成ID枚举或数量上限。</p><h3 id="cfg-LotteryPool">LotteryPool</h3><div class="table-wrap"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>id</td><td>奖池唯一标识</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一；无默认</td></tr><tr><td>enabled</td><td>是否允许新抽取</td><td>bool</td><td>单值；恰好1；不可null</td><td>必填；true开放、false关闭；默认false</td></tr><tr><td>unlockLevel</td><td>最低角色等级</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；角色等级≥1；无默认</td></tr><tr><td>costResourceId</td><td>单次付费抽取消耗的资源</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用Resource.id；无默认</td></tr><tr><td>costCount</td><td>固定消耗数量</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；固定消耗正整数≥1；单位随costResourceId；无默认</td></tr><tr><td>dailyFree</td><td>每个刷新周期的免费次数上限</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；本版0或1；每日免费次数；默认1</td></tr><tr><td>resetHour</td><td>每天刷新所在小时</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；整点0—23；默认0</td></tr><tr><td>timezone</td><td>刷新时区</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；本版固定Asia/Shanghai；UTC+8</td></tr></tbody></table></div><h3 id="cfg-LotteryReward">LotteryReward</h3><div class="table-wrap"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>id</td><td>条目唯一标识</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一；无默认</td></tr><tr><td>poolId</td><td>所属奖池</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用LotteryPool.id</td></tr><tr><td>resourceId</td><td>发放的可叠加资源</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用Resource.id</td></tr><tr><td>count</td><td>此条目的固定发放数量</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；单次获得量≥1；单位随Resource</td></tr><tr><td>weight</td><td>此条目的抽取权重</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；正整数；概率=本行权重/同池总权重</td></tr><tr><td>rare</td><td>是否使用稀有结果表现</td><td>bool</td><td>单值；恰好1；不可null</td><td>必填；默认false；仅控制表现，不影响权重</td></tr></tbody></table></div><h3 id="cfg-Resource">Resource</h3><div class="table-wrap"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>id</td><td>可叠加资源唯一标识</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一非空字符串；任意合法的可叠加资源ID；非固定枚举</td></tr><tr><td>nameKey</td><td>名称多语言键</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用UiText.key</td></tr><tr><td>iconKey</td><td>图标资源键</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用美术需求资源键；素材未制作</td></tr><tr><td>unit</td><td>数量显示单位</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；展示计量单位；无默认</td></tr></tbody></table></div><h3 id="cfg-UiText">UiText</h3><div class="table-wrap"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>key</td><td>文案唯一键</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一；无默认</td></tr><tr><td>zhCN</td><td>中文模板</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；中文原文；不可空</td></tr><tr><td>params</td><td>占位符定义列表</td><td>string[]</td><td>list；0..N；[]合法；元素非空</td><td>默认[]；元素为name:type，type为string/int；name唯一；无参数为[]</td></tr></tbody></table></div><details class="sample-config"><summary>示例配置文件（用于验证规则，可替换内容）</summary><p>具体资源名、数量和权重只出现在这组样例及演示里；程序按上述结构和公式读取。</p><p><a href="配置表/LotteryPool.csv">LotteryPool.csv</a> · <a href="配置表/LotteryReward.csv">LotteryReward.csv</a> · <a href="配置表/Resource.csv">Resource.csv</a> · <a href="配置表/UiText.csv">UiText.csv</a></p><p><a href="配置表/示例配置.json">样例 JSON</a> · <a href="配置表/字段字典.json">字段字典</a> · <a href="配置表/逻辑结构.json">逻辑结构与数量约束</a></p></details></section><section class="chapter search-unit" id="section-5"><h2>5. UI 示意图与逐页逻辑</h2><div class="table-wrap"><table><thead><tr><th>页面</th><th>入口</th><th>说明</th></tr></thead><tbody><tr><td>UI-01 抽奖主页面</td><td>主界面“每日补给”入口</td><td><a href="#ui-01">打开本页</a></td></tr><tr><td>UI-02 奖池概率弹窗</td><td>UI-01 点击“奖池概率”</td><td><a href="#ui-02">打开本页</a></td></tr><tr><td>UI-03 抽奖结果弹窗</td><td>本次奖励成功确定并结束或跳过表现后</td><td><a href="#ui-03">打开本页</a></td></tr><tr><td>UI-04 通用提示与确认状态</td><td>UI-01 操作未满足条件或结果暂不明确</td><td><a href="#ui-04">打开本页</a></td></tr></tbody></table></div><h3 id="ui-01">UI-01 抽奖主页面</h3><figure class="ui-figure" data-ui="UI-01"><div class="graph-tools"><strong>UI 示意图</strong><button data-action="zoom-ui">放大</button><button data-action="svg">编辑 SVG 源码</button></div><div class="ui-art"><svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560"><rect width="960" height="560" fill="#f3f6f0"></rect><rect width="960" height="70" fill="#234a3b"></rect><text x="35" y="46" font-size="26" fill="white">UI-01 · 可变长列表与固定操作区</text><text x="40" y="97" font-size="16">entries：N≥1 · 3列×2行可视 · N&gt;6仅列表区滚动</text><g><rect x="40" y="115" width="265" height="110" rx="8" fill="white" stroke="#b5cbbd"></rect><rect x="54" y="132" width="50" height="50" rx="5" fill="#e4eee5"></rect><text x="62" y="163" font-size="13">icon</text><text x="117" y="155" font-size="20">entries[0]</text><text x="117" y="184" font-size="17">name × count</text><text x="54" y="209" font-size="13" fill="#6a7f70">仅展示实际存在的条目</text></g><g><rect x="325" y="115" width="265" height="110" rx="8" fill="white" stroke="#b5cbbd"></rect><rect x="339" y="132" width="50" height="50" rx="5" fill="#e4eee5"></rect><text x="347" y="163" font-size="13">icon</text><text x="402" y="155" font-size="20">entries[1]</text><text x="402" y="184" font-size="17">name × count</text><text x="339" y="209" font-size="13" fill="#6a7f70">仅展示实际存在的条目</text></g><g><rect x="610" y="115" width="265" height="110" rx="8" fill="white" stroke="#b5cbbd"></rect><rect x="624" y="132" width="50" height="50" rx="5" fill="#e4eee5"></rect><text x="632" y="163" font-size="13">icon</text><text x="687" y="155" font-size="20">entries[2]</text><text x="687" y="184" font-size="17">name × count</text><text x="624" y="209" font-size="13" fill="#6a7f70">仅展示实际存在的条目</text></g><g><rect x="40" y="240" width="265" height="110" rx="8" fill="white" stroke="#b5cbbd"></rect><rect x="54" y="257" width="50" height="50" rx="5" fill="#e4eee5"></rect><text x="62" y="288" font-size="13">icon</text><text x="117" y="280" font-size="20">entries[3]</text><text x="117" y="309" font-size="17">name × count</text><text x="54" y="334" font-size="13" fill="#6a7f70">仅展示实际存在的条目</text></g><g><rect x="325" y="240" width="265" height="110" rx="8" fill="white" stroke="#b5cbbd"></rect><rect x="339" y="257" width="50" height="50" rx="5" fill="#e4eee5"></rect><text x="347" y="288" font-size="13">icon</text><text x="402" y="280" font-size="20">entries[4]</text><text x="402" y="309" font-size="17">name × count</text><text x="339" y="334" font-size="13" fill="#6a7f70">仅展示实际存在的条目</text></g><g><rect x="610" y="240" width="265" height="110" rx="8" fill="white" stroke="#b5cbbd"></rect><rect x="624" y="257" width="50" height="50" rx="5" fill="#e4eee5"></rect><text x="632" y="288" font-size="13">icon</text><text x="687" y="280" font-size="20">entries[5]</text><text x="687" y="309" font-size="17">name × count</text><text x="624" y="334" font-size="13" fill="#6a7f70">仅展示实际存在的条目</text></g><rect x="906" y="115" width="8" height="235" rx="4" fill="#dce4db"></rect><text x="40" y="407" font-size="22">免费次数 F / dailyFree     消耗资源余额 B</text><rect x="40" y="435" width="510" height="65" rx="9" fill="#27614f"></rect><text x="65" y="475" font-size="23" fill="white">免费抽一次 / 抽一次（C · unit · name）</text><text x="610" y="474" font-size="21">概率说明　　返回</text><text x="40" y="537" font-size="15" fill="#6a7f70">状态决定文案、可用性与动效；详见本页状态表。占位内容不限制具体奖励。</text></svg></div></figure><p>入口：主界面“每日补给”入口。按可变长entries列表展示奖池；按玩家状态显示消耗，发起单次抽取。</p><p>状态：加载、配置无效/空列表、关闭、锁定、免费可用、资源可支付、不足、SUBMITTING、PENDING、ANIMATING、RESULT。</p><div class="table-wrap"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>01-A 奖池展示</td><td>按entries动态创建N张卡片，id升序；不是固定3格；概率入口打开UI-02。</td></tr><tr><td>01-B 抽一次</td><td>F&gt;0显示免费，否则显示C、单位和资源名；按状态表决定可用；余额不足点击打开UI-04。</td></tr><tr><td>01-C 状态反馈</td><td>SUBMITTING/PENDING禁用且不能跳过；仅ANIMATING可跳过已确定结果的表现。</td></tr><tr><td>01-D 返回</td><td>空闲直接返回；已发起时离开不取消已确认的奖励，恢复后按R-04展示</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href="#section-3">R-01—05</a>。</p><p><b>本页红点：</b>配置有效且开放、等级满足、F&gt;0且phase=IDLE时，主入口和主按钮亮红点。打开页面不消除；成功用掉免费、资格失效或进入处理中时重新判断。</p><h4>控件布局与列表</h4><div class="table-wrap"><table><thead><tr><th>控件</th><th>数据 / 数量</th><th>确定表现</th></tr></thead><tbody><tr><td>01-A 奖池列表</td><td>entries：List，N≥1</td><td>960×560示意画布中，常规3列×2行可视；N&gt;6时仅列表区纵向滚动。N=1或2从左起排，不补空槽。窄布局按项目适配减少列数，顺序不变。</td></tr><tr><td>条目卡片</td><td>每条1个图标＋1个名称＋1个数量</td><td>按id升序；相同resourceId不合并；名称最多2行，超出省略，点击名称复用UI-04信息弹窗显示全文（仅关闭，无消耗）。数量完整整数；缺图用统一占位图，不能剔除此条目改变概率。</td></tr><tr><td>01-B 抽一次</td><td>固定1个按钮</td><td>免费/消耗文案由F与C决定；主按钮固定在列表下方，不随列表滚动。状态规则见下表。</td></tr><tr><td>免费次数与资源余额</td><td>各为整数单值</td><td>数据未就绪显示—；正常按当前玩家状态显示；成功结算及跨周期刷新。</td></tr></tbody></table></div><h4>状态优先级（从上到下匹配）</h4><div class="table-wrap"><table><thead><tr><th>条件 / 状态</th><th>显示及按钮</th><th>操作 / 变化</th></tr></thead><tbody><tr><td>已有原抽奖：PENDING</td><td>“结果确认中”；禁用抽取；无开奖动效</td><td>允许离开；返回继续确认；成功进入ANIMATING或恢复RESULT，明确失败才回IDLE。</td></tr><tr><td>已有原抽奖：SUBMITTING</td><td>“处理中…”＋等待标记；禁用抽取</td><td>不显示已到账；无跳过按钮；重复点击无效果。</td></tr><tr><td>已有原抽奖：ANIMATING</td><td>结果已成功，0.8秒过程动效；抽取禁用</td><td>显示“跳过表现”；跳过/时间结束进入RESULT；离开后保留成功结果。</td></tr><tr><td>已有原抽奖：RESULT</td><td>UI-03居中显示；主页面抽取禁用</td><td>仅关闭返回IDLE；没有领取或再次随机。</td></tr><tr><td>无原抽奖：数据未就绪</td><td>加载占位，数量显示“—”，主按钮禁用</td><td>不能把尚未加载的列表判为N=0或余额不足。</td></tr><tr><td>配置无效 / N=0</td><td>列表显示“奖池暂不可用”；抽取/概率入口禁用</td><td>保留返回按钮；不呈现空白可点击槽位。</td></tr><tr><td>enabled=false</td><td>“当前奖池暂未开放”；抽取禁用</td><td>返回可用；原抽奖仍按前四项完成。</td></tr><tr><td>等级不足</td><td>“达到{unlockLevel}级开放”；抽取禁用</td><td>显示解锁条件，不显示免费红点。</td></tr><tr><td>IDLE且F&gt;0</td><td>“免费抽一次”；免费次数F/dailyFree；按钮可用</td><td>成功后刷新免费和余额；打开页面不清除红点。</td></tr><tr><td>IDLE、F=0、B≥C</td><td>“抽一次（{C}{unit}{name}）”；按钮可用</td><td>点击后立即进入SUBMITTING；概率与免费相同。</td></tr><tr><td>IDLE、F=0、B&lt;C</td><td>消耗数量标红；按钮保留可点</td><td>点击显示UI-04资源不足；不扣除、不跳转充值。</td></tr></tbody></table></div><h3 id="ui-02">UI-02 奖池概率弹窗</h3><figure class="ui-figure" data-ui="UI-02"><div class="graph-tools"><strong>UI 示意图</strong><button data-action="zoom-ui">放大</button><button data-action="svg">编辑 SVG 源码</button></div><div class="ui-art"><svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560"><rect width="960" height="560" fill="#f3f6f0"></rect><rect width="960" height="70" fill="#234a3b"></rect><text x="35" y="46" font-size="26" fill="white">UI-02 奖池概率弹窗 · 线框示意</text><rect x="35" y="95" width="890" height="320" rx="12" fill="white" stroke="#dce4db"></rect><text x="65" y="140" font-size="24" fill="#234339">概率行：entries[0..N-1]</text><text x="65" y="192" font-size="24" fill="#234339">名称_i × count_i                 display(p_i)</text><text x="65" y="244" font-size="24" fill="#234339">p_i = weight_i / Σweight</text><text x="65" y="296" font-size="24" fill="#234339">固定6行可视；超出滚动</text><text x="65" y="348" font-size="24" fill="#234339">一次只返回一条结果；各次独立</text><g><rect x="65" y="450" width="240" height="56" rx="9" fill="#27614f"></rect><text x="90" y="486" font-size="23" fill="white">关闭</text></g><text x="35" y="540" font-size="15" fill="#718476">静态信息与状态示意；不代表最终视觉规范。</text></svg></div></figure><p>入口：UI-01 点击“奖池概率”。完整说明当前奖池奖励与真实概率，不消耗任何资源。</p><p>状态：正常、奖池关闭或配置无效。</p><div class="table-wrap"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>02-A 奖励列表</td><td>遍历与主页面相同的N个条目，逐行显示引用名称、固定count和F-05百分比；无固定奖励种类。</td></tr><tr><td>02-B 说明</td><td>每次独立抽取，仅发1项，无保底；概率不是累计承诺</td></tr><tr><td>02-C 关闭</td><td>关闭或返回键回UI-01；不改变免费次数和券数量</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href="#section-3">R-01—05</a>。</p><p><b>本页红点：</b>本页不新增红点；打开/关闭不消除主页面免费提示。</p><div class="table-wrap"><table><thead><tr><th>区域</th><th>数量与布局</th><th>行为</th></tr></thead><tbody><tr><td>概率行</td><td>List&lt;ProbabilityRow&gt;，与entries一一对应</td><td>每行图标、名称、固定数量、F-05计算的百分比；不按数量或概率重新排序。</td></tr><tr><td>滚动区</td><td>固定6行可视，N&gt;6纵向滚动</td><td>底部规则说明和关闭按钮不滚动；N&lt;6不补空白行。</td></tr><tr><td>状态</td><td>正常 / 配置失效</td><td>数据有效时显示；若配置关闭或失效，清除旧概率并显示暂不可用；关闭/返回回UI-01。</td></tr></tbody></table></div><h3 id="ui-03">UI-03 抽奖结果弹窗</h3><figure class="ui-figure" data-ui="UI-03"><div class="graph-tools"><strong>UI 示意图</strong><button data-action="zoom-ui">放大</button><button data-action="svg">编辑 SVG 源码</button></div><div class="ui-art"><svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560"><rect width="960" height="560" fill="#f3f6f0"></rect><rect width="960" height="70" fill="#234a3b"></rect><text x="35" y="46" font-size="26" fill="white">UI-03 抽奖结果弹窗 · 线框示意</text><rect x="35" y="95" width="890" height="320" rx="12" fill="white" stroke="#dce4db"></rect><text x="65" y="140" font-size="24" fill="#234339">单结果区：DrawSuccess（不是List）</text><text x="65" y="192" font-size="24" fill="#234339">{name} × {count}  · {icon}</text><text x="65" y="244" font-size="24" fill="#234339">奖励已到账</text><text x="65" y="296" font-size="24" fill="#234339">rare：普通/稀有；恢复只展示静态结果</text><g><rect x="65" y="450" width="240" height="56" rx="9" fill="#27614f"></rect><text x="90" y="486" font-size="23" fill="white">关闭</text></g><text x="35" y="540" font-size="15" fill="#718476">静态信息与状态示意；不代表最终视觉规范。</text></svg></div></figure><p>入口：本次奖励成功确定并结束或跳过表现后。展示本次唯一奖励、数量及已到账状态。</p><p>状态：普通奖励、稀有奖励、恢复展示。</p><div class="table-wrap"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>03-A 奖励内容</td><td>绑定单个DrawSuccess；rare控制普通/稀有表现，recovered控制是否重播；不得按具体resourceId分支。</td></tr><tr><td>03-B 已到账</td><td>结果弹出前发放已完成，不设置领取按钮</td></tr><tr><td>03-C 关闭</td><td>关闭返回UI-01并刷新资源/免费状态；重复查看不重复发奖</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href="#section-3">R-01—05</a>。</p><p><b>本页红点：</b>本页无红点；结果不产生可领奖红点。</p><div class="table-wrap"><table><thead><tr><th>状态</th><th>显示 / 动效</th><th>操作</th></tr></thead><tbody><tr><td>普通成功：rare=false</td><td>恰好1个结果卡；图标、名称、count、已到账；亮边0.35秒</td><td>关闭按钮始终可用；关闭清理动效并刷新主页面。</td></tr><tr><td>稀有成功：rare=true</td><td>同一个结果卡；背景光芒0.6秒，替代普通亮边</td><td>不叠加普通特效；不改变概率、数量和到账时点。</td></tr><tr><td>恢复展示：recovered=true</td><td>只显示静态结果，不重播过程/结果动效或音效</td><td>重复打开不重复发奖；无领取按钮。</td></tr></tbody></table></div><h3 id="ui-04">UI-04 通用提示与确认状态</h3><figure class="ui-figure" data-ui="UI-04"><div class="graph-tools"><strong>UI 示意图</strong><button data-action="zoom-ui">放大</button><button data-action="svg">编辑 SVG 源码</button></div><div class="ui-art"><svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560"><rect width="960" height="560" fill="#f3f6f0"></rect><rect width="960" height="70" fill="#234a3b"></rect><text x="35" y="46" font-size="26" fill="white">UI-04 通用提示与确认状态 · 线框示意</text><rect x="35" y="95" width="890" height="320" rx="12" fill="white" stroke="#dce4db"></rect><text x="65" y="140" font-size="24" fill="#234339">原因提示</text><text x="65" y="192" font-size="24" fill="#234339">{name}不足，需要{count}{unit}</text><text x="65" y="244" font-size="24" fill="#234339">明确失败：未消耗资源</text><text x="65" y="296" font-size="24" fill="#234339">结果不明：确认中，不声明未扣费</text><g><rect x="65" y="450" width="240" height="56" rx="9" fill="#27614f"></rect><text x="90" y="486" font-size="23" fill="white">确认</text></g><text x="35" y="540" font-size="15" fill="#718476">静态信息与状态示意；不代表最终视觉规范。</text></svg></div></figure><p>入口：UI-01 操作未满足条件或结果暂不明确。明确告知是否扣费，以及玩家接下来可以做什么。</p><p>状态：券不足、等级不足、奖池关闭、明确失败、结果确认中。、名称全文（复用信息提示）。</p><div class="table-wrap"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>04-A 条件提示</td><td>券不足/等级不足/关闭时显示具体原因；确定关闭；不跳转未定义的充值商店</td></tr><tr><td>04-B 明确失败</td><td>显示“本次未完成抽奖，未消耗资源”；确定后返回空闲</td></tr><tr><td>04-C 结果确认中</td><td>显示“结果确认中，请稍后查看”；不显示失败或再抽按钮；允许离开，返回继续确认原结果</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href="#section-3">R-01—05</a>。</p><p><b>本页红点：</b>本页无独立红点；失败不消耗免费资格，主入口红点按R-01重新判断。</p><div class="table-wrap"><table><thead><tr><th>原因 / 状态</th><th>确切反馈</th><th>操作与资源</th></tr></thead><tbody><tr><td>名称全文</td><td>显示所点条目的完整资源名称</td><td>关闭返回来源页，无资源变化。</td></tr><tr><td>余额不足</td><td>{name}不足，需要{count}{unit}</td><td>确认关闭；资源与免费不变。</td></tr><tr><td>等级不足 / 关闭 / 配置无效</td><td>显示对应原因，不能统一提示网络错误</td><td>确认回主页面，主按钮按UI-01重新判断。</td></tr><tr><td>明确失败</td><td>本次未完成抽奖，未消耗资源</td><td>确认后IDLE；可再次按正常规则发起新抽取。</td></tr><tr><td>结果不明</td><td>结果确认中，请稍后查看</td><td>不显示失败、未扣费或再抽；允许离开；原结果确定后更新。</td></tr></tbody></table></div></section><section class="chapter search-unit" id="section-6"><h2>6. 多语言</h2><p>新增23个Key，中文已拟定，目标语言与翻译待确认。含参数的文本使用命名占位符；按钮允许伸缩，错误提示换行，避免拼接句子。</p><div class="table-wrap"><table><thead><tr><th>Key</th><th>中文原文</th><th>参数</th></tr></thead><tbody><tr><td>res.gold</td><td>金币</td><td>无</td></tr><tr><td>res.stone</td><td>强化石</td><td>无</td></tr><tr><td>res.gem</td><td>晶石</td><td>无</td></tr><tr><td>res.ticket</td><td>抽奖券</td><td>无</td></tr><tr><td>lottery.title</td><td>每日补给</td><td>无</td></tr><tr><td>lottery.free</td><td>免费抽一次</td><td>无</td></tr><tr><td>lottery.cost</td><td>抽一次（{count}{unit}{name}）</td><td>count:int, unit:string, name:string</td></tr><tr><td>lottery.rate</td><td>奖池概率</td><td>无</td></tr><tr><td>lottery.refresh</td><td>免费次数每日{hour}:00刷新（UTC+8）</td><td>hour:string</td></tr><tr><td>lottery.draw</td><td>抽取中…</td><td>无</td></tr><tr><td>lottery.result</td><td>获得 {name} × {count}</td><td>name:string, count:int</td></tr><tr><td>lottery.done</td><td>奖励已到账</td><td>无</td></tr><tr><td>lottery.close</td><td>关闭</td><td>无</td></tr><tr><td>lottery.skip</td><td>跳过表现</td><td>无</td></tr><tr><td>lottery.insufficient</td><td>{name}不足，需要{count}{unit}</td><td>name:string, count:int, unit:string</td></tr><tr><td>lottery.closed</td><td>当前奖池暂未开放</td><td>无</td></tr><tr><td>lottery.locked</td><td>角色达到{level}级后开放</td><td>level:int</td></tr><tr><td>lottery.pending</td><td>结果确认中，请稍后查看</td><td>无</td></tr><tr><td>lottery.failed</td><td>本次未完成抽奖，未消耗资源</td><td>无</td></tr><tr><td>lottery.confirm</td><td>确认</td><td>无</td></tr><tr><td>lottery.unavailable</td><td>奖池暂不可用</td><td>无</td></tr><tr><td>lottery.loading</td><td>加载中…</td><td>无</td></tr><tr><td>lottery.processing</td><td>处理中…</td><td>无</td></tr></tbody></table></div></section><section class="chapter search-unit" id="section-7"><h2>7. 音效需求</h2><p>以下仅是制作需求，未提供声音素材。若项目已有通用点击/关闭音，优先复用并待盘点。</p><div class="table-wrap"><table><thead><tr><th>ID</th><th>触发与内容</th><th>停止 / 复用状态</th></tr></thead><tbody><tr><td>SFX-01</td><td>成功确定结果后播放短抽奖过程声</td><td>跳过/离开立即停；新增待制作</td></tr><tr><td>SFX-02</td><td>rare=false结果首次展示时播放获得声</td><td>单次，不循环；复用待盘点</td></tr><tr><td>SFX-03</td><td>rare=true结果首次展示时播放稀有获得声</td><td>替代普通获得声；关闭即停；新增待制作</td></tr></tbody></table></div></section><section class="chapter search-unit" id="section-8"><h2>8. 红点逻辑索引</h2><p>具体逻辑已经写在各 UI 页。入口与主按钮只提示可用免费资格；券足不提示，结果无可领奖红点。每日刷新、等级变化、奖池开放状态变化或抽奖成功后重新判断。</p><div class="table-wrap"><table><thead><tr><th>位置</th><th>规则入口</th></tr></thead><tbody><tr><td>主入口/主按钮</td><td><a href="#ui-01">UI-01 免费红点</a></td></tr><tr><td>其他页面</td><td><a href="#ui-02">UI-02</a> / <a href="#ui-03">UI-03</a> / <a href="#ui-04">UI-04</a>：无独立红点</td></tr></tbody></table></div></section><section class="chapter search-unit" id="section-9"><h2>9. 业务打点（建议）</h2><div class="table-wrap"><table><thead><tr><th>事件</th><th>何时记录</th><th>业务字段</th></tr></thead><tbody><tr><td>lottery_open</td><td>页面实际打开</td><td>poolId:string、入口:string、freeAvailable:bool</td></tr><tr><td>lottery_click</td><td>点击抽一次</td><td>poolId:string、预期消耗方式:free/ticket；只计意图</td></tr><tr><td>lottery_result</td><td>一次抽奖原结果最终确定后</td><td>poolId:string、result:success/fail、costType:free/ticket/none、rewardId:string?、rewardCount:int、reason:string?；成功时记录实际消耗</td></tr><tr><td>lottery_result_view</td><td>结果首次展示</td><td>poolId:string、rewardId:string、recovered:bool；只统计展示</td></tr></tbody></table></div><p>结果不明不记失败；关闭已完成结果不改为取消；同一抽奖恢复查看不新增成功次数。概率弹窗和失败提示关闭只计查看行为，不算抽奖成功。</p></section><section class="chapter search-unit" id="section-10"><h2>10. 制作需求与演示附件</h2><div class="attachments"><a class="attachment" href="需求表/简单抽奖_美术需求.xlsx"><b>美术需求.xlsx</b><span>4条独立需求</span></a><a class="attachment" href="需求表/简单抽奖_UI需求.xlsx"><b>UI需求.xlsx</b><span>7条独立需求</span></a><a class="attachment" href="需求表/简单抽奖_特效需求.xlsx"><b>特效需求.xlsx</b><span>3条独立需求</span></a><a class="attachment" href="抽奖演示稿.html"><b>HTML 演示稿</b><span>翻页说明＋可操作单抽</span></a></div><p>美术表保留V0.1样例资源明细；UI与特效表按V0.3的状态/数据结构维护；用ART/UIR/VFX编号关联。规格为建议值；素材未制作，负责人待指定，计划日期待排期。演示稿使用本地样例数据，不连接真实账户，刷新即重置。</p></section><footer>本案由用户授权自主设计。图示源码、UI SVG、正文和需求附件可独立维护；改图后需同步核对相关规则。</footer></main><dialog id="editor" class=""><form method="dialog"><header><h2 id="editor-title">编辑导图</h2><button value="cancel">关闭</button></header></form><div id="editor-body"></div><p id="editor-error" role="alert"></p><div class="toolbar"><button id="apply-edit">应用修改</button><button id="cancel-edit">取消</button></div></dialog><dialog id="viewer"><form method="dialog"><button>关闭大图</button></form><div id="viewer-body"></div></dialog><div id="toast" role="status" style="display: none;">已应用到页面；请下载当前 HTML 保存。</div><!-- 编辑以下 graph-data 可维护节点和独立连线；也可用页内编辑器。 --><script type="application/json" id="graph-data">{
+  "M01": {
+    "title": "抽奖功能导图",
+    "nodes": [
+      {
+        "id": "root",
+        "text": "保存验证节点",
+        "x": 64,
+        "y": 292,
+        "w": 180,
+        "h": 75,
+        "href": "#section-3"
+      },
+      {
+        "id": "access",
+        "text": "进入与每日免费",
+        "x": 280,
+        "y": 20,
+        "w": 260,
+        "h": 75,
+        "href": "#r-01"
+      },
+      {
+        "id": "pay",
+        "text": "消耗与抽取",
+        "x": 280,
+        "y": 210,
+        "w": 260,
+        "h": 75,
+        "href": "#r-02"
+      },
+      {
+        "id": "reward",
+        "text": "结果与恢复",
+        "x": 280,
+        "y": 400,
+        "w": 260,
+        "h": 75,
+        "href": "#r-04"
+      },
+      {
+        "id": "produce",
+        "text": "制作需求",
+        "x": 280,
+        "y": 590,
+        "w": 260,
+        "h": 75,
+        "href": "#section-10"
+      },
+      {
+        "id": "access2",
+        "text": "开放阈值 / F-01周期公式\n免费数量：0或1\nUI-01状态优先级",
+        "x": 640,
+        "y": 20,
+        "w": 360,
+        "h": 117,
+        "href": "#ui-01"
+      },
+      {
+        "id": "pay2",
+        "text": "entries：List，N≥1\n单抽1条 / count固定整数\nF-02消耗 / F-03概率",
+        "x": 640,
+        "y": 210,
+        "w": 470,
+        "h": 117,
+        "href": "#ui-02"
+      },
+      {
+        "id": "reward2",
+        "text": "DrawSuccess：单对象\nF-04结算 / F-05展示\nUI-03普通/稀有/恢复",
+        "x": 640,
+        "y": 400,
+        "w": 410,
+        "h": 117,
+        "href": "#ui-03"
+      },
+      {
+        "id": "produce2",
+        "text": "UI列表 / 单结果 / 状态变体\n3份独立制作需求Excel\n具体资源只作样例",
+        "x": 640,
+        "y": 590,
+        "w": 410,
+        "h": 117,
+        "href": "需求表/简单抽奖_UI需求.xlsx"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "fromId": "root",
+        "toId": "access",
+        "label": "保存验证连线"
+      },
+      {
+        "id": "e1",
+        "fromId": "root",
+        "toId": "pay",
+        "label": ""
+      },
+      {
+        "id": "e2",
+        "fromId": "root",
+        "toId": "reward",
+        "label": ""
+      },
+      {
+        "id": "e3",
+        "fromId": "root",
+        "toId": "produce",
+        "label": ""
+      },
+      {
+        "id": "l0",
+        "fromId": "access",
+        "toId": "access2",
+        "label": ""
+      },
+      {
+        "id": "l1",
+        "fromId": "pay",
+        "toId": "pay2",
+        "label": ""
+      },
+      {
+        "id": "l2",
+        "fromId": "reward",
+        "toId": "reward2",
+        "label": ""
+      },
+      {
+        "id": "l3",
+        "fromId": "produce",
+        "toId": "produce2",
+        "label": ""
+      }
+    ]
+  },
+  "F01": {
+    "title": "单次抽奖流程",
+    "nodes": [
+      {
+        "id": "click",
+        "text": "点击抽一次",
+        "x": 20,
+        "y": 35,
+        "w": 260,
+        "h": 75,
+        "href": "#ui-01"
+      },
+      {
+        "id": "check",
+        "text": "检查开放、等级\n刷新免费资格 / 检查券数量",
+        "x": 350,
+        "y": 35,
+        "w": 330,
+        "h": 100,
+        "href": "#r-02"
+      },
+      {
+        "id": "commit",
+        "text": "消耗0或C个资源单位\n按权重从N条中选1条\n发放该条固定count",
+        "x": 780,
+        "y": 35,
+        "w": 350,
+        "h": 130,
+        "href": "#r-03"
+      },
+      {
+        "id": "result",
+        "text": "结果已确定\n播放表现 / UI-03展示",
+        "x": 780,
+        "y": 270,
+        "w": 350,
+        "h": 100,
+        "href": "#ui-03"
+      },
+      {
+        "id": "fail",
+        "text": "条件不满足 / 明确失败\nUI-04提示；不消耗",
+        "x": 350,
+        "y": 270,
+        "w": 330,
+        "h": 100,
+        "href": "#ui-04"
+      },
+      {
+        "id": "pending",
+        "text": "结果不明\n确认原结果，禁止重新抽取",
+        "x": 350,
+        "y": 490,
+        "w": 330,
+        "h": 100,
+        "href": "#r-04"
+      }
+    ],
+    "edges": [
+      {
+        "id": "f1",
+        "fromId": "click",
+        "toId": "check",
+        "label": ""
+      },
+      {
+        "id": "f2",
+        "fromId": "check",
+        "toId": "commit",
+        "label": "满足条件"
+      },
+      {
+        "id": "f3",
+        "fromId": "check",
+        "toId": "fail",
+        "label": "未满足"
+      },
+      {
+        "id": "f4",
+        "fromId": "commit",
+        "toId": "result",
+        "label": "已成功"
+      },
+      {
+        "id": "f5",
+        "fromId": "commit",
+        "toId": "pending",
+        "label": "暂未获知结果"
+      },
+      {
+        "id": "f6",
+        "fromId": "pending",
+        "toId": "result",
+        "label": "原结果成功"
+      },
+      {
+        "id": "f7",
+        "fromId": "pending",
+        "toId": "fail",
+        "label": "原结果失败"
+      }
+    ]
+  },
+  "C01": {
+    "title": "配置表结构与引用",
+    "nodes": [
+      {
+        "id": "LotteryPool",
+        "text": "LotteryPool · 奖池\nid: string\nenabled: bool\nunlockLevel: int\ncostResourceId: string\ncostCount: int\ndailyFree: int\nresetHour: int\ntimezone: string",
+        "x": 30,
+        "y": 30,
+        "w": 370,
+        "h": 290,
+        "href": "#cfg-LotteryPool"
+      },
+      {
+        "id": "LotteryReward",
+        "text": "LotteryReward · 条目 [1..N]\nid: string\npoolId: string\nresourceId: string\ncount: int\nweight: int\nrare: bool",
+        "x": 500,
+        "y": 30,
+        "w": 400,
+        "h": 240,
+        "href": "#cfg-LotteryReward"
+      },
+      {
+        "id": "Resource",
+        "text": "Resource · 资源\nid: string\nnameKey: string\niconKey: string\nunit: string",
+        "x": 30,
+        "y": 490,
+        "w": 370,
+        "h": 180,
+        "href": "#cfg-Resource"
+      },
+      {
+        "id": "UiText",
+        "text": "UiText · 文案\nkey: string\nzhCN: string\nparams: string[]",
+        "x": 500,
+        "y": 490,
+        "w": 400,
+        "h": 160,
+        "href": "#cfg-UiText"
+      }
+    ],
+    "edges": [
+      {
+        "id": "c1",
+        "fromId": "LotteryReward",
+        "toId": "LotteryPool",
+        "label": "N:1 · poolId → id"
+      },
+      {
+        "id": "c2",
+        "fromId": "LotteryPool",
+        "toId": "Resource",
+        "label": "costResourceId → id"
+      },
+      {
+        "id": "c3",
+        "fromId": "LotteryReward",
+        "toId": "Resource",
+        "label": "resourceId → id"
+      },
+      {
+        "id": "c4",
+        "fromId": "Resource",
+        "toId": "UiText",
+        "label": "nameKey → key"
+      }
+    ]
+  }
+}</script><script>(()=>{'use strict';
+const $=s=>document.querySelector(s),NS='http://www.w3.org/2000/svg';
+let graphs=JSON.parse($('#graph-data').textContent),edit=null,dirty=false;
+let inlineEdit=null;
+const uid=p=>p+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7);
+const clone=x=>JSON.parse(JSON.stringify(x));
+function toast(t){$('#toast').textContent=t;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',3500);}
+function el(tag,attrs={},text){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;}
+function draw(g,container,selected='',editing=false){
+ const svg=el('svg',{viewBox:`0 0 ${Math.max(...g.nodes.map(n=>n.x+n.w))+40} ${Math.max(...g.nodes.map(n=>n.y+n.h))+40}`,role:'img','aria-label':g.title});
+ const defs=el('defs'),mark=el('marker',{id:'arrow-'+container.id,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto'});mark.append(el('path',{d:'M0,0 L10,5 L0,10Z',fill:'#568b72'}));defs.append(mark);svg.append(defs);
+ const ns=Object.fromEntries(g.nodes.map(n=>[n.id,n]));
+ for(const e of g.edges){const a=ns[e.fromId],b=ns[e.toId];if(!a||!b)continue;const down=b.y>=a.y+a.h,up=a.y>=b.y+b.h,left=b.x+b.w<=a.x,vertical=down||up;
+ const x1=vertical?a.x+a.w/2:(left?a.x:a.x+a.w),y1=down?a.y+a.h:up?a.y:a.y+a.h/2,x2=vertical?b.x+b.w/2:(left?b.x+b.w:b.x),y2=down?b.y:up?b.y+b.h:b.y+b.h/2;const active=!selected||selected===e.id||selected===a.id||selected===b.id;const group=el('g',{class:'edge'+(active?' active':'')});const path=el('path',{d:vertical?`M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2}`:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,fill:'none',stroke:'#568b72','stroke-width':2,'marker-end':`url(#arrow-${container.id})`});path.append(el('title',{},e.label||`${a.text.split('\n')[0]} → ${b.text.split('\n')[0]}`));group.append(path);if(e.label&&(!selected||selected===e.id)&&g.edges.length<9)group.append(el('text',{x:(x1+x2)/2,y:(y1+y2)/2-8,fill:'#976a2c','font-size':14,'text-anchor':'middle',stroke:'#ffffff','stroke-width':4,'paint-order':'stroke'},e.label));svg.append(group);}
+ for(const n of g.nodes){const gr=el('g',{class:'node'+(selected===n.id?' selected':''),'data-node':n.id,transform:`translate(${n.x},${n.y})`,tabindex:0});gr.append(el('rect',{width:n.w,height:n.h,rx:8,fill:n.id==='root'?'#285c47':'#fff',stroke:'#adc5b6'}));n.text.split('\n').forEach((t,i)=>gr.append(el('text',{x:15,y:28+i*25,'font-size':i===0?19:16,fill:n.id==='root'?'white':'#27483b'},t)));if(n.href){
+ const link=el('a',{href:n.href,class:'node-jump','aria-label':'跳转：'+n.text.split('\n')[0]});
+ if(!n.href.startsWith('#')){link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
+ link.append(el('rect',{x:n.w-82,y:n.h-29,width:72,height:22,rx:5,fill:n.id==='root'?'#dbeee1':'#edf4ef',stroke:'none'}));
+ link.append(el('text',{x:n.w-72,y:n.h-13,'font-size':12,fill:'#27614f'},'↗ 跳转'));
+ link.append(el('title',{},n.href));
+ link.addEventListener('click',e=>{e.stopPropagation();if(editing){e.preventDefault();toast('先应用修改，再从文档中的跳转按钮打开链接。');}else if(n.href.startsWith('#')){e.preventDefault();jumpTo(n.href);}});
+ gr.append(link);
+ }
+ gr.addEventListener('click',ev=>{if(ev.target.closest('.node-jump'))return;if(editing){selectNode(n.id);$('#edit-canvas').focus({preventScroll:true});}else{container.querySelectorAll('.node').forEach(x=>x.classList.toggle('selected',x.dataset.node===n.id));}});
+ gr.addEventListener('dblclick',ev=>{if(ev.target.closest('.node-jump'))return;ev.preventDefault();if(editing){selectNode(n.id);startInline(n.id);}else{openEditor(container.closest('[data-graph]').dataset.graph,'graph',n.id);startInline(n.id);}});
+ gr.addEventListener('keydown',ev=>{if(!editing&&ev.key==='Enter'){ev.preventDefault();openEditor(container.closest('[data-graph]').dataset.graph,'graph',n.id);}});
+ if(editing)gr.addEventListener('pointerdown',ev=>{
+  if(ev.button!==0||ev.target.closest('.node-jump'))return;
+  finishInline();ev.preventDefault();selectNode(n.id);
+  const matrix=svg.getScreenCTM(),scale=1/matrix.a,startX=ev.clientX,startY=ev.clientY,ox=n.x,oy=n.y;let moved=false;
+  const before=snapshot();
+  const move=v=>{
+   if(!moved&&Math.hypot(v.clientX-startX,v.clientY-startY)<4)return;
+   moved=true;n.x=Math.max(0,Math.round(ox+(v.clientX-startX)*scale));n.y=Math.max(0,Math.round(oy+(v.clientY-startY)*scale));
+   gr.setAttribute('transform',`translate(${n.x},${n.y})`);redrawEdges(g,svg,container.id);
+  };
+  const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(moved){pushHistory(before);paintEditor();}else fillControls();$('#edit-canvas').focus({preventScroll:true});};
+  window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true});
+ });svg.append(gr);}
+ container.replaceChildren(svg);return svg;
+}
+function jumpTo(href){
+ const target=document.getElementById(decodeURIComponent(href.slice(1)));if(!target)return toast('未找到对应章节');
+ $('#clear-search').click();document.querySelectorAll('.chapter,.table-wrap').forEach(x=>x.hidden=false);
+ if($('#viewer').open)$('#viewer').close();location.hash=href;target.scrollIntoView({behavior:'smooth',block:'start'});
+ target.classList.remove('jump-target');void target.offsetWidth;target.classList.add('jump-target');
+}
+function cleanLink(value){
+ if(typeof value!=='string')throw Error('链接需要是文本');const href=value.trim();if(!href)return '';
+ if(/[\x00-\x20\\]/.test(href)||href.startsWith('//'))throw Error('链接中不能有空格、反斜杠或控制字符');
+ if(href.startsWith('#')){let id;try{id=decodeURIComponent(href.slice(1));}catch{throw Error('章节链接格式无效');}if(!document.getElementById(id))throw Error('找不到此正文锚点，可从“选择正文或附件”中选择');return href;}
+ if(/^https?:\/\//i.test(href)){try{new URL(href);}catch{throw Error('网页链接格式无效');}return href;}
+ if(/^[^/?#]*:/.test(href)||href.startsWith('/'))throw Error('请填写 https:// 网页、#正文锚点或包内相对文件路径');
+ return href;
+}
+function redrawEdges(g,svg,id){
+ const temp=document.createElement('div');temp.id=id;draw(g,temp,'',false);
+ const old=[...svg.querySelectorAll(':scope > .edge')],fresh=[...temp.querySelectorAll('.edge')];old.forEach((x,i)=>x.replaceWith(fresh[i]));
+}
+function renderAll(){document.querySelectorAll('[data-graph]').forEach(card=>{const stage=card.querySelector('.graph-stage');stage.id='stage-'+card.dataset.graph;draw(graphs[card.dataset.graph],stage);});}
+function validate(g){if(!g||!Array.isArray(g.nodes)||!g.nodes.length||!Array.isArray(g.edges))throw Error('需要非空 nodes 和 edges 数组');const ids=new Set();for(const n of g.nodes){if(typeof n.id!=='string'||!n.id||ids.has(n.id))throw Error('节点ID不能为空或重复');ids.add(n.id);if(n.href!==undefined)cleanLink(n.href);if(typeof n.text!=='string')throw Error('节点文字必须为文本');for(const k of['x','y','w','h'])if(!Number.isFinite(n[k])||n[k]<0)throw Error('节点位置/大小必须为非负数字');if(n.w<60||n.h<35)throw Error('节点宽度至少60，高度至少35');}const ei=new Set();for(const e of g.edges){if(!e.id||ei.has(e.id))throw Error('连线ID不能为空或重复');ei.add(e.id);if(!ids.has(e.fromId)||!ids.has(e.toId))throw Error('连线端点不存在：'+e.id);if(typeof e.label!=='string')throw Error('连线标签必须为文本');}}
+function options(sel,items,current){sel.replaceChildren(...items.map(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;return o;}));sel.value=current;}
+function snapshot(){return {draft:clone(edit.draft),node:edit.node,edge:edit.edge};}
+function pushHistory(before){edit.undo.push(before);if(edit.undo.length>60)edit.undo.shift();edit.redo=[];updateHistoryButtons();}
+function updateHistoryButtons(){if($('#undo-edit')){$('#undo-edit').disabled=!edit.undo.length;$('#redo-edit').disabled=!edit.redo.length;}}
+function mutate(action){const before=snapshot();try{action();validate(edit.draft);if(JSON.stringify(before.draft)!==JSON.stringify(edit.draft))pushHistory(before);$('#editor-error').textContent='';paintEditor();}catch(e){edit.draft=before.draft;$('#editor-error').textContent=e.message;}}
+function historyStep(redo=false){finishInline();const source=redo?edit.redo:edit.undo,target=redo?edit.undo:edit.redo;if(!source.length)return;target.push(snapshot());Object.assign(edit,source.pop());paintEditor();}
+function nodeHeight(n){n.h=Math.max(n.h,n.text.split('\n').length*25+(n.href?42:20));}
+function fillControls(){
+ if(edit?.mode!=='graph')return;
+ const g=edit.draft,n=g.nodes.find(x=>x.id===edit.node)||g.nodes[0],edge=g.edges.find(x=>x.id===edit.edge)||g.edges[0];edit.node=n.id;edit.edge=edge?.id;
+ options($('#node-select'),g.nodes.map(n=>[n.id,n.text.split('\n')[0]]),n.id);$('#node-text').value=n.text;$('#node-link').value=n.href||'';
+ for(const k of['x','y','w','h'])$('#node-'+k).value=n[k];
+ options($('#edge-select'),g.edges.map(e=>[e.id,e.label||e.id]),edge?.id);
+ for(const k of['fromId','toId'])options($('#edge-'+k),g.nodes.map(n=>[n.id,n.text.split('\n')[0]]),edge?.[k]);$('#edge-label').value=edge?.label||'';
+ const targets=[['','选择正文或附件…'],...[...document.querySelectorAll('main h2[id],main h3[id],main section[id]')].map(e=>['#'+e.id,e.matches('section')?e.querySelector('h2').textContent:e.textContent]),...[...document.querySelectorAll('main a[href]')].filter(a=>!a.getAttribute('href').startsWith('#')&&!a.closest('[data-graph]')).map(a=>[a.getAttribute('href'),a.textContent.trim()])];
+ options($('#link-target'),[...new Map(targets.map(x=>[x[0],x])).values()],n.href||'');
+ $('#node-link-label').textContent=n.href?'已关联：'+n.href:'未设置链接';
+ $('#edit-canvas').querySelectorAll('.node').forEach(x=>x.classList.toggle('selected',x.dataset.node===n.id));updateHistoryButtons();
+}
+function paintEditor(){draw(edit.draft,$('#edit-canvas'),edit.node,true);$('#edit-canvas svg').style.width=(edit.zoom||100)+'%';$('#zoom-label').textContent=(edit.zoom||100)+'%';fillControls();}
+function selectNode(id){finishInline();edit.node=id;fillControls();}
+function finishInline(cancel=false){
+ if(!inlineEdit)return;const current=inlineEdit;inlineEdit=null;const value=current.input.value;current.input.remove();
+ if(!cancel){mutate(()=>{const n=edit.draft.nodes.find(x=>x.id===current.id);n.text=value;nodeHeight(n);});}
+}
+function startInline(id){
+ finishInline();const node=edit.draft.nodes.find(n=>n.id===id),canvas=$('#edit-canvas'),group=[...canvas.querySelectorAll('.node')].find(n=>n.dataset.node===id);
+ group.scrollIntoView({block:'nearest',inline:'nearest'});
+ const rect=group.getBoundingClientRect(),base=canvas.getBoundingClientRect(),input=document.createElement('textarea');input.id='inline-node-text';input.className='inline-node-text';input.value=node.text;input.setAttribute('aria-label','直接编辑节点文字');
+ Object.assign(input.style,{left:(rect.left-base.left+canvas.scrollLeft)+'px',top:(rect.top-base.top+canvas.scrollTop)+'px',width:Math.max(180,rect.width)+'px',height:Math.max(70,rect.height)+'px'});
+ canvas.append(input);inlineEdit={id,input};let composing=false;
+ input.addEventListener('compositionstart',()=>composing=true);input.addEventListener('compositionend',()=>composing=false);
+ input.onkeydown=e=>{e.stopPropagation();if(e.isComposing||composing||e.keyCode===229)return;if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();finishInline();canvas.focus({preventScroll:true});}if(e.key==='Escape'){e.preventDefault();finishInline(true);canvas.focus({preventScroll:true});}};
+ input.onblur=()=>finishInline();input.focus({preventScroll:true});input.select();
+}
+function addNode(sibling=false){
+ finishInline();let newId;
+ mutate(()=>{const g=edit.draft,current=g.nodes.find(n=>n.id===edit.node),parent=sibling?g.nodes.find(n=>n.id===g.edges.find(e=>e.toId===current.id)?.fromId):current;
+  if(sibling&&!parent)throw Error('根节点没有同级；可按 Tab 添加子节点');
+  const peers=g.edges.filter(e=>e.fromId===parent.id).map(e=>g.nodes.find(n=>n.id===e.toId));
+  const x=peers.length?peers[0].x:parent.x+parent.w+90;let y=peers.length?Math.max(...peers.map(n=>n.y+n.h))+35:parent.y;
+  while(g.nodes.some(n=>x<n.x+n.w+15&&x+260>n.x-15&&y<n.y+n.h+15&&y+85>n.y-15))y+=110;
+  newId=uid('node');g.nodes.push({id:newId,text:sibling?'同级节点':'子节点',x,y,w:260,h:85,href:''});g.edges.push({id:uid('edge'),fromId:parent.id,toId:newId,label:''});edit.node=newId;
+ });if(newId)startInline(newId);
+}
+function deleteNode(){finishInline();mutate(()=>{if(edit.draft.nodes.length===1)throw Error('至少保留一个节点');const old=edit.node,parent=edit.draft.edges.find(e=>e.toId===old)?.fromId;edit.draft.nodes=edit.draft.nodes.filter(n=>n.id!==old);edit.draft.edges=edit.draft.edges.filter(e=>e.fromId!==old&&e.toId!==old);edit.node=parent||edit.draft.nodes[0].id;});}
+function saveNode(){mutate(()=>{const n=edit.draft.nodes.find(n=>n.id===edit.node);n.text=$('#node-text').value;n.href=cleanLink($('#node-link').value);for(const k of['x','y','w','h'])n[k]=Number($('#node-'+k).value);nodeHeight(n);});}
+function setLink(value){mutate(()=>{const n=edit.draft.nodes.find(n=>n.id===edit.node);n.href=cleanLink(value);nodeHeight(n);});}
+function openEditor(id,mode,nodeId){
+ edit={id,mode,draft:clone(graphs[id]),node:nodeId||graphs[id]?.nodes[0].id,edge:graphs[id]?.edges[0]?.id,undo:[],redo:[],zoom:window.innerWidth<=900?280:100};$('#editor-error').textContent='';$('#editor-title').textContent=mode==='source'?'编辑 JSON 源码':'编辑导图';$('#editor').classList.toggle('visual-editor',mode==='graph');
+ if(mode==='source'){const t=document.createElement('textarea');t.id='source-text';t.className='source-area';t.value=JSON.stringify(edit.draft,null,2);$('#editor-body').replaceChildren(t);}
+ else{
+ $('#editor-body').innerHTML=`<div class="mind-toolbar"><button id="add-child">＋ 子节点 <kbd>Tab</kbd></button><button id="add-sibling">＋ 同级 <kbd>Enter</kbd></button><button id="del-node">删除节点</button><button id="undo-edit">撤销</button><button id="redo-edit">重做</button><span class="toolbar-space"></span><button id="zoom-out" aria-label="缩小画布">−</button><output id="zoom-label">100%</output><button id="zoom-in" aria-label="放大画布">＋</button><button id="fit-edit">适应画布</button></div>
+ <p class="mind-help">双击改字 · 拖动位置 · Tab 子节点 · Enter 同级 · ⌘/Ctrl Z 撤销 · 编辑文字时 Shift+Enter 换行</p>
+ <div class="editor-grid"><div id="edit-canvas" class="editor-canvas" tabindex="0" aria-label="导图编辑画布"></div><aside class="editor-form">
+ <label>当前节点<select id="node-select"></select></label><label>文字<textarea id="node-text"></textarea></label>
+ <label>选择正文或附件<select id="link-target"></select></label><label>或粘贴链接<input id="node-link" placeholder="#ui-01 / 需求表/xxx.xlsx / https://…"></label><div class="buttons"><button id="set-link">设置链接</button><button id="clear-link">移除链接</button></div><p id="node-link-label" class="caption"></p>
+ <details><summary>节点位置与大小</summary><div class="buttons">${['x','y','w','h'].map(k=>`<label>${k}<input id="node-${k}" type="number" min="0"></label>`).join('')}</div></details><button id="set-node">更新节点</button>
+ <details class="edge-settings"><summary>编辑连线</summary><label>连线<select id="edge-select"></select></label><label>起点<select id="edge-fromId"></select></label><label>终点<select id="edge-toId"></select></label><label>连线文字<input id="edge-label"></label><div class="buttons"><button id="set-edge">更新连线</button><button id="add-edge">新增连线</button><button id="del-edge">删除连线</button></div></details>
+ <p class="caption">删除仅移除此节点及相连连线。取消会丢弃本次编辑；应用后请下载 HTML 保存。</p></aside></div>`;
+ $('#node-select').onchange=e=>{edit.node=e.target.value;paintEditor();[...$('#edit-canvas').querySelectorAll('.node')].find(n=>n.dataset.node===edit.node)?.scrollIntoView({block:'nearest',inline:'nearest'});};$('#edge-select').onchange=e=>{edit.edge=e.target.value;fillControls();};
+ $('#set-node').onclick=saveNode;$('#node-text').onchange=saveNode;
+ $('#set-link').onclick=()=>setLink($('#node-link').value);$('#clear-link').onclick=()=>setLink('');$('#link-target').onchange=e=>{if(e.target.value)setLink(e.target.value);};
+ $('#add-child').onclick=()=>addNode();$('#add-sibling').onclick=()=>addNode(true);$('#del-node').onclick=deleteNode;$('#undo-edit').onclick=()=>historyStep();$('#redo-edit').onclick=()=>historyStep(true);
+ for(const [name,delta]of[['zoom-out',-20],['zoom-in',20],['fit-edit',0]])$('#'+name).onclick=()=>{finishInline();edit.zoom=delta?Math.min(400,Math.max(40,edit.zoom+delta)):100;$('#zoom-label').textContent=edit.zoom+'%';paintEditor();};
+ $('#set-edge').onclick=()=>mutate(()=>{const edge=edit.draft.edges.find(e=>e.id===edit.edge);if(!edge)return;for(const k of['fromId','toId'])edge[k]=$('#edge-'+k).value;edge.label=$('#edge-label').value;});
+ $('#add-edge').onclick=()=>mutate(()=>{if(edit.draft.nodes.length<2)throw Error('请先新增节点');const id=uid('edge');edit.draft.edges.push({id,fromId:edit.draft.nodes[0].id,toId:edit.draft.nodes[1].id,label:'关联'});edit.edge=id;});
+ $('#del-edge').onclick=()=>mutate(()=>{edit.draft.edges=edit.draft.edges.filter(e=>e.id!==edit.edge);});
+ $('#edit-canvas').onkeydown=e=>{if(e.target.matches('input,textarea,select')||e.isComposing)return;const cmd=e.metaKey||e.ctrlKey;
+  if(cmd&&e.key.toLowerCase()==='z'){e.preventDefault();historyStep(e.shiftKey);}
+  else if(cmd&&e.key.toLowerCase()==='y'){e.preventDefault();historyStep(true);}
+  else if(e.key==='Tab'&&!e.shiftKey){e.preventDefault();addNode();}
+  else if(e.key==='Enter'){e.preventDefault();addNode(true);}
+  else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();deleteNode();}
+  else if(e.key==='F2'){e.preventDefault();startInline(edit.node);}
+ };paintEditor();
+ }
+ $('#editor').showModal();if(mode==='graph'){$('#edit-canvas').focus({preventScroll:true});paintEditor();[...$('#edit-canvas').querySelectorAll('.node')].find(n=>n.dataset.node===edit.node)?.scrollIntoView({block:'nearest',inline:'nearest'});}
+}
+document.addEventListener('click',e=>{const jump=e.target.closest('#viewer .node-jump');if(jump?.getAttribute('href')?.startsWith('#')){e.preventDefault();jumpTo(jump.getAttribute('href'));return;}const b=e.target.closest('[data-action]');if(!b)return;const card=b.closest('[data-graph]'),fig=b.closest('[data-ui]');if(b.dataset.action==='edit'||b.dataset.action==='source')openEditor(card.dataset.graph,b.dataset.action==='edit'?'graph':'source');
+ else if(b.dataset.action==='zoom'||b.dataset.action==='zoom-ui'){$('#viewer-body').replaceChildren((card?.querySelector('svg')||fig.querySelector('svg')).cloneNode(true));$('#viewer').showModal();}
+ else if(b.dataset.action==='svg'){edit={mode:'svg',fig};$('#editor-title').textContent='编辑 SVG 源码';const t=document.createElement('textarea');t.id='source-text';t.className='source-area';t.value=fig.querySelector('.ui-art').innerHTML;$('#editor-body').replaceChildren(t);$('#editor-error').textContent='';$('#editor').showModal();}});
+$('#apply-edit').onclick=()=>{try{finishInline();if(edit.mode==='svg'){const raw=$('#source-text').value,doc=new DOMParser().parseFromString(raw,'image/svg+xml');if(doc.querySelector('parsererror')||doc.documentElement.localName!=='svg')throw Error('SVG格式错误');if(doc.querySelector('script,foreignObject,iframe')||[...doc.querySelectorAll('*')].some(el=>[...el.attributes].some(a=>/^on/i.test(a.name)||(/href$/i.test(a.name)&&!a.value.startsWith('#')))))throw Error('只支持无脚本、无外部引用的SVG');edit.fig.querySelector('.ui-art').replaceChildren(document.importNode(doc.documentElement,true));}else{const next=edit.mode==='source'?JSON.parse($('#source-text').value):edit.draft;validate(next);graphs[edit.id]=next;renderAll();}dirty=true;$('#editor').close();toast('已应用到页面；请下载当前 HTML 保存。');}catch(e){$('#editor-error').textContent=e.message;}};
+$('#cancel-edit').onclick=()=>{finishInline(true);$('#editor').close();};
+$('#editor').addEventListener('close',()=>{finishInline(true);$('#editor').classList.remove('visual-editor');});
+$('#editor').addEventListener('cancel',e=>{if(inlineEdit){e.preventDefault();finishInline(true);}});
+$('#search').oninput=e=>{const q=e.target.value.trim().toLowerCase();let count=0;document.querySelectorAll('.search-unit').forEach(s=>{const ok=!q||s.textContent.toLowerCase().includes(q);s.hidden=!ok;if(ok){count++;s.querySelectorAll('.table-wrap').forEach(t=>t.hidden=false);if(q)s.querySelectorAll('details').forEach(d=>{if(d.textContent.toLowerCase().includes(q))d.open=true;});}});$('#search-status').textContent=q?`找到 ${count} 个章节`:'';};$('#clear-search').onclick=()=>{$('#search').value='';$('#search').dispatchEvent(new Event('input'));};
+let fold=false;$('#toggle-tables').onclick=()=>{fold=!fold;document.querySelectorAll('.table-wrap').forEach(x=>x.hidden=fold);$('#toggle-tables').textContent=fold?'展开全部表格':'折叠全部表格';};
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.chapter').forEach(x=>x.hidden=false);}));
+renderAll();
+$('#save-html').onclick=()=>{const root=document.documentElement.cloneNode(true);root.querySelector('#graph-data').textContent=JSON.stringify(graphs,null,2).replace(/<\//g,'<\\/');root.querySelectorAll('dialog').forEach(d=>d.removeAttribute('open'));root.querySelector('#editor-body').replaceChildren();root.querySelector('#viewer-body').replaceChildren();root.querySelector('#search').setAttribute('value','');root.querySelector('#search-status').textContent='';root.querySelector('#toggle-tables').textContent='折叠全部表格';root.querySelector('#editor').classList.remove('visual-editor');root.querySelectorAll('.chapter,.table-wrap').forEach(x=>x.removeAttribute('hidden'));root.querySelector('#toast').style.display='none';const blob=new Blob(['<!doctype html>\n'+root.outerHTML],{type:'text/html;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='简单抽奖策划案.html';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);dirty=false;toast('已下载新 HTML；请放回附件包目录并替换原文件。');};
+$('#print').onclick=()=>{document.querySelectorAll('.chapter,.table-wrap').forEach(x=>x.hidden=false);window.print();};
+window.addEventListener('beforeunload',e=>{if(dirty||($('#editor').open&&edit?.mode==='graph'&&(inlineEdit||JSON.stringify(edit.draft)!==JSON.stringify(graphs[edit.id])))){e.preventDefault();e.returnValue='';}});
+})();
+</script></body></html>

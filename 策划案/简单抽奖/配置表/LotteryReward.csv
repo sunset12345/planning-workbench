@@ -1,0 +1,4 @@
+﻿id,poolId,resourceId,count,weight,rare
+reward_gold,pool_daily,gold,100,60,false
+reward_stone,pool_daily,stone,5,30,false
+reward_gem,pool_daily,gem,1,10,true

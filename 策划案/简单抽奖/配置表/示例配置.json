@@ -1,0 +1,198 @@
+{
+  "LotteryPool": [
+    {
+      "id": "pool_daily",
+      "enabled": true,
+      "unlockLevel": 5,
+      "costResourceId": "ticket",
+      "costCount": 1,
+      "dailyFree": 1,
+      "resetHour": 0,
+      "timezone": "Asia/Shanghai"
+    }
+  ],
+  "LotteryReward": [
+    {
+      "id": "reward_gold",
+      "poolId": "pool_daily",
+      "resourceId": "gold",
+      "count": 100,
+      "weight": 60,
+      "rare": false
+    },
+    {
+      "id": "reward_stone",
+      "poolId": "pool_daily",
+      "resourceId": "stone",
+      "count": 5,
+      "weight": 30,
+      "rare": false
+    },
+    {
+      "id": "reward_gem",
+      "poolId": "pool_daily",
+      "resourceId": "gem",
+      "count": 1,
+      "weight": 10,
+      "rare": true
+    }
+  ],
+  "Resource": [
+    {
+      "id": "gold",
+      "nameKey": "res.gold",
+      "iconKey": "icon_gold",
+      "unit": "枚"
+    },
+    {
+      "id": "stone",
+      "nameKey": "res.stone",
+      "iconKey": "icon_stone",
+      "unit": "个"
+    },
+    {
+      "id": "gem",
+      "nameKey": "res.gem",
+      "iconKey": "icon_gem",
+      "unit": "颗"
+    },
+    {
+      "id": "ticket",
+      "nameKey": "res.ticket",
+      "iconKey": "icon_ticket",
+      "unit": "张"
+    }
+  ],
+  "UiText": [
+    {
+      "key": "res.gold",
+      "zhCN": "金币",
+      "params": []
+    },
+    {
+      "key": "res.stone",
+      "zhCN": "强化石",
+      "params": []
+    },
+    {
+      "key": "res.gem",
+      "zhCN": "晶石",
+      "params": []
+    },
+    {
+      "key": "res.ticket",
+      "zhCN": "抽奖券",
+      "params": []
+    },
+    {
+      "key": "lottery.title",
+      "zhCN": "每日补给",
+      "params": []
+    },
+    {
+      "key": "lottery.free",
+      "zhCN": "免费抽一次",
+      "params": []
+    },
+    {
+      "key": "lottery.cost",
+      "zhCN": "抽一次（{count}{unit}{name}）",
+      "params": [
+        "count:int",
+        "unit:string",
+        "name:string"
+      ]
+    },
+    {
+      "key": "lottery.rate",
+      "zhCN": "奖池概率",
+      "params": []
+    },
+    {
+      "key": "lottery.refresh",
+      "zhCN": "免费次数每日{hour}:00刷新（UTC+8）",
+      "params": [
+        "hour:string"
+      ]
+    },
+    {
+      "key": "lottery.draw",
+      "zhCN": "抽取中…",
+      "params": []
+    },
+    {
+      "key": "lottery.result",
+      "zhCN": "获得 {name} × {count}",
+      "params": [
+        "name:string",
+        "count:int"
+      ]
+    },
+    {
+      "key": "lottery.done",
+      "zhCN": "奖励已到账",
+      "params": []
+    },
+    {
+      "key": "lottery.close",
+      "zhCN": "关闭",
+      "params": []
+    },
+    {
+      "key": "lottery.skip",
+      "zhCN": "跳过表现",
+      "params": []
+    },
+    {
+      "key": "lottery.insufficient",
+      "zhCN": "{name}不足，需要{count}{unit}",
+      "params": [
+        "name:string",
+        "count:int",
+        "unit:string"
+      ]
+    },
+    {
+      "key": "lottery.closed",
+      "zhCN": "当前奖池暂未开放",
+      "params": []
+    },
+    {
+      "key": "lottery.locked",
+      "zhCN": "角色达到{level}级后开放",
+      "params": [
+        "level:int"
+      ]
+    },
+    {
+      "key": "lottery.pending",
+      "zhCN": "结果确认中，请稍后查看",
+      "params": []
+    },
+    {
+      "key": "lottery.failed",
+      "zhCN": "本次未完成抽奖，未消耗资源",
+      "params": []
+    },
+    {
+      "key": "lottery.confirm",
+      "zhCN": "确认",
+      "params": []
+    },
+    {
+      "key": "lottery.unavailable",
+      "zhCN": "奖池暂不可用",
+      "params": []
+    },
+    {
+      "key": "lottery.loading",
+      "zhCN": "加载中…",
+      "params": []
+    },
+    {
+      "key": "lottery.processing",
+      "zhCN": "处理中…",
+      "params": []
+    }
+  ]
+}

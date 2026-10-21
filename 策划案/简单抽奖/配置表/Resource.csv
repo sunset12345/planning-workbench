@@ -1,0 +1,5 @@
+﻿id,nameKey,iconKey,unit
+gold,res.gold,icon_gold,枚
+stone,res.stone,icon_stone,个
+gem,res.gem,icon_gem,颗
+ticket,res.ticket,icon_ticket,张
