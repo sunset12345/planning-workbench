@@ -12,12 +12,12 @@
 
 | 实体 | 核心字段 | 约束 |
 | --- | --- | --- |
-| Project | id, name, status, revision | 项目范围隔离 |
+| Project | id, name, revision | 项目范围隔离 |
 | Membership | projectId, userId, role | 联合唯一；用户存在于白名单 |
 | System | id, projectId, name | 属于项目 |
 | Feature | id, projectId, systemId, name | 系统与项目一致 |
-| Document | id, projectId, ownerType/ownerId, title, schemaVersion, contentJson, revision, workflowStatus | owner 为系统或功能；正文唯一权威 |
-| SectionIndex | id, documentId, categoryKey, fillStatus, order, title | 从正文重建，不允许独立修改正文 |
+| Document | id, projectId, ownerType/ownerId, title, schemaVersion, contentJson, revision | owner 为系统或功能；正文唯一权威 |
+| SectionIndex | id, documentId, categoryKey, order, title | 从正文重建，不允许独立修改正文 |
 | BlockIndex | id, sectionId, documentId, text, subtype | 从正文重建，稳定定位 |
 | Resource | id, projectId, hash, storageKey, originalName, mime, size, status | 生成安全存储键，不以用户文件路径落盘 |
 | ResourceRef | resourceId, documentId, blockId, revision | 支持现行/历史引用保护 |
@@ -28,6 +28,10 @@
 | Session | idHash, userId, authVersion, expiresAt | 不保存明文会话标识 |
 
 用户显示名可作为审计快照，真正身份以稳定 userId 为准；删除白名单记录不改变历史修改人 ID。跨项目引用首版不支持，避免资源与权限边界复杂化。
+
+策划内容不设置 workflowStatus、fillStatus、完成度、验收或待确认事项实体。Resource、ImportJob、Session 等技术对象的可用性/处理状态与策划完成状态无关。
+
+Skill 导入包使用独立的 `game-feature-planning` 格式版本，按 [工作台适配与导入规范](../../../策划技能/game-feature-planning/references/工作台适配与导入规范.md) 转换为编辑器 contentJson。保留源 documentId、sectionId、blockId 和来源映射；包内归属与显式关系进入对应业务实体。
 
 ## 3. 保存事务与一源多视图
 

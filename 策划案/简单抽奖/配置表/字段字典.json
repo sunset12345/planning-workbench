@@ -155,7 +155,7 @@
       "shape": "scalar",
       "cardinality": "1",
       "nullable": false,
-      "constraints": "必填；引用美术需求资源键；素材未制作"
+      "constraints": "必填；引用美术需求资源键；按美术需求提供对应资源"
     },
     {
       "field": "unit",

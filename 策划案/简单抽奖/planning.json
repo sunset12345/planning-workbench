@@ -1,0 +1,1097 @@
+{
+  "format": "game-feature-planning",
+  "schemaVersion": 1,
+  "packageId": "5a09ba7a-49b3-4fc4-b5c5-6236bd95ca5a",
+  "exportedAt": "2026-10-21T18:11:45.268Z",
+  "source": {
+    "htmlPath": "简单抽奖策划案.html",
+    "htmlSha256": "5f3469e7bd39abe885e7cafb6984f5f7299ec9f0b8a6774c78bf275a1642c54c",
+    "maintenanceOwner": "html",
+    "workbenchOrigin": null
+  },
+  "project": null,
+  "systems": [],
+  "features": [
+    {
+      "id": "0d543782-036f-4e65-b708-00456cdcbc44",
+      "systemId": null,
+      "name": "简单抽奖"
+    }
+  ],
+  "document": {
+    "id": "dd89b850-2878-4880-b173-595584d276dc",
+    "title": "简单抽奖功能策划案",
+    "version": "V0.6",
+    "ownerType": "feature",
+    "ownerId": "0d543782-036f-4e65-b708-00456cdcbc44",
+    "sections": [
+      {
+        "id": "7404fad5-ba4d-4c46-bc09-11045bdd4e51",
+        "title": "1. 修订记录",
+        "categoryKey": "revisions",
+        "blocks": [
+          {
+            "id": "e0adbdbe-a05b-4760-a6a4-a43c70b83115",
+            "title": "1. 修订记录",
+            "subtype": "other",
+            "anchor": "section-1-intro",
+            "contentHtml": "<div class=\"table-wrap\"><table><thead><tr><th>版本 / 日期</th><th>来源与修改</th></tr></thead><tbody><tr><td>V0.1 / 2026-10-22</td><td>用户要求简单抽奖案；自主设计玩法、HTML图示编辑、4页UI及3份制作需求Excel；规格和数值为建议初值。</td></tr><tr><td>V0.2 / 2026-10-22</td><td>根据用户反馈，增加双击编辑、快捷新增、拖动、撤销与节点超链接。</td></tr><tr><td>V0.3 / 2026-10-22</td><td>补齐类型/列表基数、参数化公式、状态和UI布局；折叠样例配置。</td></tr><tr><td>V0.4 / 2026-10-22</td><td>规则与公式标题改用自然名称，保留跳转。</td></tr><tr><td>V0.5 / 2026-10-22</td><td>移除首页数据类型摘要卡片，详细类型与数量约束集中在配置章节。</td></tr><tr><td>V0.6 / 2026-10-22</td><td>按用户要求移除文档与制作进度字段；补齐稳定标识、工作台导入数据和成套导出；同步三份制作需求表。玩法、公式、配置数值沿用V0.5。</td></tr></tbody></table></div>",
+            "references": []
+          }
+        ]
+      },
+      {
+        "id": "9f5545c3-264c-4d42-9aad-b23c63cb8cb0",
+        "title": "2. 可编辑思维导图",
+        "categoryKey": "mindmap",
+        "blocks": [
+          {
+            "id": "385ac407-97a9-431f-af1f-d42a69d75413",
+            "title": "2. 可编辑思维导图",
+            "subtype": "other",
+            "anchor": "section-2-intro",
+            "contentHtml": "<p>双击节点即可进入画布直接改字。选中节点后 Tab 新增子节点，Enter 新增同级，拖动调整位置；支持撤销/重做。右侧可选择正文、UI、附件或粘贴网页超链接。点击节点“↗ 跳转”直接查看关联内容。应用修改后，下载当前 HTML 保存；本地文件不提供多人实时协作。</p><div class=\"graph-card\" data-graph=\"M01\"><p class=\"caption\">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div>",
+            "references": [
+              {
+                "kind": "diagram",
+                "targetId": "ce498c6a-a5e7-4bb5-aefd-bbf5af7bc5d5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "2f4fe73d-3279-4461-8865-a75b74456b66",
+        "title": "3. 功能逻辑与计算公式",
+        "categoryKey": "description",
+        "blocks": [
+          {
+            "id": "bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+            "title": "3. 功能逻辑与计算公式",
+            "subtype": "overview",
+            "anchor": "section-3-intro",
+            "contentHtml": "<p>本期：单池、单抽、可叠加资源奖励。正文定义类型、数量、计算与UI行为；具体资源和数量是附件中的示例配置。</p><div class=\"graph-card\" data-graph=\"F01\"><p class=\"caption\">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div>",
+            "references": [
+              {
+                "kind": "diagram",
+                "targetId": "313575e5-a820-4f07-8003-7c1ecb1ecf12"
+              }
+            ]
+          },
+          {
+            "id": "0b81d66d-39df-4754-a65b-fa8995399e84",
+            "title": "开放与刷新",
+            "subtype": "rule",
+            "anchor": "r-01",
+            "contentHtml": "<h3 id=\"r-01\">开放与刷新</h3><p>新抽取要求配置有效、pool.enabled=true、角色等级≥unlockLevel。每日免费上限 dailyFree 为0或1，周期按 <a href=\"#f-01\">周期与免费次数公式</a> 判断。读取页面、点击抽奖和跨周期时刷新；依据游戏统一时间。</p>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "1d7c792a-afa1-4c57-9ae0-025709ec40e3"
+              }
+            ]
+          },
+          {
+            "id": "de01f745-d58a-4220-b9a2-e917d14d55e8",
+            "title": "选择消耗方式",
+            "subtype": "rule",
+            "anchor": "r-02",
+            "contentHtml": "<h3 id=\"r-02\">选择消耗方式</h3><p>已接受的抽奖优先确认和展示，不能再发起一笔。新操作按配置有效→开放→等级→空闲→刷新免费→选择消耗校验。freeRemaining&gt;0 优先免费，否则检查抽奖前余额 B[costResourceId]≥costCount。资源不足不消耗。</p>",
+            "references": []
+          },
+          {
+            "id": "cf1a2e1c-f1fc-4838-8154-d75b8127b13a",
+            "title": "抽取、发放、表现",
+            "subtype": "rule",
+            "anchor": "r-03",
+            "contentHtml": "<h3 id=\"r-03\">抽取、发放、表现</h3><p>按 <a href=\"#f-03\">概率与抽取公式</a> 从 N 个条目中选且只选1个；按 <a href=\"#f-02\">消耗公式</a> 扣除资源，按 <a href=\"#f-04\">数量与余额公式</a> 发放该条目的固定count。成功结果确定并入账后才播放0.8秒过程表现。跳过只结束表现，不改变结果；结果为单对象，不设置领取步骤。</p>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "30178845-686e-4ca2-8a67-0006da545f9f"
+              },
+              {
+                "kind": "block",
+                "targetId": "09d106b5-b44d-4293-89aa-7ca4be2955b5"
+              },
+              {
+                "kind": "block",
+                "targetId": "330eb6b4-813f-4b6c-aa2e-dc4faf1ebf2d"
+              }
+            ]
+          },
+          {
+            "id": "0900ba68-b9b4-41c5-a2af-e41c423ef91d",
+            "title": "重复操作与恢复",
+            "subtype": "rule",
+            "anchor": "r-04",
+            "contentHtml": "<h3 id=\"r-04\">重复操作与恢复</h3><p>SUBMITTING、PENDING、ANIMATING、RESULT时禁止新抽。明确失败不扣免费次数和资源；不明状态显示PENDING，确认原结果，不当失败重抽。离开不撤销已接受的抽取；返回补展示未看过的成功结果，恢复时不重播动效、不重复发放。</p>",
+            "references": []
+          },
+          {
+            "id": "c7f51e51-874b-4461-937e-e6232d40700c",
+            "title": "时间与配置边界",
+            "subtype": "rule",
+            "anchor": "r-05",
+            "contentHtml": "<h3 id=\"r-05\">时间与配置边界</h3><p>使用接受时的配置和刷新周期；接受后关闭奖池或修改权重不改变原结果。旧周期最后一秒接受、新周期展示，消耗旧周期免费，新周期资格保留。N=0、非正整数权重/数量、重复条目ID或引用缺失使整池不可用，禁止悄悄删除坏行后重新归一化。</p>",
+            "references": []
+          },
+          {
+            "id": "99660207-467b-4f75-863c-1d61927bca56",
+            "title": "计算公式、变量与边界",
+            "subtype": "rule",
+            "anchor": "formulas",
+            "contentHtml": "<h3 id=\"formulas\">计算公式、变量与边界</h3><div class=\"table-wrap\"><table><thead><tr><th>变量</th><th>类型 / 单位</th><th>含义</th></tr></thead><tbody><tr><td>t / h</td><td>int / UTC秒、小时</td><td>t为接受抽奖的时间；h=resetHour∈[0,23]；固定UTC+8时区。</td></tr><tr><td>d / u / D</td><td>int|null / int / int</td><td>d=usedCycleKey，u=freeUsed∈{0,1}，D为当前周期键。</td></tr><tr><td>F / C / B[x]</td><td>int / 次、资源单位</td><td>F为可用免费次数，C=costCount≥1，B[x]为抽取前资源余额。</td></tr><tr><td>N / w_i / W</td><td>int / 条、无量纲</td><td>N为条目数；w_i&gt;0；W为总权重，必须&gt;0。</td></tr><tr><td>p_i / r / S_i</td><td>比例 / int / int</td><td>p_i范围(0,1]；r是均匀随机整数；S_i为累计权重。</td></tr></tbody></table></div>",
+            "references": []
+          },
+          {
+            "id": "1d7c792a-afa1-4c57-9ae0-025709ec40e3",
+            "title": "周期与免费次数",
+            "subtype": "rule",
+            "anchor": "f-01",
+            "contentHtml": "<h4 id=\"f-01\">周期与免费次数</h4><pre class=\"spec-code\">D(t) = floor((t + 8×3600 - h×3600) / 86400)\nusedToday = (d == D(t)) ? u : 0\nF = max(0, dailyFree - usedToday)</pre><p>时间达到刷新整点即进入新周期，等号归新周期；不累计未用次数。免费成功后 d=D(t)、u=usedToday+1；失败保持原值。</p>",
+            "references": []
+          },
+          {
+            "id": "09d106b5-b44d-4293-89aa-7ca4be2955b5",
+            "title": "消耗",
+            "subtype": "rule",
+            "anchor": "f-02",
+            "contentHtml": "<h4 id=\"f-02\">消耗</h4><pre class=\"spec-code\">costType = (F &gt; 0) ? free : resource\npaidCost = (costType == free) ? 0 : C\n新抽取可支付 = (F &gt; 0) OR (B[costResourceId] &gt;= C)</pre><p>costCount是单个固定整数。余额等于C允许抽取；不使用尚未获得的奖励垫付本次消耗。</p>",
+            "references": []
+          },
+          {
+            "id": "30178845-686e-4ca2-8a67-0006da545f9f",
+            "title": "概率与抽取",
+            "subtype": "rule",
+            "anchor": "f-03",
+            "contentHtml": "<h4 id=\"f-03\">概率与抽取</h4><pre class=\"spec-code\">W = Σ(w_i), i = 1..N\np_i = w_i / W\nS_0 = 0; S_i = Σ(w_j), j = 1..i\nr ∈ {0, 1, …, W-1}，每个整数等可能\n选择唯一满足 S_(i-1) &lt;= r &lt; S_i 的条目 i</pre><p>按id字符码点升序确定区间；采用左闭右开。r=0命中第一条，r=W-1命中最后一条。各次独立使用全池，同一条目可再次命中；无保底。</p>",
+            "references": []
+          },
+          {
+            "id": "330eb6b4-813f-4b6c-aa2e-dc4faf1ebf2d",
+            "title": "数量与余额",
+            "subtype": "rule",
+            "anchor": "f-04",
+            "contentHtml": "<h4 id=\"f-04\">数量与余额</h4><pre class=\"spec-code\">rewardCount = entries[i].count\nB_after[x] = B_before[x]\n             - (x == costResourceId ? paidCost : 0)\n             + (x == result.resourceId ? rewardCount : 0)</pre><p>发放数量直接取正整数，不二次随机、不乘权重。消耗与奖励引用同一资源时合并计算净变化。一次成功只结算一次。本版假设可叠加资源无业务容量上限；项目若有上限，接入前补齐溢出规则，不默认截断或重抽。</p>",
+            "references": []
+          },
+          {
+            "id": "8af2dc9a-89e6-4e42-bbb8-427c14a13fc5",
+            "title": "概率与数量的显示",
+            "subtype": "rule",
+            "anchor": "f-05",
+            "contentHtml": "<h4 id=\"f-05\">概率与数量的显示</h4><pre class=\"spec-code\">若 0 &lt; 100×p_i &lt; 0.01：显示 &lt;0.01%\n否则 pct_i = floor(10000×w_i/W + 0.5) / 100\n按两位小数显示 pct_i + %\n数量：显示完整整数 + Resource.unit，不使用K/M缩写</pre><p>仅显示时四舍五入；实际抽取使用原始整数权重。四舍五入后合计可能不等于100.00%，不人为修改最后一项。名称和图标通过引用读取，不能按特定资源ID写表现分支。</p><details class=\"sample-config\"><summary>展开一个纯权重边界算例</summary><p>权重[1,2,1]的区间是[0,1)、[1,3)、[3,4)，r=0/1/2/3分别命中第1/2/2/3条。把条目内容换成任意受支持资源，算法不变。算例不限制条目数。</p></details>",
+            "references": []
+          }
+        ]
+      },
+      {
+        "id": "409dc74c-fce8-4208-9792-f663febe5c3c",
+        "title": "4. 配置类型与数量结构",
+        "categoryKey": "config",
+        "blocks": [
+          {
+            "id": "29e72093-cb30-40f7-8455-199852a03d4f",
+            "title": "单值、列表与数量约束",
+            "subtype": "config",
+            "anchor": "data-shapes",
+            "contentHtml": "<h3 id=\"data-shapes\">单值、列表与数量约束</h3><div class=\"table-wrap\"><table><thead><tr><th>数据</th><th>类型</th><th>形状 / 数量</th><th>边界与语义</th></tr></thead><tbody><tr><td>pool</td><td>LotteryPool</td><td>单对象，恰好1个</td><td>本期一个常驻池；不按奖励数量复制奖池。</td></tr><tr><td>entries</td><td>List&lt;LotteryReward&gt;</td><td>可变长；N≥1；无业务固定上限</td><td>按 poolId 关联，id 按字符码点升序；id不可重复，可重复引用相同 resourceId，按不同条目分别展示/抽取。N=0时禁止抽取。</td></tr><tr><td>entries[i].resourceId</td><td>ResourceId = string</td><td>单值，恰好1个</td><td>仅支持可叠加资源；本版不支持独立装备实例、直接属性加成、技能授予或多项礼包。</td></tr><tr><td>entries[i].count</td><td>int</td><td>单值，固定数量；≥1</td><td>每次命中此条目都发放 count；不是 list，不是随机 min/max，不接受小数。</td></tr><tr><td>drawCount</td><td>int 常量</td><td>固定为1</td><td>每次操作只抽取1个条目；无十连和多选。</td></tr><tr><td>result</td><td>DrawSuccess | null</td><td>可空单对象；成功时恰好1个</td><td>未成功或尚未确认时为 null；成功对象不是 List&lt;Reward&gt;。</td></tr><tr><td>balances</td><td>Map&lt;ResourceId, int&gt;</td><td>玩家信息，0..N个键</td><td>非负整数余额；不存在的合法资源键按0读取；不是静态策划配置。</td></tr><tr><td>UiText.params</td><td>List&lt;string&gt;</td><td>可变长；0..N</td><td>每项格式 name:type，type∈{string,int}；name唯一；[]表示无参数；不依赖数组顺序。</td></tr></tbody></table></div><pre class=\"spec-code\">DrawSuccess {                // 成功结果的逻辑形状，不是接口协议\n  entryId: string;            // 选中的唯一条目\n  resourceId: string;         // 恰好一种可叠加资源\n  count: int;                 // 固定正整数，不是列表或范围\n  rare: bool;                 // 决定表现，不改变计算\n  recovered: bool;            // 恢复展示时不重播动效\n}\nresult: DrawSuccess | null;    // 一次成功 = 一个对象\nphase: IDLE | SUBMITTING | PENDING | ANIMATING | RESULT;\nusedCycleKey: int | null;      // 玩家上次使用免费次数的周期\nfreeUsed: int;                 // 该周期已用次数，0或1</pre><div class=\"graph-card\" data-graph=\"C01\"><p class=\"caption\">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div><p>本案共4张静态表。所有字段均必填且不可null；默认值用于新建配置，不把缺失字段默认为0。唯一ID字段不可空，按字符串保存。示例值不构成ID枚举或数量上限。</p>",
+            "references": [
+              {
+                "kind": "diagram",
+                "targetId": "1c4c6743-5fdc-4033-bd2c-7afbefca2b1e"
+              }
+            ]
+          },
+          {
+            "id": "622c4846-f0c5-4d25-9750-8a15cb001178",
+            "title": "LotteryPool",
+            "subtype": "config",
+            "anchor": "cfg-LotteryPool",
+            "contentHtml": "<h3 id=\"cfg-LotteryPool\">LotteryPool</h3><div class=\"table-wrap\"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>id</td><td>奖池唯一标识</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一；无默认</td></tr><tr><td>enabled</td><td>是否允许新抽取</td><td>bool</td><td>单值；恰好1；不可null</td><td>必填；true开放、false关闭；默认false</td></tr><tr><td>unlockLevel</td><td>最低角色等级</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；角色等级≥1；无默认</td></tr><tr><td>costResourceId</td><td>单次付费抽取消耗的资源</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用Resource.id；无默认</td></tr><tr><td>costCount</td><td>固定消耗数量</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；固定消耗正整数≥1；单位随costResourceId；无默认</td></tr><tr><td>dailyFree</td><td>每个刷新周期的免费次数上限</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；本版0或1；每日免费次数；默认1</td></tr><tr><td>resetHour</td><td>每天刷新所在小时</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；整点0—23；默认0</td></tr><tr><td>timezone</td><td>刷新时区</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；本版固定Asia/Shanghai；UTC+8</td></tr></tbody></table></div>",
+            "references": []
+          },
+          {
+            "id": "ec042560-73b3-447b-b193-1ec2fa82a341",
+            "title": "LotteryReward",
+            "subtype": "config",
+            "anchor": "cfg-LotteryReward",
+            "contentHtml": "<h3 id=\"cfg-LotteryReward\">LotteryReward</h3><div class=\"table-wrap\"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>id</td><td>条目唯一标识</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一；无默认</td></tr><tr><td>poolId</td><td>所属奖池</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用LotteryPool.id</td></tr><tr><td>resourceId</td><td>发放的可叠加资源</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用Resource.id</td></tr><tr><td>count</td><td>此条目的固定发放数量</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；单次获得量≥1；单位随Resource</td></tr><tr><td>weight</td><td>此条目的抽取权重</td><td>int</td><td>单值；恰好1；不可null</td><td>必填；正整数；概率=本行权重/同池总权重</td></tr><tr><td>rare</td><td>是否使用稀有结果表现</td><td>bool</td><td>单值；恰好1；不可null</td><td>必填；默认false；仅控制表现，不影响权重</td></tr></tbody></table></div>",
+            "references": []
+          },
+          {
+            "id": "266310b7-9086-465d-8142-ffba997be9e7",
+            "title": "Resource",
+            "subtype": "config",
+            "anchor": "cfg-Resource",
+            "contentHtml": "<h3 id=\"cfg-Resource\">Resource</h3><div class=\"table-wrap\"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>id</td><td>可叠加资源唯一标识</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一非空字符串；任意合法的可叠加资源ID；非固定枚举</td></tr><tr><td>nameKey</td><td>名称多语言键</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用UiText.key</td></tr><tr><td>iconKey</td><td>图标资源键</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；引用美术需求资源键；按美术需求提供对应资源</td></tr><tr><td>unit</td><td>数量显示单位</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；展示计量单位；无默认</td></tr></tbody></table></div>",
+            "references": []
+          },
+          {
+            "id": "bf3ae32c-3da7-4d94-830f-b82c87ef6e5f",
+            "title": "UiText",
+            "subtype": "config",
+            "anchor": "cfg-UiText",
+            "contentHtml": "<h3 id=\"cfg-UiText\">UiText</h3><div class=\"table-wrap\"><table><thead><tr><th>字段</th><th>含义</th><th>类型</th><th>数量 / 空值</th><th>约束 / 默认 / 引用</th></tr></thead><tbody><tr><td>key</td><td>文案唯一键</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；唯一；无默认</td></tr><tr><td>zhCN</td><td>中文模板</td><td>string</td><td>单值；恰好1；不可null</td><td>必填；中文原文；不可空</td></tr><tr><td>params</td><td>占位符定义列表</td><td>string[]</td><td>list；0..N；[]合法；元素非空</td><td>默认[]；元素为name:type，type为string/int；name唯一；无参数为[]</td></tr></tbody></table></div><details class=\"sample-config\"><summary>示例配置文件（用于验证规则，可替换内容）</summary><p>具体资源名、数量和权重只出现在这组样例及演示里；程序按上述结构和公式读取。</p><p><a href=\"配置表/LotteryPool.csv\">LotteryPool.csv</a> · <a href=\"配置表/LotteryReward.csv\">LotteryReward.csv</a> · <a href=\"配置表/Resource.csv\">Resource.csv</a> · <a href=\"配置表/UiText.csv\">UiText.csv</a></p><p><a href=\"配置表/示例配置.json\">样例 JSON</a> · <a href=\"配置表/字段字典.json\">字段字典</a> · <a href=\"配置表/逻辑结构.json\">逻辑结构与数量约束</a></p></details>",
+            "references": [
+              {
+                "kind": "attachment",
+                "targetId": "f37880c7-83cf-48ee-8dc5-55b62d133885"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "9114c08a-ec62-477d-9b30-5ce7ef930755"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "c7da3ea0-e5d2-4c37-9188-0193b382ca18"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "fe6283f3-63b0-40e2-8d44-bb1e046ea306"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "d6007e6b-c6ef-497d-b054-3b2a276c61d3"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "bcd38360-535d-4975-8440-43699f2f727d"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "01fa61f3-399e-41ff-97fd-e39be0a0a58e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "8595f573-0657-4342-9bbb-163a01eef107",
+        "title": "5. UI 示意图与逐页逻辑",
+        "categoryKey": "ui",
+        "blocks": [
+          {
+            "id": "924f86c3-906a-4bf1-abcb-0c853c1eb32e",
+            "title": "5. UI 示意图与逐页逻辑",
+            "subtype": "ui-page",
+            "anchor": "section-5-intro",
+            "contentHtml": "<div class=\"table-wrap\"><table><thead><tr><th>页面</th><th>入口</th><th>说明</th></tr></thead><tbody><tr><td>UI-01 抽奖主页面</td><td>主界面“每日补给”入口</td><td><a href=\"#ui-01\">打开本页</a></td></tr><tr><td>UI-02 奖池概率弹窗</td><td>UI-01 点击“奖池概率”</td><td><a href=\"#ui-02\">打开本页</a></td></tr><tr><td>UI-03 抽奖结果弹窗</td><td>本次奖励成功确定并结束或跳过表现后</td><td><a href=\"#ui-03\">打开本页</a></td></tr><tr><td>UI-04 通用提示与确认状态</td><td>UI-01 操作未满足条件或结果暂不明确</td><td><a href=\"#ui-04\">打开本页</a></td></tr></tbody></table></div>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "583f6852-c989-4c15-8547-d1413632dc11"
+              },
+              {
+                "kind": "block",
+                "targetId": "68cb2561-29c1-42f8-aff9-a680a6b5389d"
+              },
+              {
+                "kind": "block",
+                "targetId": "728bab2c-270a-4e2b-9e0c-e3c86f314757"
+              },
+              {
+                "kind": "block",
+                "targetId": "ad35c125-e322-42dc-99f0-8302438eb043"
+              }
+            ]
+          },
+          {
+            "id": "583f6852-c989-4c15-8547-d1413632dc11",
+            "title": "UI-01 抽奖主页面",
+            "subtype": "ui-page",
+            "anchor": "ui-01",
+            "contentHtml": "<h3 id=\"ui-01\">UI-01 抽奖主页面</h3><figure class=\"ui-figure\" data-ui=\"UI-01\"><div class=\"ui-art\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-01 · 可变长列表与固定操作区</text><text x=\"40\" y=\"97\" font-size=\"16\">entries：N≥1 · 3列×2行可视 · N&gt;6仅列表区滚动</text><g><rect x=\"40\" y=\"115\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"54\" y=\"132\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"62\" y=\"163\" font-size=\"13\">icon</text><text x=\"117\" y=\"155\" font-size=\"20\">entries[0]</text><text x=\"117\" y=\"184\" font-size=\"17\">name × count</text><text x=\"54\" y=\"209\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"325\" y=\"115\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"339\" y=\"132\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"347\" y=\"163\" font-size=\"13\">icon</text><text x=\"402\" y=\"155\" font-size=\"20\">entries[1]</text><text x=\"402\" y=\"184\" font-size=\"17\">name × count</text><text x=\"339\" y=\"209\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"610\" y=\"115\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"624\" y=\"132\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"632\" y=\"163\" font-size=\"13\">icon</text><text x=\"687\" y=\"155\" font-size=\"20\">entries[2]</text><text x=\"687\" y=\"184\" font-size=\"17\">name × count</text><text x=\"624\" y=\"209\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"40\" y=\"240\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"54\" y=\"257\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"62\" y=\"288\" font-size=\"13\">icon</text><text x=\"117\" y=\"280\" font-size=\"20\">entries[3]</text><text x=\"117\" y=\"309\" font-size=\"17\">name × count</text><text x=\"54\" y=\"334\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"325\" y=\"240\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"339\" y=\"257\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"347\" y=\"288\" font-size=\"13\">icon</text><text x=\"402\" y=\"280\" font-size=\"20\">entries[4]</text><text x=\"402\" y=\"309\" font-size=\"17\">name × count</text><text x=\"339\" y=\"334\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"610\" y=\"240\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"624\" y=\"257\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"632\" y=\"288\" font-size=\"13\">icon</text><text x=\"687\" y=\"280\" font-size=\"20\">entries[5]</text><text x=\"687\" y=\"309\" font-size=\"17\">name × count</text><text x=\"624\" y=\"334\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><rect x=\"906\" y=\"115\" width=\"8\" height=\"235\" rx=\"4\" fill=\"#dce4db\"></rect><text x=\"40\" y=\"407\" font-size=\"22\">免费次数 F / dailyFree     消耗资源余额 B</text><rect x=\"40\" y=\"435\" width=\"510\" height=\"65\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"65\" y=\"475\" font-size=\"23\" fill=\"white\">免费抽一次 / 抽一次（C · unit · name）</text><text x=\"610\" y=\"474\" font-size=\"21\">概率说明　　返回</text><text x=\"40\" y=\"537\" font-size=\"15\" fill=\"#6a7f70\">状态决定文案、可用性与动效；详见本页状态表。占位内容不限制具体奖励。</text></svg></div></figure><p>入口：主界面“每日补给”入口。按可变长entries列表展示奖池；按玩家状态显示消耗，发起单次抽取。</p><p>状态：加载、配置无效/空列表、关闭、锁定、免费可用、资源可支付、不足、SUBMITTING、PENDING、ANIMATING、RESULT。</p><div class=\"table-wrap\"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>01-A 奖池展示</td><td>按entries动态创建N张卡片，id升序；不是固定3格；概率入口打开UI-02。</td></tr><tr><td>01-B 抽一次</td><td>F&gt;0显示免费，否则显示C、单位和资源名；按状态表决定可用；余额不足点击打开UI-04。</td></tr><tr><td>01-C 状态反馈</td><td>SUBMITTING/PENDING禁用且不能跳过；仅ANIMATING可跳过已确定结果的表现。</td></tr><tr><td>01-D 返回</td><td>空闲直接返回；已发起时离开不取消已确认的奖励，恢复后按“重复操作与恢复”规则展示</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href=\"#section-3\">功能逻辑与计算公式</a>。</p><p><b>本页红点：</b>配置有效且开放、等级满足、F&gt;0且phase=IDLE时，主入口和主按钮亮红点。打开页面不消除；成功用掉免费、资格失效或进入处理中时重新判断。</p>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796"
+              },
+              {
+                "kind": "diagram",
+                "targetId": "3d950c06-47e7-4960-87f2-9f7fdebaf02c"
+              }
+            ]
+          },
+          {
+            "id": "eecc6e98-dd4c-4c20-a783-404c6d31605a",
+            "title": "控件布局与列表",
+            "subtype": "ui-page",
+            "anchor": "ui-01-layout",
+            "contentHtml": "<h4 id=\"ui-01-layout\">控件布局与列表</h4><div class=\"table-wrap\"><table><thead><tr><th>控件</th><th>数据 / 数量</th><th>确定表现</th></tr></thead><tbody><tr><td>01-A 奖池列表</td><td>entries：List，N≥1</td><td>960×560示意画布中，常规3列×2行可视；N&gt;6时仅列表区纵向滚动。N=1或2从左起排，不补空槽。窄布局按项目适配减少列数，顺序不变。</td></tr><tr><td>条目卡片</td><td>每条1个图标＋1个名称＋1个数量</td><td>按id升序；相同resourceId不合并；名称最多2行，超出省略，点击名称复用UI-04信息弹窗显示全文（仅关闭，无消耗）。数量完整整数；缺图用统一占位图，不能剔除此条目改变概率。</td></tr><tr><td>01-B 抽一次</td><td>固定1个按钮</td><td>免费/消耗文案由F与C决定；主按钮固定在列表下方，不随列表滚动。状态规则见下表。</td></tr><tr><td>免费次数与资源余额</td><td>各为整数单值</td><td>数据未就绪显示—；正常按当前玩家状态显示；成功结算及跨周期刷新。</td></tr></tbody></table></div>",
+            "references": []
+          },
+          {
+            "id": "5526270e-06f9-45d1-b01a-3a37b828caaf",
+            "title": "状态优先级（从上到下匹配）",
+            "subtype": "scenario",
+            "anchor": "ui-01-states",
+            "contentHtml": "<h4 id=\"ui-01-states\">状态优先级（从上到下匹配）</h4><div class=\"table-wrap\"><table><thead><tr><th>条件 / 状态</th><th>显示及按钮</th><th>操作 / 变化</th></tr></thead><tbody><tr><td>已有原抽奖：PENDING</td><td>“结果确认中”；禁用抽取；无开奖动效</td><td>允许离开；返回继续确认；成功进入ANIMATING或恢复RESULT，明确失败才回IDLE。</td></tr><tr><td>已有原抽奖：SUBMITTING</td><td>“处理中…”＋等待标记；禁用抽取</td><td>不显示已到账；无跳过按钮；重复点击无效果。</td></tr><tr><td>已有原抽奖：ANIMATING</td><td>结果已成功，0.8秒过程动效；抽取禁用</td><td>显示“跳过表现”；跳过/时间结束进入RESULT；离开后保留成功结果。</td></tr><tr><td>已有原抽奖：RESULT</td><td>UI-03居中显示；主页面抽取禁用</td><td>仅关闭返回IDLE；没有领取或再次随机。</td></tr><tr><td>无原抽奖：数据未就绪</td><td>加载占位，数量显示“—”，主按钮禁用</td><td>不能把尚未加载的列表判为N=0或余额不足。</td></tr><tr><td>配置无效 / N=0</td><td>列表显示“奖池暂不可用”；抽取/概率入口禁用</td><td>保留返回按钮；不呈现空白可点击槽位。</td></tr><tr><td>enabled=false</td><td>“当前奖池暂未开放”；抽取禁用</td><td>返回可用；原抽奖仍按前四项完成。</td></tr><tr><td>等级不足</td><td>“达到{unlockLevel}级开放”；抽取禁用</td><td>显示解锁条件，不显示免费红点。</td></tr><tr><td>IDLE且F&gt;0</td><td>“免费抽一次”；免费次数F/dailyFree；按钮可用</td><td>成功后刷新免费和余额；打开页面不清除红点。</td></tr><tr><td>IDLE、F=0、B≥C</td><td>“抽一次（{C}{unit}{name}）”；按钮可用</td><td>点击后立即进入SUBMITTING；概率与免费相同。</td></tr><tr><td>IDLE、F=0、B&lt;C</td><td>消耗数量标红；按钮保留可点</td><td>点击显示UI-04资源不足；不扣除、不跳转充值。</td></tr></tbody></table></div>",
+            "references": []
+          },
+          {
+            "id": "68cb2561-29c1-42f8-aff9-a680a6b5389d",
+            "title": "UI-02 奖池概率弹窗",
+            "subtype": "ui-page",
+            "anchor": "ui-02",
+            "contentHtml": "<h3 id=\"ui-02\">UI-02 奖池概率弹窗</h3><figure class=\"ui-figure\" data-ui=\"UI-02\"><div class=\"ui-art\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-02 奖池概率弹窗 · 线框示意</text><rect x=\"35\" y=\"95\" width=\"890\" height=\"320\" rx=\"12\" fill=\"white\" stroke=\"#dce4db\"></rect><text x=\"65\" y=\"140\" font-size=\"24\" fill=\"#234339\">概率行：entries[0..N-1]</text><text x=\"65\" y=\"192\" font-size=\"24\" fill=\"#234339\">名称_i × count_i                 display(p_i)</text><text x=\"65\" y=\"244\" font-size=\"24\" fill=\"#234339\">p_i = weight_i / Σweight</text><text x=\"65\" y=\"296\" font-size=\"24\" fill=\"#234339\">固定6行可视；超出滚动</text><text x=\"65\" y=\"348\" font-size=\"24\" fill=\"#234339\">一次只返回一条结果；各次独立</text><g><rect x=\"65\" y=\"450\" width=\"240\" height=\"56\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"90\" y=\"486\" font-size=\"23\" fill=\"white\">关闭</text></g><text x=\"35\" y=\"540\" font-size=\"15\" fill=\"#718476\">静态信息与状态示意；不代表最终视觉规范。</text></svg></div></figure><p>入口：UI-01 点击“奖池概率”。完整说明当前奖池奖励与真实概率，不消耗任何资源。</p><p>状态：正常、奖池关闭或配置无效。</p><div class=\"table-wrap\"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>02-A 奖励列表</td><td>遍历与主页面相同的N个条目，逐行显示引用名称、固定count和按“概率与数量的显示”公式计算的百分比；无固定奖励种类。</td></tr><tr><td>02-B 说明</td><td>每次独立抽取，仅发1项，无保底；概率不是累计承诺</td></tr><tr><td>02-C 关闭</td><td>关闭或返回键回UI-01；不改变免费次数和券数量</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href=\"#section-3\">功能逻辑与计算公式</a>。</p><p><b>本页红点：</b>本页不新增红点；打开/关闭不消除主页面免费提示。</p><div class=\"table-wrap\"><table><thead><tr><th>区域</th><th>数量与布局</th><th>行为</th></tr></thead><tbody><tr><td>概率行</td><td>List&lt;ProbabilityRow&gt;，与entries一一对应</td><td>每行图标、名称、固定数量、按“概率与数量的显示”公式计算的百分比；不按数量或概率重新排序。</td></tr><tr><td>滚动区</td><td>固定6行可视，N&gt;6纵向滚动</td><td>底部规则说明和关闭按钮不滚动；N&lt;6不补空白行。</td></tr><tr><td>状态</td><td>正常 / 配置失效</td><td>数据有效时显示；若配置关闭或失效，清除旧概率并显示暂不可用；关闭/返回回UI-01。</td></tr></tbody></table></div>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796"
+              },
+              {
+                "kind": "diagram",
+                "targetId": "d466ef9e-cb01-4bec-b715-8d325f51ca70"
+              }
+            ]
+          },
+          {
+            "id": "728bab2c-270a-4e2b-9e0c-e3c86f314757",
+            "title": "UI-03 抽奖结果弹窗",
+            "subtype": "ui-page",
+            "anchor": "ui-03",
+            "contentHtml": "<h3 id=\"ui-03\">UI-03 抽奖结果弹窗</h3><figure class=\"ui-figure\" data-ui=\"UI-03\"><div class=\"ui-art\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-03 抽奖结果弹窗 · 线框示意</text><rect x=\"35\" y=\"95\" width=\"890\" height=\"320\" rx=\"12\" fill=\"white\" stroke=\"#dce4db\"></rect><text x=\"65\" y=\"140\" font-size=\"24\" fill=\"#234339\">单结果区：DrawSuccess（不是List）</text><text x=\"65\" y=\"192\" font-size=\"24\" fill=\"#234339\">{name} × {count}  · {icon}</text><text x=\"65\" y=\"244\" font-size=\"24\" fill=\"#234339\">奖励已到账</text><text x=\"65\" y=\"296\" font-size=\"24\" fill=\"#234339\">rare：普通/稀有；恢复只展示静态结果</text><g><rect x=\"65\" y=\"450\" width=\"240\" height=\"56\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"90\" y=\"486\" font-size=\"23\" fill=\"white\">关闭</text></g><text x=\"35\" y=\"540\" font-size=\"15\" fill=\"#718476\">静态信息与状态示意；不代表最终视觉规范。</text></svg></div></figure><p>入口：本次奖励成功确定并结束或跳过表现后。展示本次唯一奖励、数量及已到账状态。</p><p>状态：普通奖励、稀有奖励、恢复展示。</p><div class=\"table-wrap\"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>03-A 奖励内容</td><td>绑定单个DrawSuccess；rare控制普通/稀有表现，recovered控制是否重播；不得按具体resourceId分支。</td></tr><tr><td>03-B 已到账</td><td>结果弹出前发放已完成，不设置领取按钮</td></tr><tr><td>03-C 关闭</td><td>关闭返回UI-01并刷新资源/免费状态；重复查看不重复发奖</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href=\"#section-3\">功能逻辑与计算公式</a>。</p><p><b>本页红点：</b>本页无红点；结果不产生可领奖红点。</p><div class=\"table-wrap\"><table><thead><tr><th>状态</th><th>显示 / 动效</th><th>操作</th></tr></thead><tbody><tr><td>普通成功：rare=false</td><td>恰好1个结果卡；图标、名称、count、已到账；亮边0.35秒</td><td>关闭按钮始终可用；关闭清理动效并刷新主页面。</td></tr><tr><td>稀有成功：rare=true</td><td>同一个结果卡；背景光芒0.6秒，替代普通亮边</td><td>不叠加普通特效；不改变概率、数量和到账时点。</td></tr><tr><td>恢复展示：recovered=true</td><td>只显示静态结果，不重播过程/结果动效或音效</td><td>重复打开不重复发奖；无领取按钮。</td></tr></tbody></table></div>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796"
+              },
+              {
+                "kind": "diagram",
+                "targetId": "fff52783-19df-41ae-9204-f6934adc0541"
+              }
+            ]
+          },
+          {
+            "id": "ad35c125-e322-42dc-99f0-8302438eb043",
+            "title": "UI-04 通用提示与确认状态",
+            "subtype": "ui-page",
+            "anchor": "ui-04",
+            "contentHtml": "<h3 id=\"ui-04\">UI-04 通用提示与确认状态</h3><figure class=\"ui-figure\" data-ui=\"UI-04\"><div class=\"ui-art\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-04 通用提示与确认状态 · 线框示意</text><rect x=\"35\" y=\"95\" width=\"890\" height=\"320\" rx=\"12\" fill=\"white\" stroke=\"#dce4db\"></rect><text x=\"65\" y=\"140\" font-size=\"24\" fill=\"#234339\">原因提示</text><text x=\"65\" y=\"192\" font-size=\"24\" fill=\"#234339\">{name}不足，需要{count}{unit}</text><text x=\"65\" y=\"244\" font-size=\"24\" fill=\"#234339\">明确失败：未消耗资源</text><text x=\"65\" y=\"296\" font-size=\"24\" fill=\"#234339\">结果不明：确认中，不声明未扣费</text><g><rect x=\"65\" y=\"450\" width=\"240\" height=\"56\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"90\" y=\"486\" font-size=\"23\" fill=\"white\">确认</text></g><text x=\"35\" y=\"540\" font-size=\"15\" fill=\"#718476\">静态信息与状态示意；不代表最终视觉规范。</text></svg></div></figure><p>入口：UI-01 操作未满足条件或结果暂不明确。明确告知是否扣费，以及玩家接下来可以做什么。</p><p>状态：券不足、等级不足、奖池关闭、明确失败、结果确认中。、名称全文（复用信息提示）。</p><div class=\"table-wrap\"><table><thead><tr><th>控件</th><th>显示 / 操作 / 反馈</th></tr></thead><tbody><tr><td>04-A 条件提示</td><td>券不足/等级不足/关闭时显示具体原因；确定关闭；不跳转未定义的充值商店</td></tr><tr><td>04-B 明确失败</td><td>显示“本次未完成抽奖，未消耗资源”；确定后返回空闲</td></tr><tr><td>04-C 结果确认中</td><td>显示“结果确认中，请稍后查看”；不显示失败或再抽按钮；允许离开，返回继续确认原结果</td></tr></tbody></table></div><p>配置与状态：LotteryPool开放/免费/券消耗；LotteryReward奖励与概率；Resource/UiText图文；玩家等级、免费日期、券数量与当前抽奖结果。公共规则见 <a href=\"#section-3\">功能逻辑与计算公式</a>。</p><p><b>本页红点：</b>本页无独立红点；失败不消耗免费资格，主入口红点按“开放与刷新”规则重新判断。</p><div class=\"table-wrap\"><table><thead><tr><th>原因 / 状态</th><th>确切反馈</th><th>操作与资源</th></tr></thead><tbody><tr><td>名称全文</td><td>显示所点条目的完整资源名称</td><td>关闭返回来源页，无资源变化。</td></tr><tr><td>余额不足</td><td>{name}不足，需要{count}{unit}</td><td>确认关闭；资源与免费不变。</td></tr><tr><td>等级不足 / 关闭 / 配置无效</td><td>显示对应原因，不能统一提示网络错误</td><td>确认回主页面，主按钮按UI-01重新判断。</td></tr><tr><td>明确失败</td><td>本次未完成抽奖，未消耗资源</td><td>确认后IDLE；可再次按正常规则发起新抽取。</td></tr><tr><td>结果不明</td><td>结果确认中，请稍后查看</td><td>不显示失败、未扣费或再抽；允许离开；原结果确定后更新。</td></tr></tbody></table></div>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796"
+              },
+              {
+                "kind": "diagram",
+                "targetId": "0a30dd8d-3c71-4e87-9829-b191eca5106e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "41c93630-a88b-427f-add5-ffd237b10bbf",
+        "title": "6. 多语言",
+        "categoryKey": "localization",
+        "blocks": [
+          {
+            "id": "b7f08a66-d9e7-415d-9aad-a28b2186ce3a",
+            "title": "6. 多语言",
+            "subtype": "other",
+            "anchor": "section-6-intro",
+            "contentHtml": "<p>新增23个Key，中文已拟定，目标语言范围尚未提供。含参数的文本使用命名占位符；按钮允许伸缩，错误提示换行，避免拼接句子。</p><div class=\"table-wrap\"><table><thead><tr><th>Key</th><th>中文原文</th><th>参数</th></tr></thead><tbody><tr><td>res.gold</td><td>金币</td><td>无</td></tr><tr><td>res.stone</td><td>强化石</td><td>无</td></tr><tr><td>res.gem</td><td>晶石</td><td>无</td></tr><tr><td>res.ticket</td><td>抽奖券</td><td>无</td></tr><tr><td>lottery.title</td><td>每日补给</td><td>无</td></tr><tr><td>lottery.free</td><td>免费抽一次</td><td>无</td></tr><tr><td>lottery.cost</td><td>抽一次（{count}{unit}{name}）</td><td>count:int, unit:string, name:string</td></tr><tr><td>lottery.rate</td><td>奖池概率</td><td>无</td></tr><tr><td>lottery.refresh</td><td>免费次数每日{hour}:00刷新（UTC+8）</td><td>hour:string</td></tr><tr><td>lottery.draw</td><td>抽取中…</td><td>无</td></tr><tr><td>lottery.result</td><td>获得 {name} × {count}</td><td>name:string, count:int</td></tr><tr><td>lottery.done</td><td>奖励已到账</td><td>无</td></tr><tr><td>lottery.close</td><td>关闭</td><td>无</td></tr><tr><td>lottery.skip</td><td>跳过表现</td><td>无</td></tr><tr><td>lottery.insufficient</td><td>{name}不足，需要{count}{unit}</td><td>name:string, count:int, unit:string</td></tr><tr><td>lottery.closed</td><td>当前奖池暂未开放</td><td>无</td></tr><tr><td>lottery.locked</td><td>角色达到{level}级后开放</td><td>level:int</td></tr><tr><td>lottery.pending</td><td>结果确认中，请稍后查看</td><td>无</td></tr><tr><td>lottery.failed</td><td>本次未完成抽奖，未消耗资源</td><td>无</td></tr><tr><td>lottery.confirm</td><td>确认</td><td>无</td></tr><tr><td>lottery.unavailable</td><td>奖池暂不可用</td><td>无</td></tr><tr><td>lottery.loading</td><td>加载中…</td><td>无</td></tr><tr><td>lottery.processing</td><td>处理中…</td><td>无</td></tr></tbody></table></div>",
+            "references": []
+          }
+        ]
+      },
+      {
+        "id": "be86ccba-551d-4a4d-9d9f-2e60d51531c1",
+        "title": "7. 音效需求",
+        "categoryKey": "audio",
+        "blocks": [
+          {
+            "id": "85b9b0e9-7dc0-4ce3-bd51-f7e1f2b2ca2b",
+            "title": "7. 音效需求",
+            "subtype": "resource",
+            "anchor": "section-7-intro",
+            "contentHtml": "<p>以下仅是制作需求，未提供声音素材。若项目已有匹配的通用音效，优先复用。</p><div class=\"table-wrap\"><table><thead><tr><th>ID</th><th>触发与内容</th><th>停止与复用要求</th></tr></thead><tbody><tr><td>SFX-01</td><td>成功确定结果后播放短抽奖过程声</td><td>跳过/离开立即停；需提供对应音效</td></tr><tr><td>SFX-02</td><td>rare=false结果首次展示时播放获得声</td><td>单次，不循环；优先复用匹配音效</td></tr><tr><td>SFX-03</td><td>rare=true结果首次展示时播放稀有获得声</td><td>替代普通获得声；关闭即停；需提供对应音效</td></tr></tbody></table></div>",
+            "references": []
+          }
+        ]
+      },
+      {
+        "id": "cf93ead0-0b89-4a6e-aa24-a912702918ea",
+        "title": "8. 红点逻辑索引",
+        "categoryKey": "redpoint",
+        "blocks": [
+          {
+            "id": "a9ab0d51-806f-484a-bdcd-49f6929b6b37",
+            "title": "8. 红点逻辑索引",
+            "subtype": "other",
+            "anchor": "section-8-intro",
+            "contentHtml": "<p>具体逻辑已经写在各 UI 页。入口与主按钮只提示可用免费资格；券足不提示，结果无可领奖红点。每日刷新、等级变化、奖池开放状态变化或抽奖成功后重新判断。</p><div class=\"table-wrap\"><table><thead><tr><th>位置</th><th>规则入口</th></tr></thead><tbody><tr><td>主入口/主按钮</td><td><a href=\"#ui-01\">UI-01 免费红点</a></td></tr><tr><td>其他页面</td><td><a href=\"#ui-02\">UI-02</a> / <a href=\"#ui-03\">UI-03</a> / <a href=\"#ui-04\">UI-04</a>：无独立红点</td></tr></tbody></table></div>",
+            "references": [
+              {
+                "kind": "block",
+                "targetId": "583f6852-c989-4c15-8547-d1413632dc11"
+              },
+              {
+                "kind": "block",
+                "targetId": "68cb2561-29c1-42f8-aff9-a680a6b5389d"
+              },
+              {
+                "kind": "block",
+                "targetId": "728bab2c-270a-4e2b-9e0c-e3c86f314757"
+              },
+              {
+                "kind": "block",
+                "targetId": "ad35c125-e322-42dc-99f0-8302438eb043"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "6551214f-ec5f-40c1-8b76-c832d5490136",
+        "title": "9. 业务打点（建议）",
+        "categoryKey": "analytics",
+        "blocks": [
+          {
+            "id": "1b71b490-f1c5-4c8b-b257-5ad163495319",
+            "title": "9. 业务打点（建议）",
+            "subtype": "other",
+            "anchor": "section-9-intro",
+            "contentHtml": "<div class=\"table-wrap\"><table><thead><tr><th>事件</th><th>何时记录</th><th>业务字段</th></tr></thead><tbody><tr><td>lottery_open</td><td>页面实际打开</td><td>poolId:string、入口:string、freeAvailable:bool</td></tr><tr><td>lottery_click</td><td>点击抽一次</td><td>poolId:string、预期消耗方式:free/ticket；只计意图</td></tr><tr><td>lottery_result</td><td>一次抽奖原结果最终确定后</td><td>poolId:string、result:success/fail、costType:free/ticket/none、rewardId:string?、rewardCount:int、reason:string?；成功时记录实际消耗</td></tr><tr><td>lottery_result_view</td><td>结果首次展示</td><td>poolId:string、rewardId:string、recovered:bool；只统计展示</td></tr></tbody></table></div><p>结果不明不记失败；关闭已完成结果不改为取消；同一抽奖恢复查看不新增成功次数。概率弹窗和失败提示关闭只计查看行为，不算抽奖成功。</p>",
+            "references": []
+          }
+        ]
+      },
+      {
+        "id": "0b32c7c0-587f-43ff-b16a-8686ad890216",
+        "title": "10. 制作需求与演示附件",
+        "categoryKey": "attachments",
+        "blocks": [
+          {
+            "id": "94199311-d206-4c73-8f32-8e94eda84004",
+            "title": "10. 制作需求与演示附件",
+            "subtype": "resource",
+            "anchor": "section-10-intro",
+            "contentHtml": "<div class=\"attachments\"><a class=\"attachment\" href=\"需求表/简单抽奖_美术需求.xlsx\"><b>美术需求.xlsx</b><span>4条独立需求</span></a><a class=\"attachment\" href=\"需求表/简单抽奖_UI需求.xlsx\"><b>UI需求.xlsx</b><span>7条独立需求</span></a><a class=\"attachment\" href=\"需求表/简单抽奖_特效需求.xlsx\"><b>特效需求.xlsx</b><span>3条独立需求</span></a><a class=\"attachment\" href=\"抽奖演示稿.html\"><b>HTML 演示稿</b><span>翻页说明＋可操作单抽</span></a></div><p>三份需求表统一为V0.6；用ART/UIR/VFX编号关联。表格说明制作规格、触发条件和交付物要求。演示稿使用本地样例数据，不连接真实账户，刷新即重置。</p>",
+            "references": [
+              {
+                "kind": "attachment",
+                "targetId": "50b05aa1-1923-457a-beba-40ef2448ca7b"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "88e14d9c-6bc0-48f6-ae2f-50189b4d55ee"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "c8a24ff2-2d3e-4739-a777-3361aa90d512"
+              },
+              {
+                "kind": "attachment",
+                "targetId": "dc274fb6-3a31-44ac-b0ab-8205d42eeecf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "relations": [
+    {
+      "id": "ref:0b81d66d-39df-4754-a65b-fa8995399e84:1d7c792a-afa1-4c57-9ae0-025709ec40e3",
+      "fromId": "0b81d66d-39df-4754-a65b-fa8995399e84",
+      "toId": "1d7c792a-afa1-4c57-9ae0-025709ec40e3",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:cf1a2e1c-f1fc-4838-8154-d75b8127b13a:30178845-686e-4ca2-8a67-0006da545f9f",
+      "fromId": "cf1a2e1c-f1fc-4838-8154-d75b8127b13a",
+      "toId": "30178845-686e-4ca2-8a67-0006da545f9f",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:cf1a2e1c-f1fc-4838-8154-d75b8127b13a:09d106b5-b44d-4293-89aa-7ca4be2955b5",
+      "fromId": "cf1a2e1c-f1fc-4838-8154-d75b8127b13a",
+      "toId": "09d106b5-b44d-4293-89aa-7ca4be2955b5",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:cf1a2e1c-f1fc-4838-8154-d75b8127b13a:330eb6b4-813f-4b6c-aa2e-dc4faf1ebf2d",
+      "fromId": "cf1a2e1c-f1fc-4838-8154-d75b8127b13a",
+      "toId": "330eb6b4-813f-4b6c-aa2e-dc4faf1ebf2d",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:924f86c3-906a-4bf1-abcb-0c853c1eb32e:583f6852-c989-4c15-8547-d1413632dc11",
+      "fromId": "924f86c3-906a-4bf1-abcb-0c853c1eb32e",
+      "toId": "583f6852-c989-4c15-8547-d1413632dc11",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:924f86c3-906a-4bf1-abcb-0c853c1eb32e:68cb2561-29c1-42f8-aff9-a680a6b5389d",
+      "fromId": "924f86c3-906a-4bf1-abcb-0c853c1eb32e",
+      "toId": "68cb2561-29c1-42f8-aff9-a680a6b5389d",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:924f86c3-906a-4bf1-abcb-0c853c1eb32e:728bab2c-270a-4e2b-9e0c-e3c86f314757",
+      "fromId": "924f86c3-906a-4bf1-abcb-0c853c1eb32e",
+      "toId": "728bab2c-270a-4e2b-9e0c-e3c86f314757",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:924f86c3-906a-4bf1-abcb-0c853c1eb32e:ad35c125-e322-42dc-99f0-8302438eb043",
+      "fromId": "924f86c3-906a-4bf1-abcb-0c853c1eb32e",
+      "toId": "ad35c125-e322-42dc-99f0-8302438eb043",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:583f6852-c989-4c15-8547-d1413632dc11:bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "fromId": "583f6852-c989-4c15-8547-d1413632dc11",
+      "toId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:68cb2561-29c1-42f8-aff9-a680a6b5389d:bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "fromId": "68cb2561-29c1-42f8-aff9-a680a6b5389d",
+      "toId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:728bab2c-270a-4e2b-9e0c-e3c86f314757:bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "fromId": "728bab2c-270a-4e2b-9e0c-e3c86f314757",
+      "toId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:ad35c125-e322-42dc-99f0-8302438eb043:bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "fromId": "ad35c125-e322-42dc-99f0-8302438eb043",
+      "toId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:a9ab0d51-806f-484a-bdcd-49f6929b6b37:583f6852-c989-4c15-8547-d1413632dc11",
+      "fromId": "a9ab0d51-806f-484a-bdcd-49f6929b6b37",
+      "toId": "583f6852-c989-4c15-8547-d1413632dc11",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:a9ab0d51-806f-484a-bdcd-49f6929b6b37:68cb2561-29c1-42f8-aff9-a680a6b5389d",
+      "fromId": "a9ab0d51-806f-484a-bdcd-49f6929b6b37",
+      "toId": "68cb2561-29c1-42f8-aff9-a680a6b5389d",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:a9ab0d51-806f-484a-bdcd-49f6929b6b37:728bab2c-270a-4e2b-9e0c-e3c86f314757",
+      "fromId": "a9ab0d51-806f-484a-bdcd-49f6929b6b37",
+      "toId": "728bab2c-270a-4e2b-9e0c-e3c86f314757",
+      "relationType": "references"
+    },
+    {
+      "id": "ref:a9ab0d51-806f-484a-bdcd-49f6929b6b37:ad35c125-e322-42dc-99f0-8302438eb043",
+      "fromId": "a9ab0d51-806f-484a-bdcd-49f6929b6b37",
+      "toId": "ad35c125-e322-42dc-99f0-8302438eb043",
+      "relationType": "references"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "ce498c6a-a5e7-4bb5-aefd-bbf5af7bc5d5",
+      "kind": "mindmap",
+      "blockId": "385ac407-97a9-431f-af1f-d42a69d75413",
+      "sourceFormat": "json",
+      "sourceData": {
+        "title": "抽奖功能导图",
+        "nodes": [
+          {
+            "id": "root",
+            "text": "简单抽奖",
+            "x": 20,
+            "y": 270,
+            "w": 180,
+            "h": 75,
+            "href": "#section-3",
+            "targetId": "0d543782-036f-4e65-b708-00456cdcbc44"
+          },
+          {
+            "id": "access",
+            "text": "进入与每日免费",
+            "x": 280,
+            "y": 20,
+            "w": 260,
+            "h": 75,
+            "href": "#r-01",
+            "targetId": "0b81d66d-39df-4754-a65b-fa8995399e84"
+          },
+          {
+            "id": "pay",
+            "text": "消耗与抽取",
+            "x": 280,
+            "y": 210,
+            "w": 260,
+            "h": 75,
+            "href": "#r-02",
+            "targetId": "de01f745-d58a-4220-b9a2-e917d14d55e8"
+          },
+          {
+            "id": "reward",
+            "text": "结果与恢复",
+            "x": 280,
+            "y": 400,
+            "w": 260,
+            "h": 75,
+            "href": "#r-04",
+            "targetId": "0900ba68-b9b4-41c5-a2af-e41c423ef91d"
+          },
+          {
+            "id": "produce",
+            "text": "制作需求",
+            "x": 280,
+            "y": 590,
+            "w": 260,
+            "h": 75,
+            "href": "#section-10",
+            "targetId": "94199311-d206-4c73-8f32-8e94eda84004"
+          },
+          {
+            "id": "access2",
+            "text": "开放阈值 / 周期与免费次数\n免费数量：0或1\nUI-01状态优先级",
+            "x": 640,
+            "y": 20,
+            "w": 360,
+            "h": 117,
+            "href": "#ui-01",
+            "targetId": "583f6852-c989-4c15-8547-d1413632dc11"
+          },
+          {
+            "id": "pay2",
+            "text": "entries：List，N≥1\n单抽1条 / count固定整数\n消耗 / 概率与抽取",
+            "x": 640,
+            "y": 210,
+            "w": 470,
+            "h": 117,
+            "href": "#ui-02",
+            "targetId": "68cb2561-29c1-42f8-aff9-a680a6b5389d"
+          },
+          {
+            "id": "reward2",
+            "text": "DrawSuccess：单对象\n数量与余额 / 概率显示\nUI-03普通/稀有/恢复",
+            "x": 640,
+            "y": 400,
+            "w": 410,
+            "h": 117,
+            "href": "#ui-03",
+            "targetId": "728bab2c-270a-4e2b-9e0c-e3c86f314757"
+          },
+          {
+            "id": "produce2",
+            "text": "UI列表 / 单结果 / 状态变体\n3份独立制作需求Excel\n具体资源只作样例",
+            "x": 640,
+            "y": 590,
+            "w": 410,
+            "h": 117,
+            "href": "需求表/简单抽奖_UI需求.xlsx"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "fromId": "root",
+            "toId": "access",
+            "label": ""
+          },
+          {
+            "id": "e1",
+            "fromId": "root",
+            "toId": "pay",
+            "label": ""
+          },
+          {
+            "id": "e2",
+            "fromId": "root",
+            "toId": "reward",
+            "label": ""
+          },
+          {
+            "id": "e3",
+            "fromId": "root",
+            "toId": "produce",
+            "label": ""
+          },
+          {
+            "id": "l0",
+            "fromId": "access",
+            "toId": "access2",
+            "label": ""
+          },
+          {
+            "id": "l1",
+            "fromId": "pay",
+            "toId": "pay2",
+            "label": ""
+          },
+          {
+            "id": "l2",
+            "fromId": "reward",
+            "toId": "reward2",
+            "label": ""
+          },
+          {
+            "id": "l3",
+            "fromId": "produce",
+            "toId": "produce2",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "313575e5-a820-4f07-8003-7c1ecb1ecf12",
+      "kind": "flow",
+      "blockId": "bbe358ad-e57c-45db-a4cd-6af3e58a5796",
+      "sourceFormat": "json",
+      "sourceData": {
+        "title": "单次抽奖流程",
+        "nodes": [
+          {
+            "id": "click",
+            "text": "点击抽一次",
+            "x": 20,
+            "y": 35,
+            "w": 260,
+            "h": 75,
+            "href": "#ui-01",
+            "targetId": "583f6852-c989-4c15-8547-d1413632dc11"
+          },
+          {
+            "id": "check",
+            "text": "检查开放、等级\n刷新免费资格 / 检查券数量",
+            "x": 350,
+            "y": 35,
+            "w": 330,
+            "h": 100,
+            "href": "#r-02",
+            "targetId": "de01f745-d58a-4220-b9a2-e917d14d55e8"
+          },
+          {
+            "id": "commit",
+            "text": "消耗0或C个资源单位\n按权重从N条中选1条\n发放该条固定count",
+            "x": 780,
+            "y": 35,
+            "w": 350,
+            "h": 130,
+            "href": "#r-03",
+            "targetId": "cf1a2e1c-f1fc-4838-8154-d75b8127b13a"
+          },
+          {
+            "id": "result",
+            "text": "结果已确定\n播放表现 / UI-03展示",
+            "x": 780,
+            "y": 270,
+            "w": 350,
+            "h": 100,
+            "href": "#ui-03",
+            "targetId": "728bab2c-270a-4e2b-9e0c-e3c86f314757"
+          },
+          {
+            "id": "fail",
+            "text": "条件不满足 / 明确失败\nUI-04提示；不消耗",
+            "x": 350,
+            "y": 270,
+            "w": 330,
+            "h": 100,
+            "href": "#ui-04",
+            "targetId": "ad35c125-e322-42dc-99f0-8302438eb043"
+          },
+          {
+            "id": "pending",
+            "text": "结果不明\n确认原结果，禁止重新抽取",
+            "x": 350,
+            "y": 490,
+            "w": 330,
+            "h": 100,
+            "href": "#r-04",
+            "targetId": "0900ba68-b9b4-41c5-a2af-e41c423ef91d"
+          }
+        ],
+        "edges": [
+          {
+            "id": "f1",
+            "fromId": "click",
+            "toId": "check",
+            "label": ""
+          },
+          {
+            "id": "f2",
+            "fromId": "check",
+            "toId": "commit",
+            "label": "满足条件"
+          },
+          {
+            "id": "f3",
+            "fromId": "check",
+            "toId": "fail",
+            "label": "未满足"
+          },
+          {
+            "id": "f4",
+            "fromId": "commit",
+            "toId": "result",
+            "label": "已成功"
+          },
+          {
+            "id": "f5",
+            "fromId": "commit",
+            "toId": "pending",
+            "label": "暂未获知结果"
+          },
+          {
+            "id": "f6",
+            "fromId": "pending",
+            "toId": "result",
+            "label": "原结果成功"
+          },
+          {
+            "id": "f7",
+            "fromId": "pending",
+            "toId": "fail",
+            "label": "原结果失败"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1c4c6743-5fdc-4033-bd2c-7afbefca2b1e",
+      "kind": "config",
+      "blockId": "29e72093-cb30-40f7-8455-199852a03d4f",
+      "sourceFormat": "json",
+      "sourceData": {
+        "title": "配置表结构与引用",
+        "nodes": [
+          {
+            "id": "LotteryPool",
+            "text": "LotteryPool · 奖池\nid: string\nenabled: bool\nunlockLevel: int\ncostResourceId: string\ncostCount: int\ndailyFree: int\nresetHour: int\ntimezone: string",
+            "x": 30,
+            "y": 30,
+            "w": 370,
+            "h": 290,
+            "href": "#cfg-LotteryPool",
+            "targetId": "622c4846-f0c5-4d25-9750-8a15cb001178"
+          },
+          {
+            "id": "LotteryReward",
+            "text": "LotteryReward · 条目 [1..N]\nid: string\npoolId: string\nresourceId: string\ncount: int\nweight: int\nrare: bool",
+            "x": 500,
+            "y": 30,
+            "w": 400,
+            "h": 240,
+            "href": "#cfg-LotteryReward",
+            "targetId": "ec042560-73b3-447b-b193-1ec2fa82a341"
+          },
+          {
+            "id": "Resource",
+            "text": "Resource · 资源\nid: string\nnameKey: string\niconKey: string\nunit: string",
+            "x": 30,
+            "y": 490,
+            "w": 370,
+            "h": 180,
+            "href": "#cfg-Resource",
+            "targetId": "266310b7-9086-465d-8142-ffba997be9e7"
+          },
+          {
+            "id": "UiText",
+            "text": "UiText · 文案\nkey: string\nzhCN: string\nparams: string[]",
+            "x": 500,
+            "y": 490,
+            "w": 400,
+            "h": 160,
+            "href": "#cfg-UiText",
+            "targetId": "bf3ae32c-3da7-4d94-830f-b82c87ef6e5f"
+          }
+        ],
+        "edges": [
+          {
+            "id": "c1",
+            "fromId": "LotteryReward",
+            "toId": "LotteryPool",
+            "label": "N:1 · poolId → id"
+          },
+          {
+            "id": "c2",
+            "fromId": "LotteryPool",
+            "toId": "Resource",
+            "label": "costResourceId → id"
+          },
+          {
+            "id": "c3",
+            "fromId": "LotteryReward",
+            "toId": "Resource",
+            "label": "resourceId → id"
+          },
+          {
+            "id": "c4",
+            "fromId": "Resource",
+            "toId": "UiText",
+            "label": "nameKey → key"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3d950c06-47e7-4960-87f2-9f7fdebaf02c",
+      "kind": "ui",
+      "blockId": "583f6852-c989-4c15-8547-d1413632dc11",
+      "sourceFormat": "svg",
+      "sourceData": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-01 · 可变长列表与固定操作区</text><text x=\"40\" y=\"97\" font-size=\"16\">entries：N≥1 · 3列×2行可视 · N&gt;6仅列表区滚动</text><g><rect x=\"40\" y=\"115\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"54\" y=\"132\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"62\" y=\"163\" font-size=\"13\">icon</text><text x=\"117\" y=\"155\" font-size=\"20\">entries[0]</text><text x=\"117\" y=\"184\" font-size=\"17\">name × count</text><text x=\"54\" y=\"209\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"325\" y=\"115\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"339\" y=\"132\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"347\" y=\"163\" font-size=\"13\">icon</text><text x=\"402\" y=\"155\" font-size=\"20\">entries[1]</text><text x=\"402\" y=\"184\" font-size=\"17\">name × count</text><text x=\"339\" y=\"209\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"610\" y=\"115\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"624\" y=\"132\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"632\" y=\"163\" font-size=\"13\">icon</text><text x=\"687\" y=\"155\" font-size=\"20\">entries[2]</text><text x=\"687\" y=\"184\" font-size=\"17\">name × count</text><text x=\"624\" y=\"209\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"40\" y=\"240\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"54\" y=\"257\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"62\" y=\"288\" font-size=\"13\">icon</text><text x=\"117\" y=\"280\" font-size=\"20\">entries[3]</text><text x=\"117\" y=\"309\" font-size=\"17\">name × count</text><text x=\"54\" y=\"334\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"325\" y=\"240\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"339\" y=\"257\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"347\" y=\"288\" font-size=\"13\">icon</text><text x=\"402\" y=\"280\" font-size=\"20\">entries[4]</text><text x=\"402\" y=\"309\" font-size=\"17\">name × count</text><text x=\"339\" y=\"334\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><g><rect x=\"610\" y=\"240\" width=\"265\" height=\"110\" rx=\"8\" fill=\"white\" stroke=\"#b5cbbd\"></rect><rect x=\"624\" y=\"257\" width=\"50\" height=\"50\" rx=\"5\" fill=\"#e4eee5\"></rect><text x=\"632\" y=\"288\" font-size=\"13\">icon</text><text x=\"687\" y=\"280\" font-size=\"20\">entries[5]</text><text x=\"687\" y=\"309\" font-size=\"17\">name × count</text><text x=\"624\" y=\"334\" font-size=\"13\" fill=\"#6a7f70\">仅展示实际存在的条目</text></g><rect x=\"906\" y=\"115\" width=\"8\" height=\"235\" rx=\"4\" fill=\"#dce4db\"></rect><text x=\"40\" y=\"407\" font-size=\"22\">免费次数 F / dailyFree     消耗资源余额 B</text><rect x=\"40\" y=\"435\" width=\"510\" height=\"65\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"65\" y=\"475\" font-size=\"23\" fill=\"white\">免费抽一次 / 抽一次（C · unit · name）</text><text x=\"610\" y=\"474\" font-size=\"21\">概率说明　　返回</text><text x=\"40\" y=\"537\" font-size=\"15\" fill=\"#6a7f70\">状态决定文案、可用性与动效；详见本页状态表。占位内容不限制具体奖励。</text></svg>"
+    },
+    {
+      "id": "d466ef9e-cb01-4bec-b715-8d325f51ca70",
+      "kind": "ui",
+      "blockId": "68cb2561-29c1-42f8-aff9-a680a6b5389d",
+      "sourceFormat": "svg",
+      "sourceData": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-02 奖池概率弹窗 · 线框示意</text><rect x=\"35\" y=\"95\" width=\"890\" height=\"320\" rx=\"12\" fill=\"white\" stroke=\"#dce4db\"></rect><text x=\"65\" y=\"140\" font-size=\"24\" fill=\"#234339\">概率行：entries[0..N-1]</text><text x=\"65\" y=\"192\" font-size=\"24\" fill=\"#234339\">名称_i × count_i                 display(p_i)</text><text x=\"65\" y=\"244\" font-size=\"24\" fill=\"#234339\">p_i = weight_i / Σweight</text><text x=\"65\" y=\"296\" font-size=\"24\" fill=\"#234339\">固定6行可视；超出滚动</text><text x=\"65\" y=\"348\" font-size=\"24\" fill=\"#234339\">一次只返回一条结果；各次独立</text><g><rect x=\"65\" y=\"450\" width=\"240\" height=\"56\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"90\" y=\"486\" font-size=\"23\" fill=\"white\">关闭</text></g><text x=\"35\" y=\"540\" font-size=\"15\" fill=\"#718476\">静态信息与状态示意；不代表最终视觉规范。</text></svg>"
+    },
+    {
+      "id": "fff52783-19df-41ae-9204-f6934adc0541",
+      "kind": "ui",
+      "blockId": "728bab2c-270a-4e2b-9e0c-e3c86f314757",
+      "sourceFormat": "svg",
+      "sourceData": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-03 抽奖结果弹窗 · 线框示意</text><rect x=\"35\" y=\"95\" width=\"890\" height=\"320\" rx=\"12\" fill=\"white\" stroke=\"#dce4db\"></rect><text x=\"65\" y=\"140\" font-size=\"24\" fill=\"#234339\">单结果区：DrawSuccess（不是List）</text><text x=\"65\" y=\"192\" font-size=\"24\" fill=\"#234339\">{name} × {count}  · {icon}</text><text x=\"65\" y=\"244\" font-size=\"24\" fill=\"#234339\">奖励已到账</text><text x=\"65\" y=\"296\" font-size=\"24\" fill=\"#234339\">rare：普通/稀有；恢复只展示静态结果</text><g><rect x=\"65\" y=\"450\" width=\"240\" height=\"56\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"90\" y=\"486\" font-size=\"23\" fill=\"white\">关闭</text></g><text x=\"35\" y=\"540\" font-size=\"15\" fill=\"#718476\">静态信息与状态示意；不代表最终视觉规范。</text></svg>"
+    },
+    {
+      "id": "0a30dd8d-3c71-4e87-9829-b191eca5106e",
+      "kind": "ui",
+      "blockId": "ad35c125-e322-42dc-99f0-8302438eb043",
+      "sourceFormat": "svg",
+      "sourceData": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"960\" height=\"560\" viewBox=\"0 0 960 560\"><rect width=\"960\" height=\"560\" fill=\"#f3f6f0\"></rect><rect width=\"960\" height=\"70\" fill=\"#234a3b\"></rect><text x=\"35\" y=\"46\" font-size=\"26\" fill=\"white\">UI-04 通用提示与确认状态 · 线框示意</text><rect x=\"35\" y=\"95\" width=\"890\" height=\"320\" rx=\"12\" fill=\"white\" stroke=\"#dce4db\"></rect><text x=\"65\" y=\"140\" font-size=\"24\" fill=\"#234339\">原因提示</text><text x=\"65\" y=\"192\" font-size=\"24\" fill=\"#234339\">{name}不足，需要{count}{unit}</text><text x=\"65\" y=\"244\" font-size=\"24\" fill=\"#234339\">明确失败：未消耗资源</text><text x=\"65\" y=\"296\" font-size=\"24\" fill=\"#234339\">结果不明：确认中，不声明未扣费</text><g><rect x=\"65\" y=\"450\" width=\"240\" height=\"56\" rx=\"9\" fill=\"#27614f\"></rect><text x=\"90\" y=\"486\" font-size=\"23\" fill=\"white\">确认</text></g><text x=\"35\" y=\"540\" font-size=\"15\" fill=\"#718476\">静态信息与状态示意；不代表最终视觉规范。</text></svg>"
+    }
+  ],
+  "attachments": [
+    {
+      "id": "88e14d9c-6bc0-48f6-ae2f-50189b4d55ee",
+      "path": "需求表/简单抽奖_UI需求.xlsx",
+      "name": "简单抽奖_UI需求.xlsx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "role": "UI需求",
+      "sha256": "9a3cd593e6b606dafe1082449b59ec10609d6b14a4c4c841f3cd6bccdfcd6fe5"
+    },
+    {
+      "id": "c8a24ff2-2d3e-4739-a777-3361aa90d512",
+      "path": "需求表/简单抽奖_特效需求.xlsx",
+      "name": "简单抽奖_特效需求.xlsx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "role": "特效需求",
+      "sha256": "38a7422e4a92ed613f5943ac62f3b994b9519a29d341a7d8c324bdd1ab31f52f"
+    },
+    {
+      "id": "50b05aa1-1923-457a-beba-40ef2448ca7b",
+      "path": "需求表/简单抽奖_美术需求.xlsx",
+      "name": "简单抽奖_美术需求.xlsx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "role": "美术需求",
+      "sha256": "138ab4f12a26a9e92f3b4f07222d1048d3f1a03bfa56f258aa586a87a4e9338e"
+    },
+    {
+      "id": "f37880c7-83cf-48ee-8dc5-55b62d133885",
+      "path": "配置表/LotteryPool.csv",
+      "name": "LotteryPool.csv",
+      "mediaType": "text/csv",
+      "role": "config",
+      "sha256": "62bc2685a7c702096163fde612dbeab3b40890bfb18d65cb8ce90bb365752a77"
+    },
+    {
+      "id": "9114c08a-ec62-477d-9b30-5ce7ef930755",
+      "path": "配置表/LotteryReward.csv",
+      "name": "LotteryReward.csv",
+      "mediaType": "text/csv",
+      "role": "config",
+      "sha256": "005ea0ba5023e895e4d79d9c7a5c98e87edcccf6b3f023603e3f62408df7b35c"
+    },
+    {
+      "id": "c7da3ea0-e5d2-4c37-9188-0193b382ca18",
+      "path": "配置表/Resource.csv",
+      "name": "Resource.csv",
+      "mediaType": "text/csv",
+      "role": "config",
+      "sha256": "e82a3cd06403116d9a6d4a4b7c2b7a02121f29a3b1c5ad4dd16238b76d4373a1"
+    },
+    {
+      "id": "fe6283f3-63b0-40e2-8d44-bb1e046ea306",
+      "path": "配置表/UiText.csv",
+      "name": "UiText.csv",
+      "mediaType": "text/csv",
+      "role": "config",
+      "sha256": "1d26e305574eb5a89ad5ed90996888ce1e5c1a25ccb4d1104f724605918cc825"
+    },
+    {
+      "id": "bcd38360-535d-4975-8440-43699f2f727d",
+      "path": "配置表/字段字典.json",
+      "name": "字段字典.json",
+      "mediaType": "application/json",
+      "role": "config",
+      "sha256": "4418dcbc77d4d169fc554681f23ef2167a7dcd5bac150db9b0f0536a561decf3"
+    },
+    {
+      "id": "d6007e6b-c6ef-497d-b054-3b2a276c61d3",
+      "path": "配置表/示例配置.json",
+      "name": "示例配置.json",
+      "mediaType": "application/json",
+      "role": "config",
+      "sha256": "2c137f9a53bcd570dbe33faa4afcdc3fb56a2fd4bcd887e72ef7398340eb26ee"
+    },
+    {
+      "id": "01fa61f3-399e-41ff-97fd-e39be0a0a58e",
+      "path": "配置表/逻辑结构.json",
+      "name": "逻辑结构.json",
+      "mediaType": "application/json",
+      "role": "config",
+      "sha256": "2ed005bc4734ff652438b6706ce90acacf6fbc30cc039b130378f44855379367"
+    },
+    {
+      "id": "033f83d4-7a76-43a7-99e4-bf835b5b2b0d",
+      "path": "图示/UI-01.svg",
+      "name": "UI-01.svg",
+      "mediaType": "image/svg+xml",
+      "role": "ui-source",
+      "sha256": "1fdec1a380045020ddcde5b3e1b76eb0824c09461e37d007946b973fd0a90bae"
+    },
+    {
+      "id": "2bb5dd3e-fc33-4ac1-b551-61cc78af20ef",
+      "path": "图示/UI-02.svg",
+      "name": "UI-02.svg",
+      "mediaType": "image/svg+xml",
+      "role": "ui-source",
+      "sha256": "4fe20de096edd009765e165e7af5d781ef65cd81db70de5403f376f99557d62e"
+    },
+    {
+      "id": "87396061-88d8-41c3-8fb2-bdd2e4b65581",
+      "path": "图示/UI-03.svg",
+      "name": "UI-03.svg",
+      "mediaType": "image/svg+xml",
+      "role": "ui-source",
+      "sha256": "d1edd7ee88c8e20dabc70ef424ec8259a2a4aa439bdff7fa952416acfffe039a"
+    },
+    {
+      "id": "a4f2996e-cbfc-4e04-93e6-18d9d8cc95d7",
+      "path": "图示/UI-04.svg",
+      "name": "UI-04.svg",
+      "mediaType": "image/svg+xml",
+      "role": "ui-source",
+      "sha256": "e9132c96894eb827d7950b37f02a3bbb4dc1dd7b90fd61ea22c01f6b3e6d2e81"
+    },
+    {
+      "id": "dc274fb6-3a31-44ac-b0ab-8205d42eeecf",
+      "path": "抽奖演示稿.html",
+      "name": "抽奖演示稿.html",
+      "mediaType": "text/html",
+      "role": "demo",
+      "sha256": "2dc354439a1134455a31372f8d8f5833ef03fe33acbd1691db6f24b22299788f"
+    },
+    {
+      "id": "57be2532-b54f-417c-b6be-e5b21dda71d0",
+      "path": "使用说明.txt",
+      "name": "使用说明.txt",
+      "mediaType": "text/plain",
+      "role": "readme",
+      "sha256": "c94654c6533049d10b469027b7d4fb83de41971216aa8cd14de15da2ff934a5c"
+    }
+  ]
+}
