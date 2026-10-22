@@ -15,16 +15,12 @@ HTML：正文、UI 和字段表集中阅读，图示保留节点与连线源码�
 | 详细规范 | [交付细则与检查](game-feature-planning/references/交付细则与检查.md) |
 | 文档与图示格式 | [HTML 文档与可编辑图示规范](game-feature-planning/references/HTML文档与可编辑图示规范.md) |
 | 工作台适配 | [归属、稳定 ID、导入数据与维护入口](game-feature-planning/references/工作台适配与导入规范.md) |
-| 当前玩法参考 | [当前案子参考](game-feature-planning/references/当前案子参考.md) |
-| 简单抽奖案例 | [HTML 策划案](../策划案/简单抽奖/简单抽奖策划案.html) |
 | 分发文件 | [game-feature-planning.zip](发布包/game-feature-planning.zip) |
 
 调用示例：
 
 > 使用 $game-feature-planning，基于当前方案按统一格式整理 HTML 策划案，补齐 UI 逻辑和配置字段，导图及配置结构图保留源码和页内节点、连线编辑入口，未明确的规则在对应位置简短标注。
 
-简单抽奖案例 V0.7 的思维导图采用“搜打撤远征融合玩法”的白底横向树形样式，阅读与编辑一致；支持分支/层级筛选、缩放、平移和 SVG 下载。沿用稳定标识、planning.json 与成套导出；工作台尚未实现，未做真实导入验证。
+将发布包解压后，把完整的 `game-feature-planning/` 文件夹交给策划安装到其使用工具的技能目录。技能所需规范、模板和导图组件均包含在文件夹内，不依赖本仓库的策划案例。
 
-`game-feature-planning/` 是项目中的可编辑源文件；本机已安装副本位于 `~/.codex/skills/game-feature-planning/`，两者在本次整理时已同步。后续修改应从项目源文件开始，再同步本机安装副本并重新生成发布包。ZIP 是分发快照，不是编辑入口。
-
-实案检查报告归属具体玩法，位于[玩法评审记录](../策划案/搜打撤远征融合玩法/评审记录/功能需求检查与补充草案.html)。
+修改技能时编辑 `game-feature-planning/` 源文件，再重新生成发布包；ZIP 是分发快照。

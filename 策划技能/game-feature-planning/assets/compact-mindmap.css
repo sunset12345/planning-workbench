@@ -1,4 +1,4 @@
-/* Reference appearance: 搜打撤远征融合玩法. Scoped to functional mindmaps. */
+/* Compact horizontal tree appearance. Scoped to functional mindmaps. */
 .mindmap-controls{display:block;margin:12px 0;color:#526079;font-weight:400}
 .mindmap-selectors,.mindmap-zoom-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .mindmap-selectors label{font-size:12px}.mindmap-selectors select{padding:7px 10px;margin-left:6px;border:1px solid #d9e0ee;border-radius:6px;background:#fff;color:#353940}
