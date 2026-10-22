@@ -6,7 +6,24 @@
 @media(max-width:900px){.visual-editor .editor-grid{grid-template-columns:1fr}.visual-editor .editor-canvas{height:42vh}.visual-editor .editor-form{max-height:35vh}.mind-toolbar button{font-size:11px;padding:5px 8px}.toolbar-space{display:none}.mind-help{font-size:11px}.editor-canvas svg{min-width:0}}
 
 .spec-code{background:#eef3ec;border:1px solid #d7e2d5;border-left:4px solid #49765b;border-radius:7px;padding:18px 20px;font:14px/1.8 ui-monospace,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto}.sample-config{padding:16px;background:#f0f3ed;border:1px solid #d7e2d5;border-radius:8px;margin:20px 0}.sample-config summary{cursor:pointer;color:#285c47;font-weight:600}.demo-controls{display:flex;gap:20px;flex-wrap:wrap}.demo-controls select{padding:7px 10px;border:1px solid #c6d8c9;border-radius:6px;background:white}.demo-entries{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-height:250px;overflow:auto;padding:4px 5px;margin:15px 0}.demo-entry{border:1px solid #c4d5c8;border-radius:8px;background:#fff;padding:15px;min-height:108px}.demo-entry strong{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.demo-entry small{color:#6a7c6e}.demo-result{background:#edf4ed;padding:12px;border-left:4px solid #387452}.demo-result.rare{background:#f0eafa;border-left-color:#7654a5}@media(max-width:700px){.demo-entries{grid-template-columns:repeat(2,minmax(0,1fr))}.demo-entry small{overflow-wrap:anywhere}}
-</style></head><body><aside class="sidebar"><a class="brand" href="#top"><small>功能策划 / V0.6</small><strong>简单抽奖</strong><span>每日免费 · 券抽 · 固定奖池</span></a><nav><a href="#section-1">1. 修订记录</a><a href="#section-2">2. 可编辑思维导图</a><a href="#section-3">3. 逻辑与公式</a><a href="#section-4">4. 配置类型与数量</a><a href="#section-5">5. UI示意图</a><a href="#section-6">6. 多语言</a><a href="#section-7">7. 音效需求</a><a href="#section-8">8. 红点逻辑</a><a href="#section-9">9. 业务打点</a><a href="#section-10">10. 制作附件</a></nav><p>HTML 正式维护入口<br>离线可读 / 图示可编辑</p></aside><main data-document-id="dd89b850-2878-4880-b173-595584d276dc"><header class="hero" id="top"><div class="eyebrow">GAME FEATURE DESIGN</div><h1>每日补给，单次抽奖</h1><p class="lead">单池、单抽；奖池为可变长列表，单次结果为一个对象。</p><p>V0.6 · 2026-10-22</p><p>程序阅读入口：类型与数量结构、计算公式、UI状态和表现。具体奖励仅作样例；玩法规则与制作规格见对应章节。</p><div class="toolbar"><a class="button" href="#section-2">查看导图</a><a class="button secondary" href="抽奖演示稿.html">打开演示</a><a class="button secondary" href="#section-10">制作需求 Excel</a><button id="save-package">下载完整资料包</button><button id="save-html">下载当前 HTML</button><button id="print">打印</button></div><div class="stats"><div><b>4</b>UI 页面</div><div><b>1</b>单次结果对象</div></div></header><div class="search-bar"><label for="search">搜索全文</label><input id="search" placeholder="输入规则、UI、字段或奖励" value=""><button id="clear-search">清除</button><button id="toggle-tables">折叠全部表格</button><span id="search-status" aria-live="polite"></span></div><section class="chapter search-unit" id="section-1" data-section-id="7404fad5-ba4d-4c46-bc09-11045bdd4e51" data-category="revisions"><h2>1. 修订记录</h2><div class="planning-block" data-block-id="e0adbdbe-a05b-4760-a6a4-a43c70b83115" data-anchor="section-1-intro" data-subtype="other" id="section-1-intro"><div class="table-wrap"><table><thead><tr><th>版本 / 日期</th><th>来源与修改</th></tr></thead><tbody><tr><td>V0.1 / 2026-10-22</td><td>用户要求简单抽奖案；自主设计玩法、HTML图示编辑、4页UI及3份制作需求Excel；规格和数值为建议初值。</td></tr><tr><td>V0.2 / 2026-10-22</td><td>根据用户反馈，增加双击编辑、快捷新增、拖动、撤销与节点超链接。</td></tr><tr><td>V0.3 / 2026-10-22</td><td>补齐类型/列表基数、参数化公式、状态和UI布局；折叠样例配置。</td></tr><tr><td>V0.4 / 2026-10-22</td><td>规则与公式标题改用自然名称，保留跳转。</td></tr><tr><td>V0.5 / 2026-10-22</td><td>移除首页数据类型摘要卡片，详细类型与数量约束集中在配置章节。</td></tr><tr><td>V0.6 / 2026-10-22</td><td>按用户要求移除文档与制作进度字段；补齐稳定标识、工作台导入数据和成套导出；同步三份制作需求表。玩法、公式、配置数值沿用V0.5。</td></tr></tbody></table></div></div></section><section class="chapter search-unit" id="section-2" data-section-id="9f5545c3-264c-4d42-9aad-b23c63cb8cb0" data-category="mindmap"><h2>2. 可编辑思维导图</h2><div class="planning-block" data-block-id="385ac407-97a9-431f-af1f-d42a69d75413" data-anchor="section-2-intro" data-subtype="other" id="section-2-intro"><p>双击节点即可进入画布直接改字。选中节点后 Tab 新增子节点，Enter 新增同级，拖动调整位置；支持撤销/重做。右侧可选择正文、UI、附件或粘贴网页超链接。点击节点“↗ 跳转”直接查看关联内容。应用修改后，下载当前 HTML 保存；本地文件不提供多人实时协作。</p><div class="graph-card" data-graph="M01"><div class="graph-tools"><strong>功能导图</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage" id="stage-M01"></div><p class="caption">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div></div></section><section class="chapter search-unit" id="section-3" data-section-id="2f4fe73d-3279-4461-8865-a75b74456b66" data-category="description"><h2>3. 功能逻辑与计算公式</h2><div class="planning-block" data-block-id="bbe358ad-e57c-45db-a4cd-6af3e58a5796" data-anchor="section-3-intro" data-subtype="overview" id="section-3-intro"><p>本期：单池、单抽、可叠加资源奖励。正文定义类型、数量、计算与UI行为；具体资源和数量是附件中的示例配置。</p><div class="graph-card" data-graph="F01"><div class="graph-tools"><strong>抽奖主流程</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage" id="stage-F01"></div><p class="caption">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div></div><div class="planning-block" data-block-id="0b81d66d-39df-4754-a65b-fa8995399e84" data-anchor="r-01" data-subtype="rule"><h3 id="r-01">开放与刷新</h3><p>新抽取要求配置有效、pool.enabled=true、角色等级≥unlockLevel。每日免费上限 dailyFree 为0或1，周期按 <a href="#f-01">周期与免费次数公式</a> 判断。读取页面、点击抽奖和跨周期时刷新；依据游戏统一时间。</p></div><div class="planning-block" data-block-id="de01f745-d58a-4220-b9a2-e917d14d55e8" data-anchor="r-02" data-subtype="rule"><h3 id="r-02">选择消耗方式</h3><p>已接受的抽奖优先确认和展示，不能再发起一笔。新操作按配置有效→开放→等级→空闲→刷新免费→选择消耗校验。freeRemaining&gt;0 优先免费，否则检查抽奖前余额 B[costResourceId]≥costCount。资源不足不消耗。</p></div><div class="planning-block" data-block-id="cf1a2e1c-f1fc-4838-8154-d75b8127b13a" data-anchor="r-03" data-subtype="rule"><h3 id="r-03">抽取、发放、表现</h3><p>按 <a href="#f-03">概率与抽取公式</a> 从 N 个条目中选且只选1个；按 <a href="#f-02">消耗公式</a> 扣除资源，按 <a href="#f-04">数量与余额公式</a> 发放该条目的固定count。成功结果确定并入账后才播放0.8秒过程表现。跳过只结束表现，不改变结果；结果为单对象，不设置领取步骤。</p></div><div class="planning-block" data-block-id="0900ba68-b9b4-41c5-a2af-e41c423ef91d" data-anchor="r-04" data-subtype="rule"><h3 id="r-04">重复操作与恢复</h3><p>SUBMITTING、PENDING、ANIMATING、RESULT时禁止新抽。明确失败不扣免费次数和资源；不明状态显示PENDING，确认原结果，不当失败重抽。离开不撤销已接受的抽取；返回补展示未看过的成功结果，恢复时不重播动效、不重复发放。</p></div><div class="planning-block" data-block-id="c7f51e51-874b-4461-937e-e6232d40700c" data-anchor="r-05" data-subtype="rule"><h3 id="r-05">时间与配置边界</h3><p>使用接受时的配置和刷新周期；接受后关闭奖池或修改权重不改变原结果。旧周期最后一秒接受、新周期展示，消耗旧周期免费，新周期资格保留。N=0、非正整数权重/数量、重复条目ID或引用缺失使整池不可用，禁止悄悄删除坏行后重新归一化。</p></div><div class="planning-block" data-block-id="99660207-467b-4f75-863c-1d61927bca56" data-anchor="formulas" data-subtype="rule"><h3 id="formulas">计算公式、变量与边界</h3><div class="table-wrap"><table><thead><tr><th>变量</th><th>类型 / 单位</th><th>含义</th></tr></thead><tbody><tr><td>t / h</td><td>int / UTC秒、小时</td><td>t为接受抽奖的时间；h=resetHour∈[0,23]；固定UTC+8时区。</td></tr><tr><td>d / u / D</td><td>int|null / int / int</td><td>d=usedCycleKey，u=freeUsed∈{0,1}，D为当前周期键。</td></tr><tr><td>F / C / B[x]</td><td>int / 次、资源单位</td><td>F为可用免费次数，C=costCount≥1，B[x]为抽取前资源余额。</td></tr><tr><td>N / w_i / W</td><td>int / 条、无量纲</td><td>N为条目数；w_i&gt;0；W为总权重，必须&gt;0。</td></tr><tr><td>p_i / r / S_i</td><td>比例 / int / int</td><td>p_i范围(0,1]；r是均匀随机整数；S_i为累计权重。</td></tr></tbody></table></div></div><div class="planning-block" data-block-id="1d7c792a-afa1-4c57-9ae0-025709ec40e3" data-anchor="f-01" data-subtype="rule"><h4 id="f-01">周期与免费次数</h4><pre class="spec-code">D(t) = floor((t + 8×3600 - h×3600) / 86400)
+
+/* Reference appearance: 搜打撤远征融合玩法. Scoped to functional mindmaps. */
+.mindmap-controls{display:block;margin:12px 0;color:#526079;font-weight:400}
+.mindmap-selectors,.mindmap-zoom-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.mindmap-selectors label{font-size:12px}.mindmap-selectors select{padding:7px 10px;margin-left:6px;border:1px solid #d9e0ee;border-radius:6px;background:#fff;color:#353940}
+.mindmap-controls p{font-size:12px;margin:10px 0}.mindmap-controls button{font-size:12px;padding:6px 10px;border-color:#d9e0ee;color:#353940}.mindmap-zoom-tools output{font-size:12px;min-width:38px;text-align:center}
+.graph-stage.compact-mindmap-stage{height:440px;min-height:300px;max-height:600px;background:#fff;border:1px solid #d9e0ee;border-radius:10px}
+.mindmap-viewport{position:relative;overflow:hidden!important;touch-action:none;user-select:none;cursor:grab}.mindmap-viewport.is-panning{cursor:grabbing}.mindmap-viewport:focus-visible{outline:2px solid #6684ff;outline-offset:2px}
+.mindmap-pan-layer{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.mindmap-pan-layer>svg.compact-mindmap-svg{display:block;min-width:0;max-width:none;height:auto}
+.compact-mindmap-svg .node>rect{stroke:none}.compact-mindmap-svg .node.selected>rect:first-child,.compact-mindmap-svg .node:focus-visible>rect:first-child{stroke:#557aff;stroke-width:1.5}
+.compact-mindmap-svg .node-jump:hover text{fill:#294edb;text-decoration:underline}.compact-mindmap-svg .node[data-level="2"]{cursor:pointer}
+.compact-mindmap-svg .node>text{pointer-events:none}
+#viewer-body.mindmap-viewport{height:calc(100% - 100px);min-height:300px;background:#fff}#viewer .mindmap-dialog-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0}.visual-editor .editor-canvas.compact-mindmap-editor{background:#fff}.compact-mindmap-svg .node-jump rect{stroke:none!important}
+.compact-mindmap-svg .edge{opacity:1}.compact-mindmap-svg .node-jump rect{fill:transparent}
+@media(max-width:900px){.graph-stage.compact-mindmap-stage{height:420px;max-height:60vh}.mindmap-selectors{align-items:flex-start;gap:8px}.mindmap-selectors label{width:100%}.mindmap-controls p{line-height:1.7}}
+@media print{.mindmap-controls{display:none!important}.graph-stage.compact-mindmap-stage{height:auto;max-height:none;min-height:0;overflow:visible!important;border:0}.mindmap-pan-layer{position:static;transform:none!important}.mindmap-pan-layer>svg.compact-mindmap-svg{width:100%!important;height:auto!important}}
+</style></head><body><aside class="sidebar"><a class="brand" href="#top"><small>功能策划 / V0.7</small><strong>简单抽奖</strong><span>每日免费 · 券抽 · 固定奖池</span></a><nav><a href="#section-1">1. 修订记录</a><a href="#section-2">2. 可编辑思维导图</a><a href="#section-3">3. 逻辑与公式</a><a href="#section-4">4. 配置类型与数量</a><a href="#section-5">5. UI示意图</a><a href="#section-6">6. 多语言</a><a href="#section-7">7. 音效需求</a><a href="#section-8">8. 红点逻辑</a><a href="#section-9">9. 业务打点</a><a href="#section-10">10. 制作附件</a></nav><p>HTML 正式维护入口<br>离线可读 / 图示可编辑</p></aside><main data-document-id="dd89b850-2878-4880-b173-595584d276dc"><header class="hero" id="top"><div class="eyebrow">GAME FEATURE DESIGN</div><h1>每日补给，单次抽奖</h1><p class="lead">单池、单抽；奖池为可变长列表，单次结果为一个对象。</p><p>V0.7 · 2026-10-22</p><p>程序阅读入口：类型与数量结构、计算公式、UI状态和表现。具体奖励仅作样例；玩法规则与制作规格见对应章节。</p><div class="toolbar"><a class="button" href="#section-2">查看导图</a><a class="button secondary" href="抽奖演示稿.html">打开演示</a><a class="button secondary" href="#section-10">制作需求 Excel</a><button id="save-package">下载完整资料包</button><button id="save-html">下载当前 HTML</button><button id="print">打印</button></div><div class="stats"><div><b>4</b>UI 页面</div><div><b>1</b>单次结果对象</div></div></header><div class="search-bar"><label for="search">搜索全文</label><input id="search" placeholder="输入规则、UI、字段或奖励" value=""><button id="clear-search">清除</button><button id="toggle-tables">折叠全部表格</button><span id="search-status" aria-live="polite"></span></div><section class="chapter search-unit" id="section-1" data-section-id="7404fad5-ba4d-4c46-bc09-11045bdd4e51" data-category="revisions"><h2>1. 修订记录</h2><div class="planning-block" data-block-id="e0adbdbe-a05b-4760-a6a4-a43c70b83115" data-anchor="section-1-intro" data-subtype="other" id="section-1-intro"><div class="table-wrap"><table><thead><tr><th>版本 / 日期</th><th>来源与修改</th></tr></thead><tbody><tr><td>V0.1 / 2026-10-22</td><td>用户要求简单抽奖案；自主设计玩法、HTML图示编辑、4页UI及3份制作需求Excel；规格和数值为建议初值。</td></tr><tr><td>V0.2 / 2026-10-22</td><td>根据用户反馈，增加双击编辑、快捷新增、拖动、撤销与节点超链接。</td></tr><tr><td>V0.3 / 2026-10-22</td><td>补齐类型/列表基数、参数化公式、状态和UI布局；折叠样例配置。</td></tr><tr><td>V0.4 / 2026-10-22</td><td>规则与公式标题改用自然名称，保留跳转。</td></tr><tr><td>V0.5 / 2026-10-22</td><td>移除首页数据类型摘要卡片，详细类型与数量约束集中在配置章节。</td></tr><tr><td>V0.6 / 2026-10-22</td><td>按用户要求移除文档与制作进度字段；补齐稳定标识、工作台导入数据和成套导出；同步三份制作需求表。玩法、公式、配置数值沿用V0.5。</td></tr><tr><td>V0.7 / 2026-10-22</td><td>按用户要求，将思维导图统一为“搜打撤远征融合玩法”的白底横向树形样式；增加分支/层级筛选、画布缩放平移和SVG下载；阅读与编辑沿用同一显示形式。更新正文、导入数据及资料包；抽奖规则和制作需求沿用V0.6。</td></tr></tbody></table></div></div></section><section class="chapter search-unit" id="section-2" data-section-id="9f5545c3-264c-4d42-9aad-b23c63cb8cb0" data-category="mindmap"><h2>2. 可编辑思维导图</h2><div class="planning-block" data-block-id="385ac407-97a9-431f-af1f-d42a69d75413" data-anchor="section-2-intro" data-subtype="other" id="section-2-intro"><p>从左向右查看功能分支和制作细项。可筛选分支与显示层级，滚轮缩放、拖动画布，或放大查看；手机支持双指缩放。点击节点“↗”查看关联说明。双击节点进入编辑，Tab 新增子节点、Enter 新增同级；支持拖动、自动排布、撤销/重做和修改链接。应用修改后下载当前 HTML 或完整资料包保存。</p><div class="graph-card" data-graph="M01"><div class="graph-tools"><strong>功能导图</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage compact-mindmap-stage" id="stage-M01"></div><p class="caption">双击节点直接改字；点击节点“↗”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div></div></section><section class="chapter search-unit" id="section-3" data-section-id="2f4fe73d-3279-4461-8865-a75b74456b66" data-category="description"><h2>3. 功能逻辑与计算公式</h2><div class="planning-block" data-block-id="bbe358ad-e57c-45db-a4cd-6af3e58a5796" data-anchor="section-3-intro" data-subtype="overview" id="section-3-intro"><p>本期：单池、单抽、可叠加资源奖励。正文定义类型、数量、计算与UI行为；具体资源和数量是附件中的示例配置。</p><div class="graph-card" data-graph="F01"><div class="graph-tools"><strong>抽奖主流程</strong><button data-action="zoom">放大</button><button data-action="edit">编辑导图</button><button data-action="source">编辑 JSON 源码</button></div><div class="graph-stage" id="stage-F01"></div><p class="caption">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div></div><div class="planning-block" data-block-id="0b81d66d-39df-4754-a65b-fa8995399e84" data-anchor="r-01" data-subtype="rule"><h3 id="r-01">开放与刷新</h3><p>新抽取要求配置有效、pool.enabled=true、角色等级≥unlockLevel。每日免费上限 dailyFree 为0或1，周期按 <a href="#f-01">周期与免费次数公式</a> 判断。读取页面、点击抽奖和跨周期时刷新；依据游戏统一时间。</p></div><div class="planning-block" data-block-id="de01f745-d58a-4220-b9a2-e917d14d55e8" data-anchor="r-02" data-subtype="rule"><h3 id="r-02">选择消耗方式</h3><p>已接受的抽奖优先确认和展示，不能再发起一笔。新操作按配置有效→开放→等级→空闲→刷新免费→选择消耗校验。freeRemaining&gt;0 优先免费，否则检查抽奖前余额 B[costResourceId]≥costCount。资源不足不消耗。</p></div><div class="planning-block" data-block-id="cf1a2e1c-f1fc-4838-8154-d75b8127b13a" data-anchor="r-03" data-subtype="rule"><h3 id="r-03">抽取、发放、表现</h3><p>按 <a href="#f-03">概率与抽取公式</a> 从 N 个条目中选且只选1个；按 <a href="#f-02">消耗公式</a> 扣除资源，按 <a href="#f-04">数量与余额公式</a> 发放该条目的固定count。成功结果确定并入账后才播放0.8秒过程表现。跳过只结束表现，不改变结果；结果为单对象，不设置领取步骤。</p></div><div class="planning-block" data-block-id="0900ba68-b9b4-41c5-a2af-e41c423ef91d" data-anchor="r-04" data-subtype="rule"><h3 id="r-04">重复操作与恢复</h3><p>SUBMITTING、PENDING、ANIMATING、RESULT时禁止新抽。明确失败不扣免费次数和资源；不明状态显示PENDING，确认原结果，不当失败重抽。离开不撤销已接受的抽取；返回补展示未看过的成功结果，恢复时不重播动效、不重复发放。</p></div><div class="planning-block" data-block-id="c7f51e51-874b-4461-937e-e6232d40700c" data-anchor="r-05" data-subtype="rule"><h3 id="r-05">时间与配置边界</h3><p>使用接受时的配置和刷新周期；接受后关闭奖池或修改权重不改变原结果。旧周期最后一秒接受、新周期展示，消耗旧周期免费，新周期资格保留。N=0、非正整数权重/数量、重复条目ID或引用缺失使整池不可用，禁止悄悄删除坏行后重新归一化。</p></div><div class="planning-block" data-block-id="99660207-467b-4f75-863c-1d61927bca56" data-anchor="formulas" data-subtype="rule"><h3 id="formulas">计算公式、变量与边界</h3><div class="table-wrap"><table><thead><tr><th>变量</th><th>类型 / 单位</th><th>含义</th></tr></thead><tbody><tr><td>t / h</td><td>int / UTC秒、小时</td><td>t为接受抽奖的时间；h=resetHour∈[0,23]；固定UTC+8时区。</td></tr><tr><td>d / u / D</td><td>int|null / int / int</td><td>d=usedCycleKey，u=freeUsed∈{0,1}，D为当前周期键。</td></tr><tr><td>F / C / B[x]</td><td>int / 次、资源单位</td><td>F为可用免费次数，C=costCount≥1，B[x]为抽取前资源余额。</td></tr><tr><td>N / w_i / W</td><td>int / 条、无量纲</td><td>N为条目数；w_i&gt;0；W为总权重，必须&gt;0。</td></tr><tr><td>p_i / r / S_i</td><td>比例 / int / int</td><td>p_i范围(0,1]；r是均匀随机整数；S_i为累计权重。</td></tr></tbody></table></div></div><div class="planning-block" data-block-id="1d7c792a-afa1-4c57-9ae0-025709ec40e3" data-anchor="f-01" data-subtype="rule"><h4 id="f-01">周期与免费次数</h4><pre class="spec-code">D(t) = floor((t + 8×3600 - h×3600) / 86400)
 usedToday = (d == D(t)) ? u : 0
 F = max(0, dailyFree - usedToday)</pre><p>时间达到刷新整点即进入新周期，等号归新周期；不累计未用次数。免费成功后 d=D(t)、u=usedToday+1；失败保持原值。</p></div><div class="planning-block" data-block-id="09d106b5-b44d-4293-89aa-7ca4be2955b5" data-anchor="f-02" data-subtype="rule"><h4 id="f-02">消耗</h4><pre class="spec-code">costType = (F &gt; 0) ? free : resource
 paidCost = (costType == free) ? 0 : C
@@ -45,7 +62,7 @@ freeUsed: int;                 // 该周期已用次数，0或1</pre><div class=
   "document": {
     "id": "dd89b850-2878-4880-b173-595584d276dc",
     "title": "简单抽奖功能策划案",
-    "version": "V0.6",
+    "version": "V0.7",
     "ownerType": "feature",
     "ownerId": "0d543782-036f-4e65-b708-00456cdcbc44"
   },
@@ -185,7 +202,7 @@ freeUsed: int;                 // 该周期已用次数，0或1</pre><div class=
     "name": "使用说明.txt",
     "mediaType": "text/plain",
     "role": "readme",
-    "data": "566A5Y2V5oq95aWW5Yqf6IO9562W5YiS5qGIIFYwLjYKCuaJk+W8gOKAnOeugOWNleaKveWlluetluWIkuahiC5odG1s4oCd5byA5aeL6ZiF6K+744CC5bu66K6u5L2/55So5qGM6Z2i5rWP6KeI5Zmo77yb5Li75paH5qGj5ZKM5ryU56S656i/5peg6ZyA6IGU572R44CCCueoi+W6j+mYheivu+mHjeeCue+8muesrDPnq6DorqHnrpflhazlvI/kuI7ovrnnlYzvvIznrKw056ug57G75Z6LL+WNleWAvC9MaXN0L+aVsOmHj+e6puadn++8jOesrDXnq6BVSeW4g+WxgOS4jueKtuaAgeOAggrlpZbmsaDkuLrlj6/lj5jplb/liJfooajvvIzljZXmrKHmir3lj5bkuIDkuKrmnaHnm67vvIzmnaHnm67mlbDph4/mmK/lm7rlrprmlbTmlbDjgILmoLfkvovphY3nva7nmoQz5p2h5aWW5Yqx5LiN5piv5pWw6YeP6ZmQ5Yi244CCCgrkv67mlLnlm77npLoKMS4g5Y+M5Ye76IqC54K55Y2z5Y+v6L+b5YWl55S75biD55u05o6l5pS55paH5a2X77yb5Lmf5Y+v54K55Ye75Zu+5peB4oCc57yW6L6R5a+85Zu+4oCd44CCCjIuIOmAieS4reiKgueCueWQjiBUYWIg5paw5aKe5a2Q6IqC54K577yMRW50ZXIg5paw5aKe5ZCM57qn77yMRGVsZXRlIOWIoOmZpO+8jOKMmC9DdHJsIFog5pKk6ZSA44CC6L6T5YWl5paH5a2X5pe2IEVudGVyIOehruiupOOAgVNoaWZ0K0VudGVyIOaNouihjOOAgUVzYyDlj5bmtojvvJvmlK/mjIHmi5bliqjlkoznvKnmlL7jgIIKICAg5Y+z5L6n6YCJ5oup5q2j5paHL+mZhOS7tuaIlueymOi0tOe9kemhtemTvuaOpe+8jOeCueWHu+KAnOiuvue9rumTvuaOpeKAne+8m+mYheivu+aXtueCueWHu+iKgueCueWPs+S4i+inkuKAnOKGlyDot7PovazigJ3jgILpgJrov4figJznvJbovpHov57nur/igJ3kv67mlLnnq6/ngrnmiJbmoIfnrb7jgIIKICAg5a6M5oiQ5ZCO54K55Ye74oCc5bqU55So5L+u5pS54oCd44CC5pys5qyh5L+u5pS55Lmf5Y+v5Y+W5raI77yb5LiN5o+Q5L6b5aSa5Lq65a6e5pe25Y2P5L2c5oiW5LqR56uv6Ieq5Yqo5L+d5a2Y44CCCjMuIOeCueWHu+mhtemmluKAnOS4i+i9veWujOaVtOi1hOaWmeWMheKAne+8jOWQjOaXtuWvvOWHuuW9k+WJjSBIVE1M44CBcGxhbm5pbmcuanNvbiDlkozpmYTku7bjgILop6PljovlkI7kvb/nlKjmlrDotYTmlpnljIXjgIIKICAg4oCc5LiL6L295b2T5YmNIEhUTUzigJ3lj6rkv53lrZjmlofmoaPvvJvpnIDopoHlt6XkvZzlj7Dlr7zlhaXmlbDmja7ml7bor7fkvb/nlKjlrozmlbTotYTmlpnljIXjgIIK5rWP6KeI5Zmo5Lit55qE5L+u5pS55LiN5Lya55u05o6l6KaG55uW5Y6f5paH5Lu244CC5q2j5paH5Y+v55So5paH5pys57yW6L6R5Zmo5L+u5pS5IEhUTUzvvJvlm77npLrmlbDmja7kvY3kuo4gZ3JhcGgtZGF0YSDmlbDmja7lnZfjgIIKVUkg56S65oSP5Zu+5Y+v55So4oCc57yW6L6RIFNWRyDmupDnoIHigJ3nu7TmiqTvvJvkuIvovb3lrozmlbTotYTmlpnljIXml7blkIzml7bmm7TmlrDlr7nlupTnmoTlpJbpg6ggU1ZH44CCCuaUueWbvuS4jeS8muiHquWKqOS/ruaUueeOqeazleinhOWImeOAgUV4Y2VsIOaIlua8lOekuueov++8m+i/meS6m+WGheWuueWPmOabtOWQjuW6lOmHjeaWsOeUn+aIkOi1hOaWmeWMhe+8jOS4jeiDveeUqOaXp+WGheW1jOmZhOS7tuimhuebluWklumDqOeahOaWsOmZhOS7tuOAggoK6YWN5aWX6LWE5paZCi0g6ZyA5rGC6KGo77ya576O5pyv44CBVUnjgIHnibnmlYjkuInku73ni6znq4sgRXhjZWzvvIzmraPmlofnrKwxMOeroOaPkOS+m+i2hemTvuaOpeOAggotIOmFjee9ruihqO+8mjTlvKBDU1bnpLrkvovphY3nva7jgIHlrozmlbRKU09O44CB5a2X5q615a2X5YW45ZKM6YC76L6R57uT5p6EL+aVsOmHj+e6puadn+OAggotIOWbvuekuu+8mjTpobVVSeeahOWPr+e8lui+kVNWR+a6kOeov+OAggotIOaKveWllua8lOekuueovy5odG1s77ya57+76aG16K6y6Kej5Y+K5qC35L6L5Y2V5oq977yb5Y+v5YiH5o2iMC8xLzMvOOadoemFjee9ru+8jOmihOiniOWKoOi9vS/lhbPpl60v6ZSB5a6aL+ehruiupOS4re+8jOmqjOivgemVv+WIl+ihqOa7muWKqO+8m+WunumZheWNleaKveS9v+eUqOadg+mHjeWFrOW8j+WSjOWbuuWumuaVsOmHj++8jOWIt+aWsOmHjee9ruOAgui3qOaXpeOAgeaWree6v+WSjOato+W8j+eJueaViOS4jeWcqOa8lOekuuiMg+WbtOWGheOAggoK5bel5L2c5Y+w6YCC6YWNCi0gcGxhbm5pbmcuanNvbiDljIXlkKvlrozmlbTmraPmloflnZfjgIHnqLPlrppJROOAgeW9kuWxnuOAgeaYvuW8j+W8leeUqOOAgTfku73lm77npLrmupDmlbDmja7lkozpmYTku7bmuIXljZXjgIIKLSDlvZPliY3lip/og73kuLrigJznroDljZXmir3lpZbigJ3vvIzlrp7pmYXpobnnm67kuI7ns7vnu5/lsJrmnKrmj5DkvpvvvIzlr7zlhaXml7bnu5HlrprvvJvkuI3kvJrnlJ/miJDomZrmnoTlvZLlsZ7jgIIKLSDlr7zlhaXlubblvIDlp4vlnKjnur/nvJbovpHlkI7vvIzku6Xlt6XkvZzlj7DmraPmlofkuLrnu7TmiqTlhaXlj6PvvIxIVE1M5Li65a+85Ye65b+r54Wn77yb5YaN5a+85YWl6ZyA5qC45a+55p2l5rqQ5ZKM54mI5pys44CCCi0g5bel5L2c5Y+w5bCa5pyq5byA5Y+R77yM5pys6LWE5paZ5YyF5oyJ5Lqk5o2i6KeE6IyD5YeG5aSH77yM5pyq5YGa55yf5a6e5bel5L2c5Y+w5a+85YWl6aqM6K+B44CCCgrmlbDlgLzkuI7op4bop4nop4TmoLzmsr/nlKjml6LmnInlu7rorq7liJ3lgLzjgILniYjmnKzorrDlvZXor7TmmI7lhoXlrrnlj5jmm7TvvIzkuI3ooajnpLrliLbkvZzov5vluqbjgIIK5YiG5Lqr5pe26K+35Y+R6YCB5pW05Liq6LWE5paZ5YyF77yb6Kej5Y6L5ZCO5omT5byASFRNTO+8jOS4jeimgeWNleeLrOenu+WKqOS4u+aWh+aho++8jOS7peWFjeebuOWvuemTvuaOpeWkseaViOOAggo="
+    "data": "566A5Y2V5oq95aWW5Yqf6IO9562W5YiS5qGIIFYwLjcKCuaJk+W8gOKAnOeugOWNleaKveWlluetluWIkuahiC5odG1s4oCd5byA5aeL6ZiF6K+744CC5bu66K6u5L2/55So5qGM6Z2i5rWP6KeI5Zmo77yb5Li75paH5qGj5ZKM5ryU56S656i/5peg6ZyA6IGU572R44CCCueoi+W6j+mYheivu+mHjeeCue+8muesrDPnq6DorqHnrpflhazlvI/kuI7ovrnnlYzvvIznrKw056ug57G75Z6LL+WNleWAvC9MaXN0L+aVsOmHj+e6puadn++8jOesrDXnq6BVSeW4g+WxgOS4jueKtuaAgeOAggrlpZbmsaDkuLrlj6/lj5jplb/liJfooajvvIzljZXmrKHmir3lj5bkuIDkuKrmnaHnm67vvIzmnaHnm67mlbDph4/mmK/lm7rlrprmlbTmlbDjgILmoLfkvovphY3nva7nmoQz5p2h5aWW5Yqx5LiN5piv5pWw6YeP6ZmQ5Yi244CCCgrmn6XnnIvkuI7kv67mlLnlm77npLoK5oCd57u05a+85Zu+6YeH55So55m95bqV5qiq5ZCR5qCR5b2i5pi+56S677ya6JOd6Imy5qC56IqC54K544CB5rWF54Gw5YiG5pSv44CB5peg5qGG57uG6aG55ZKM6JOd6Imy5oqY57q/77yM5LiO4oCc5pCc5omT5pKk6L+c5b6B6J6N5ZCI546p5rOV4oCd5LiA6Ie044CCCuWPr+mAieWFqOmDqC/ljZXkuIDliIbmlK/lj4rmmL7npLrlsYLnuqfvvJvmu5rova7nvKnmlL7jgIHmi5bliqjnlLvluIPvvIzmiYvmnLrmlK/mjIHlj4zmjIfnvKnmlL7jgILlj6/mlL7lpKfmn6XnnIvjgIHpgILlupTnqpflj6Mv5a695bqm44CB5oGi5aSNMTAwJeaIluS4i+i9veW9k+WJjeinhuWbvueahFNWR+OAggrliIbmlK/kuI7lsYLnuqfnrZvpgInlj6rlvbHlk43pmIXor7vvvJvkuIvovb1IVE1M5oiW5a6M5pW06LWE5paZ5YyF5LuN5L+d55WZ5YWo6YOo6IqC54K544CCCjEuIOWPjOWHu+iKgueCueWNs+WPr+i/m+WFpeeUu+W4g+ebtOaOpeaUueaWh+Wtl++8m+S5n+WPr+eCueWHu+WbvuaXgeKAnOe8lui+keWvvOWbvuKAneOAggoyLiDpgInkuK3oioLngrnlkI4gVGFiIOaWsOWinuWtkOiKgueCue+8jEVudGVyIOaWsOWinuWQjOe6p++8jERlbGV0ZSDliKDpmaTvvIzijJgvQ3RybCBaIOaSpOmUgOOAgui+k+WFpeaWh+Wtl+aXtiBFbnRlciDnoa7orqTjgIFTaGlmdCtFbnRlciDmjaLooYzjgIFFc2Mg5Y+W5raI77yb5pSv5oyB5ouW5Yqo5ZKM57yp5pS+44CCCiAgIOWPs+S+p+mAieaLqeato+aWhy/pmYTku7bmiJbnspjotLTnvZHpobXpk77mjqXvvIzngrnlh7vigJzorr7nva7pk77mjqXigJ3vvJvpmIXor7vml7bngrnlh7voioLngrnigJzihpfigJ3jgILpgJrov4figJznvJbovpHov57nur/igJ3kv67mlLnnq6/ngrnmiJbmoIfnrb7jgIIKICAg5oCd57u05a+85Zu+55qE6ZiF6K+75LiO57yW6L6R5pi+56S65LiA6Ie077yb5paw5aKe6IqC54K55Lya6Ieq5Yqo5o6S5biD77yM5Lmf5Y+v54K55Ye74oCc6Ieq5Yqo5o6S5biD4oCd5pW055CG5b2T5YmN5a+85Zu+77yM5pSv5oyB5pKk6ZSA44CCCiAgIOWujOaIkOWQjueCueWHu+KAnOW6lOeUqOS/ruaUueKAneOAguacrOasoeS/ruaUueS5n+WPr+WPlua2iO+8m+S4jeaPkOS+m+WkmuS6uuWunuaXtuWNj+S9nOaIluS6keerr+iHquWKqOS/neWtmOOAggozLiDngrnlh7vpobXpppbigJzkuIvovb3lrozmlbTotYTmlpnljIXigJ3vvIzlkIzml7blr7zlh7rlvZPliY0gSFRNTOOAgXBsYW5uaW5nLmpzb24g5ZKM6ZmE5Lu244CC6Kej5Y6L5ZCO5L2/55So5paw6LWE5paZ5YyF44CCCiAgIOKAnOS4i+i9veW9k+WJjSBIVE1M4oCd5Y+q5L+d5a2Y5paH5qGj77yb6ZyA6KaB5bel5L2c5Y+w5a+85YWl5pWw5o2u5pe26K+35L2/55So5a6M5pW06LWE5paZ5YyF44CCCua1j+iniOWZqOS4reeahOS/ruaUueS4jeS8muebtOaOpeimhuebluWOn+aWh+S7tuOAguato+aWh+WPr+eUqOaWh+acrOe8lui+keWZqOS/ruaUuSBIVE1M77yb5Zu+56S65pWw5o2u5L2N5LqOIGdyYXBoLWRhdGEg5pWw5o2u5Z2X44CCClVJIOekuuaEj+WbvuWPr+eUqOKAnOe8lui+kSBTVkcg5rqQ56CB4oCd57u05oqk77yb5LiL6L295a6M5pW06LWE5paZ5YyF5pe25ZCM5pe25pu05paw5a+55bqU55qE5aSW6YOoIFNWR+OAggrmlLnlm77kuI3kvJroh6rliqjkv67mlLnnjqnms5Xop4TliJnjgIFFeGNlbCDmiJbmvJTnpLrnqL/vvJvov5nkupvlhoXlrrnlj5jmm7TlkI7lupTph43mlrDnlJ/miJDotYTmlpnljIXvvIzkuI3og73nlKjml6flhoXltYzpmYTku7bopobnm5blpJbpg6jnmoTmlrDpmYTku7bjgIIKCumFjeWll+i1hOaWmQotIOmcgOaxguihqO+8mue+juacr+OAgVVJ44CB54m55pWI5LiJ5Lu954us56uLIEV4Y2Vs77yM5q2j5paH56ysMTDnq6Dmj5DkvpvotoXpk77mjqXvvJvliLbkvZzlhoXlrrnmsr/nlKhWMC4244CCCi0g6YWN572u6KGo77yaNOW8oENTVuekuuS+i+mFjee9ruOAgeWujOaVtEpTT07jgIHlrZfmrrXlrZflhbjlkozpgLvovpHnu5PmnoQv5pWw6YeP57qm5p2f44CCCi0g5Zu+56S677yaNOmhtVVJ55qE5Y+v57yW6L6RU1ZH5rqQ56i/44CCCi0g5oq95aWW5ryU56S656i/Lmh0bWzvvJrnv7vpobXorrLop6Plj4rmoLfkvovljZXmir3vvJvlj6/liIfmjaIwLzEvMy845p2h6YWN572u77yM6aKE6KeI5Yqg6L29L+WFs+mXrS/plIHlrpov56Gu6K6k5Lit77yM6aqM6K+B6ZW/5YiX6KGo5rua5Yqo77yb5a6e6ZmF5Y2V5oq95L2/55So5p2D6YeN5YWs5byP5ZKM5Zu65a6a5pWw6YeP77yM5Yi35paw6YeN572u44CC6Leo5pel44CB5pat57q/5ZKM5q2j5byP54m55pWI5LiN5Zyo5ryU56S66IyD5Zu05YaF44CCCgrlt6XkvZzlj7DpgILphY0KLSBwbGFubmluZy5qc29uIOWMheWQq+WujOaVtOato+aWh+Wdl+OAgeeos+WumklE44CB5b2S5bGe44CB5pi+5byP5byV55So44CBN+S7veWbvuekuua6kOaVsOaNruWSjOmZhOS7tua4heWNleOAggotIOW9k+WJjeWKn+iDveS4uuKAnOeugOWNleaKveWlluKAne+8jOWunumZhemhueebruS4juezu+e7n+WwmuacquaPkOS+m++8jOWvvOWFpeaXtue7keWumu+8m+S4jeS8mueUn+aIkOiZmuaehOW9kuWxnuOAggotIOWvvOWFpeW5tuW8gOWni+WcqOe6v+e8lui+keWQju+8jOS7peW3peS9nOWPsOato+aWh+S4uue7tOaKpOWFpeWPo++8jEhUTUzkuLrlr7zlh7rlv6vnhafvvJvlho3lr7zlhaXpnIDmoLjlr7nmnaXmupDlkozniYjmnKzjgIIKLSDlt6XkvZzlj7DlsJrmnKrlvIDlj5HvvIzmnKzotYTmlpnljIXmjInkuqTmjaLop4TojIPlh4blpIfvvIzmnKrlgZrnnJ/lrp7lt6XkvZzlj7Dlr7zlhaXpqozor4HjgIIKCuaVsOWAvOS4juinhuinieinhOagvOayv+eUqOaXouacieW7uuiuruWIneWAvOOAgueJiOacrOiusOW9leivtOaYjuWGheWuueWPmOabtO+8jOS4jeihqOekuuWItuS9nOi/m+W6puOAggrliIbkuqvml7bor7flj5HpgIHmlbTkuKrotYTmlpnljIXvvJvop6PljovlkI7miZPlvIBIVE1M77yM5LiN6KaB5Y2V54us56e75Yqo5Li75paH5qGj77yM5Lul5YWN55u45a+56ZO+5o6l5aSx5pWI44CCCg=="
   }
 ]</script><script type="application/json" id="graph-data">{
   "M01": {
@@ -194,82 +211,82 @@ freeUsed: int;                 // 该周期已用次数，0或1</pre><div class=
       {
         "id": "root",
         "text": "简单抽奖",
-        "x": 20,
-        "y": 270,
-        "w": 180,
-        "h": 75,
+        "x": 24,
+        "y": 36,
+        "w": 136,
+        "h": 38,
         "href": "#section-3"
       },
       {
         "id": "access",
         "text": "进入与每日免费",
-        "x": 280,
-        "y": 20,
-        "w": 260,
-        "h": 75,
+        "x": 230,
+        "y": 37.5,
+        "w": 146,
+        "h": 35,
         "href": "#r-01"
       },
       {
         "id": "pay",
         "text": "消耗与抽取",
-        "x": 280,
-        "y": 210,
-        "w": 260,
-        "h": 75,
+        "x": 230,
+        "y": 127.5,
+        "w": 146,
+        "h": 35,
         "href": "#r-02"
       },
       {
         "id": "reward",
         "text": "结果与恢复",
-        "x": 280,
-        "y": 400,
-        "w": 260,
-        "h": 75,
+        "x": 230,
+        "y": 217.5,
+        "w": 146,
+        "h": 35,
         "href": "#r-04"
       },
       {
         "id": "produce",
         "text": "制作需求",
-        "x": 280,
-        "y": 590,
-        "w": 260,
-        "h": 75,
+        "x": 230,
+        "y": 307.5,
+        "w": 146,
+        "h": 35,
         "href": "#section-10"
       },
       {
         "id": "access2",
         "text": "开放阈值 / 周期与免费次数\n免费数量：0或1\nUI-01状态优先级",
-        "x": 640,
-        "y": 20,
-        "w": 360,
-        "h": 117,
+        "x": 448,
+        "y": 24,
+        "w": 544,
+        "h": 62,
         "href": "#ui-01"
       },
       {
         "id": "pay2",
         "text": "entries：List，N≥1\n单抽1条 / count固定整数\n消耗 / 概率与抽取",
-        "x": 640,
-        "y": 210,
-        "w": 470,
-        "h": 117,
+        "x": 448,
+        "y": 114,
+        "w": 544,
+        "h": 62,
         "href": "#ui-02"
       },
       {
         "id": "reward2",
         "text": "DrawSuccess：单对象\n数量与余额 / 概率显示\nUI-03普通/稀有/恢复",
-        "x": 640,
-        "y": 400,
-        "w": 410,
-        "h": 117,
+        "x": 448,
+        "y": 204,
+        "w": 544,
+        "h": 62,
         "href": "#ui-03"
       },
       {
         "id": "produce2",
         "text": "UI列表 / 单结果 / 状态变体\n3份独立制作需求Excel\n具体资源只作样例",
-        "x": 640,
-        "y": 590,
-        "w": 410,
-        "h": 117,
+        "x": 448,
+        "y": 294,
+        "w": 544,
+        "h": 62,
         "href": "需求表/简单抽奖_UI需求.xlsx"
       }
     ],
@@ -322,7 +339,9 @@ freeUsed: int;                 // 该周期已用次数，0或1</pre><div class=
         "toId": "produce2",
         "label": ""
       }
-    ]
+    ],
+    "presentation": "compact-tree",
+    "layoutVersion": 1
   },
   "F01": {
     "title": "单次抽奖流程",
@@ -494,29 +513,132 @@ freeUsed: int;                 // 该周期已用次数，0或1</pre><div class=
       }
     ]
   }
-}</script><script>(()=>{'use strict';
+}</script><script>/* Compact tree appearance shared by planning documents. No external dependencies. */
+(() => {
+  const NS='http://www.w3.org/2000/svg', cameras=new WeakMap(), mounts=new WeakMap();
+  const make=(tag,attrs={},text)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text!==undefined)e.textContent=text;return e;};
+  const childrenOf=g=>{const map=new Map(g.nodes.map(n=>[n.id,[]]));for(const e of g.edges)if(map.has(e.fromId)&&map.has(e.toId)&&!map.get(e.fromId).includes(e.toId))map.get(e.fromId).push(e.toId);return map;};
+  function levels(g){
+    const children=childrenOf(g),incoming=new Set(g.edges.map(e=>e.toId)),result=new Map(),roots=g.nodes.filter(n=>!incoming.has(n.id));
+    const walk=(id,depth)=>{if(result.has(id))return;result.set(id,depth);for(const child of children.get(id)||[])walk(child,depth+1);};
+    for(const n of [...roots,...g.nodes])walk(n.id,1);return result;
+  }
+  function lines(text,width,size){
+    const result=[];for(const paragraph of String(text).split('\n')){let line='',used=0;for(const c of paragraph){const w=size*(/[^\x00-\xff]/.test(c)?1:.56);if(used+w>width&&line){result.push(line);line='';used=0;}line+=c;used+=w;}result.push(line);}return result;
+  }
+  function layout(g){
+    const depth=levels(g),children=childrenOf(g),nodes=new Map(g.nodes.map(n=>[n.id,n])),placed=new Set();let cursor=24;
+    const maxDepth=Math.max(...depth.values());
+    function place(n){
+      if(placed.has(n.id))return;placed.add(n.id);const d=depth.get(n.id),size=d===1?17:d<=3?14:13;
+      n.x=d===1?24:d===2?230:448+(d-3)*250;n.w=d===1?136:d===2?146:d===maxDepth?544:178;
+      const count=lines(n.text,n.w-(d<=2?36:24),size).length;n.h=Math.max(d===1?38:35,count*18+(d<=2?16:8));
+      const kids=(children.get(n.id)||[]).filter(id=>depth.get(id)===d+1&&!placed.has(id)).map(id=>nodes.get(id));
+      if(kids.length){kids.forEach(place);n.y=(kids[0].y+kids[0].h/2+kids.at(-1).y+kids.at(-1).h/2)/2-n.h/2;if(d===1)n.y=kids[0].y+kids[0].h/2-n.h/2;}
+      else{n.y=cursor;cursor+=n.h+8;}
+      if(d===2)cursor+=20;
+    }
+    g.nodes.filter(n=>depth.get(n.id)===1).forEach(place);g.nodes.forEach(place);g.layoutVersion=1;return g;
+  }
+  function subset(g,focus='all',limit=Infinity){
+    const depth=levels(g),children=childrenOf(g),keep=new Set();
+    const visit=id=>{if(keep.has(id))return;keep.add(id);for(const c of children.get(id)||[])visit(c);};
+    if(focus==='all')g.nodes.forEach(n=>keep.add(n.id));else{visit(focus);g.nodes.filter(n=>depth.get(n.id)===1).forEach(n=>keep.add(n.id));}
+    const selected={...g,nodes:g.nodes.filter(n=>keep.has(n.id)&&depth.get(n.id)<=limit).map(n=>({...n})),edges:g.edges.filter(e=>keep.has(e.fromId)&&keep.has(e.toId)&&depth.get(e.fromId)<=limit&&depth.get(e.toId)<=limit)};
+    if(focus!=='all'||limit<Math.max(...depth.values()))layout(selected);
+    return selected;
+  }
+  function svg(g,{onEdit,onJump,onFocus,interactive=true}={}){
+    const depth=levels(g),nodes=new Map(g.nodes.map(n=>[n.id,n]));
+    const width=Math.max(...g.nodes.map(n=>n.x+n.w))+24,height=Math.max(160,...g.nodes.map(n=>n.y+n.h+24));
+    const s=make('svg',{viewBox:`0 0 ${width} ${height}`,class:'compact-mindmap-svg',role:'img','aria-label':g.title,'font-family':'Microsoft YaHei,PingFang SC,sans-serif'});
+    s.append(make('title',{},g.title),make('rect',{width,height,fill:'#fff'}));
+    for(const e of g.edges){const a=nodes.get(e.fromId),b=nodes.get(e.toId);if(!a||!b)continue;
+      const x1=a.x+a.w+6,y1=a.y+a.h/2,x2=b.x-12,y2=b.y+b.h/2,lane=(x1+x2)/2,r=Math.min(7,Math.abs(y2-y1)/2),sign=y2>=y1?1:-1;
+      const d=r?`M${x1} ${y1} H${lane-r} Q${lane} ${y1} ${lane} ${y1+sign*r} V${y2-sign*r} Q${lane} ${y2} ${lane+r} ${y2} H${x2}`:`M${x1} ${y1} H${x2}`;
+      const edge=make('g',{class:'edge active',fill:'none',stroke:'#557aff','stroke-width':1.25,'stroke-linecap':'round','stroke-linejoin':'round'});edge.append(make('path',{d}));s.append(edge);
+      if(e.label)edge.append(make('text',{x:lane+5,y:(y1+y2)/2-5,'font-size':11,fill:'#526081',stroke:'none'},e.label));
+    }
+    for(const n of g.nodes){const level=depth.get(n.id),size=level===1?17:level<=3?14:13,pad=level<=2?12:0;
+      const textLines=lines(n.text,n.w-pad-24,size),group=make('g',{class:'node compact-mindmap-node','data-node':n.id,'data-level':level,transform:`translate(${n.x},${n.y})`,tabindex:0});
+      group.append(make('rect',{width:n.w,height:n.h,rx:level===1?6:4,fill:level===1?'#4c72ff':level===2?'#f0f1f3':'transparent',stroke:'none'}));
+      const label=make('text',{x:pad,y:(n.h-textLines.length*18)/2+14,'font-size':size,fill:level===1?'#fff':'#353940',...(level===1?{'font-weight':600}:{})});
+      textLines.forEach((line,i)=>label.append(make('tspan',{x:pad,dy:i?18:0},line)));group.append(label);
+      if(n.href){const link=make('a',{href:n.href,class:'node-jump','aria-label':'跳转：'+n.text.split('\n')[0]});if(!n.href.startsWith('#')){link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
+        link.append(make('rect',{x:n.w-24,y:3,width:24,height:28,fill:'transparent',stroke:'none','pointer-events':'all'}),make('text',{x:n.w-17,y:Math.min(n.h-8,22),'font-size':12,fill:level===1?'#fff':'#557aff'},'↗'),make('title',{},'查看对应说明'));
+        if(interactive)link.addEventListener('click',event=>{event.stopPropagation();if(n.href.startsWith('#')&&onJump){event.preventDefault();onJump(n.href);}});group.append(link);
+      }
+      if(interactive){let focusTimer;
+        group.addEventListener('click',event=>{if(event.target.closest('a'))return;s.querySelectorAll('.node').forEach(el=>el.classList.toggle('selected',el===group));clearTimeout(focusTimer);if(level===2&&event.detail<2)focusTimer=setTimeout(()=>{if(s.isConnected)onFocus?.(n.id);},300);});
+        group.addEventListener('dblclick',event=>{if(event.target.closest('a'))return;clearTimeout(focusTimer);event.preventDefault();onEdit?.(n.id);});
+        group.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.target.closest('a')){event.preventDefault();onEdit?.(n.id);}});
+      }s.append(group);
+    }
+    return s;
+  }
+  function viewport(stage,svg,changed){
+    cameras.get(stage)?.destroy();const controller=new AbortController(),layer=document.createElement('div');layer.className='mindmap-pan-layer';
+    const width=svg.viewBox.baseVal.width,height=svg.viewBox.baseVal.height;svg.style.width=width+'px';svg.style.height=height+'px';layer.append(svg);stage.replaceChildren(layer);stage.classList.add('mindmap-viewport');stage.tabIndex=0;
+    let scale=1,x=0,y=0,mode='width',drag=null,dragged=false,pinch=null;const pointers=new Map();
+    const clamp=v=>Math.max(.05,Math.min(3,v)),update=()=>{layer.style.transform=`translate(${x}px,${y}px) scale(${scale})`;stage.dataset.scale=scale;stage.dataset.panX=x;stage.dataset.panY=y;changed?.(scale);};
+    const point=e=>{const r=stage.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};};
+    function fit(next='all'){mode=next;scale=clamp(Math.min(1,(stage.clientWidth-32)/width,...(next==='all'?[(stage.clientHeight-32)/height]:[])));x=(stage.clientWidth-width*scale)/2;y=next==='all'?(stage.clientHeight-height*scale)/2:16;update();}
+    function zoom(value,at={x:stage.clientWidth/2,y:stage.clientHeight/2}){const next=clamp(value);x=at.x-(at.x-x)*next/scale;y=at.y-(at.y-y)*next/scale;scale=next;mode='manual';update();}
+    const listen=(target,type,fn,options={})=>target.addEventListener(type,fn,{...options,signal:controller.signal});
+    listen(stage,'wheel',e=>{e.preventDefault();zoom(scale*Math.exp(-Math.max(-400,Math.min(400,e.deltaY))*.002),point(e));},{passive:false});
+    listen(stage,'pointerdown',e=>{if(e.button!==0&&e.pointerType!=='touch')return;const at=point(e);pointers.set(e.pointerId,at);if(pointers.size===1){drag={id:e.pointerId,at,x,y};dragged=false;if(!e.target.closest('.node'))stage.focus({preventScroll:true});}else if(pointers.size===2){const[a,b]=[...pointers.values()],mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};pinch={distance:Math.hypot(a.x-b.x,a.y-b.y),scale,world:{x:(mid.x-x)/scale,y:(mid.y-y)/scale}};dragged=true;}});
+    listen(window,'pointermove',e=>{if(!pointers.has(e.pointerId))return;const at=point(e);pointers.set(e.pointerId,at);if(pointers.size===2&&pinch){const[a,b]=[...pointers.values()],mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};scale=clamp(pinch.scale*Math.hypot(a.x-b.x,a.y-b.y)/Math.max(1,pinch.distance));x=mid.x-pinch.world.x*scale;y=mid.y-pinch.world.y*scale;}else{if(!drag||drag.id!==e.pointerId)return;const dx=at.x-drag.at.x,dy=at.y-drag.at.y;if(!dragged&&Math.hypot(dx,dy)<4)return;dragged=true;x=drag.x+dx;y=drag.y+dy;}mode='manual';stage.classList.add('is-panning');update();});
+    for(const type of ['pointerup','pointercancel'])listen(window,type,e=>{pointers.delete(e.pointerId);pinch=null;if(pointers.size===1){const[id,at]=[...pointers.entries()][0];drag={id,at,x,y};}else{drag=null;stage.classList.remove('is-panning');}});
+    listen(stage,'click',e=>{if(dragged){e.preventDefault();e.stopImmediatePropagation();dragged=false;}},{capture:true});
+    listen(stage,'keydown',e=>{if(e.target!==stage)return;if(['+','=','-','0','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))e.preventDefault();if(e.key==='0')fit();else if(e.key==='+'||e.key==='=')zoom(scale*1.25);else if(e.key==='-')zoom(scale/1.25);else if(e.key.startsWith('Arrow')){x+=e.key==='ArrowLeft'?40:e.key==='ArrowRight'?-40:0;y+=e.key==='ArrowUp'?40:e.key==='ArrowDown'?-40:0;mode='manual';update();}});
+    const observer=new ResizeObserver(()=>{if(mode!=='manual'&&stage.clientWidth)fit(mode);});observer.observe(stage);
+    const api={fit,zoomIn:()=>zoom(scale*1.25),zoomOut:()=>zoom(scale/1.25),actual:()=>zoom(1),destroy(){controller.abort();observer.disconnect();cameras.delete(stage);}};cameras.set(stage,api);fit('width');return api;
+  }
+  function mount(g,stage,callbacks={}){
+    mounts.get(stage)?.destroy();if(!g.layoutVersion)layout(g);
+    const card=stage.closest('[data-graph]'),existing=card.querySelector('.mindmap-controls');existing?.remove();
+    const bar=document.createElement('div');bar.className='graph-tools mindmap-controls';
+    bar.innerHTML='<div class="mindmap-selectors"><label>查看分支 <select data-map-focus aria-label="查看导图分支"></select></label><label>显示层级 <select data-map-depth aria-label="导图显示层级"><option value="99">全部层级</option><option value="2">到分支</option><option value="3">到细项</option></select></label><button data-map-download>下载 SVG</button></div><p>滚轮缩放，拖动画布；手机支持双指缩放。点击分支聚焦，↗ 查看说明，双击文字编辑。</p><div class="mindmap-zoom-tools"><button data-map-out>−</button><output>100%</output><button data-map-in>＋</button><button data-map-fit>适应窗口</button><button data-map-width>适应宽度</button><button data-map-actual>100%</button></div>';
+    stage.before(bar);stage.classList.add('compact-mindmap-stage');
+    const focus=bar.querySelector('[data-map-focus]'),depth=bar.querySelector('[data-map-depth]'),depths=levels(g);
+    for(const n of [{id:'all',text:'全部分支'},...g.nodes.filter(n=>depths.get(n.id)===2)]){const option=document.createElement('option');option.value=n.id;option.textContent=n.text.split('\n')[0];focus.append(option);}
+    let camera,current;
+    const render=()=>{current=svg(subset(g,focus.value,Number(depth.value)),{...callbacks,onFocus:id=>{focus.value=id;render();}});camera=viewport(stage,current,s=>bar.querySelector('output').textContent=Math.round(s*100)+'%');};
+    focus.onchange=render;depth.onchange=render;
+    for(const [selector,action]of [['out',()=>camera.zoomOut()],['in',()=>camera.zoomIn()],['fit',()=>camera.fit()],['width',()=>camera.fit('width')],['actual',()=>camera.actual()]])bar.querySelector('[data-map-'+selector+']').onclick=action;
+    bar.querySelector('[data-map-download]').onclick=()=>{const copy=current.cloneNode(true);copy.removeAttribute('style');const blob=new Blob([new XMLSerializer().serializeToString(copy)],{type:'image/svg+xml'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=g.title+'.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+    render();mounts.set(stage,{destroy(){camera?.destroy();bar.remove();}});
+  }
+  window.PlanningMindmap={layout,levels,lines,svg,viewport,mount};
+})();
+
+(()=>{'use strict';
 const $=s=>document.querySelector(s),NS='http://www.w3.org/2000/svg';
 let graphs=JSON.parse($('#graph-data').textContent),edit=null,dirty=false;
-let inlineEdit=null;
+let inlineEdit=null,viewerCamera=null;
 const uid=p=>p+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7);
 const clone=x=>JSON.parse(JSON.stringify(x));
 function toast(t){$('#toast').textContent=t;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',3500);}
 function el(tag,attrs={},text){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;}
 function draw(g,container,selected='',editing=false){
- const svg=el('svg',{viewBox:`0 0 ${Math.max(...g.nodes.map(n=>n.x+n.w))+40} ${Math.max(...g.nodes.map(n=>n.y+n.h))+40}`,role:'img','aria-label':g.title});
+ const compact=g.presentation==='compact-tree';
+ const svg=compact?PlanningMindmap.svg(g,{interactive:false}):el('svg',{viewBox:`0 0 ${Math.max(...g.nodes.map(n=>n.x+n.w))+40} ${Math.max(...g.nodes.map(n=>n.y+n.h))+40}`,role:'img','aria-label':g.title});
+ if(!compact){
  const defs=el('defs'),mark=el('marker',{id:'arrow-'+container.id,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto'});mark.append(el('path',{d:'M0,0 L10,5 L0,10Z',fill:'#568b72'}));defs.append(mark);svg.append(defs);
  const ns=Object.fromEntries(g.nodes.map(n=>[n.id,n]));
  for(const e of g.edges){const a=ns[e.fromId],b=ns[e.toId];if(!a||!b)continue;const down=b.y>=a.y+a.h,up=a.y>=b.y+b.h,left=b.x+b.w<=a.x,vertical=down||up;
  const x1=vertical?a.x+a.w/2:(left?a.x:a.x+a.w),y1=down?a.y+a.h:up?a.y:a.y+a.h/2,x2=vertical?b.x+b.w/2:(left?b.x+b.w:b.x),y2=down?b.y:up?b.y+b.h:b.y+b.h/2;const active=!selected||selected===e.id||selected===a.id||selected===b.id;const group=el('g',{class:'edge'+(active?' active':'')});const path=el('path',{d:vertical?`M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2}`:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,fill:'none',stroke:'#568b72','stroke-width':2,'marker-end':`url(#arrow-${container.id})`});path.append(el('title',{},e.label||`${a.text.split('\n')[0]} → ${b.text.split('\n')[0]}`));group.append(path);if(e.label&&(!selected||selected===e.id)&&g.edges.length<9)group.append(el('text',{x:(x1+x2)/2,y:(y1+y2)/2-8,fill:'#976a2c','font-size':14,'text-anchor':'middle',stroke:'#ffffff','stroke-width':4,'paint-order':'stroke'},e.label));svg.append(group);}
- for(const n of g.nodes){const gr=el('g',{class:'node'+(selected===n.id?' selected':''),'data-node':n.id,transform:`translate(${n.x},${n.y})`,tabindex:0});gr.append(el('rect',{width:n.w,height:n.h,rx:8,fill:n.id==='root'?'#285c47':'#fff',stroke:'#adc5b6'}));n.text.split('\n').forEach((t,i)=>gr.append(el('text',{x:15,y:28+i*25,'font-size':i===0?19:16,fill:n.id==='root'?'white':'#27483b'},t)));if(n.href){
+ }
+ for(const n of g.nodes){const gr=compact?[...svg.querySelectorAll('.node')].find(e=>e.dataset.node===n.id):el('g',{class:'node','data-node':n.id,transform:`translate(${n.x},${n.y})`,tabindex:0});gr.classList.toggle('selected',selected===n.id);
+ if(!compact){gr.append(el('rect',{width:n.w,height:n.h,rx:8,fill:n.id==='root'?'#285c47':'#fff',stroke:'#adc5b6'}));n.text.split('\n').forEach((t,i)=>gr.append(el('text',{x:15,y:28+i*25,'font-size':i===0?19:16,fill:n.id==='root'?'white':'#27483b'},t)));if(n.href){
  const link=el('a',{href:n.href,class:'node-jump','aria-label':'跳转：'+n.text.split('\n')[0]});
  if(!n.href.startsWith('#')){link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
  link.append(el('rect',{x:n.w-82,y:n.h-29,width:72,height:22,rx:5,fill:n.id==='root'?'#dbeee1':'#edf4ef',stroke:'none'}));
  link.append(el('text',{x:n.w-72,y:n.h-13,'font-size':12,fill:'#27614f'},'↗ 跳转'));
  link.append(el('title',{},n.href));
- link.addEventListener('click',e=>{e.stopPropagation();if(editing){e.preventDefault();toast('先应用修改，再从文档中的跳转按钮打开链接。');}else if(n.href.startsWith('#')){e.preventDefault();jumpTo(n.href);}});
  gr.append(link);
- }
+ }}
+ gr.querySelector('.node-jump')?.addEventListener('click',e=>{e.stopPropagation();if(editing){e.preventDefault();toast('先应用修改，再从文档中的跳转按钮打开链接。');}else if(n.href.startsWith('#')){e.preventDefault();jumpTo(n.href);}});
  gr.addEventListener('click',ev=>{if(ev.target.closest('.node-jump'))return;if(editing){selectNode(n.id);$('#edit-canvas').focus({preventScroll:true});}else{container.querySelectorAll('.node').forEach(x=>x.classList.toggle('selected',x.dataset.node===n.id));}});
  gr.addEventListener('dblclick',ev=>{if(ev.target.closest('.node-jump'))return;ev.preventDefault();if(editing){selectNode(n.id);startInline(n.id);}else{openEditor(container.closest('[data-graph]').dataset.graph,'graph',n.id);startInline(n.id);}});
  gr.addEventListener('keydown',ev=>{if(!editing&&ev.key==='Enter'){ev.preventDefault();openEditor(container.closest('[data-graph]').dataset.graph,'graph',n.id);}});
@@ -553,7 +675,12 @@ function redrawEdges(g,svg,id){
  const temp=document.createElement('div');temp.id=id;draw(g,temp,'',false);
  const old=[...svg.querySelectorAll(':scope > .edge')],fresh=[...temp.querySelectorAll('.edge')];old.forEach((x,i)=>x.replaceWith(fresh[i]));
 }
-function renderAll(){$('#graph-data').textContent=JSON.stringify(graphs,null,2).replace(/</g,'\\u003c');document.querySelectorAll('[data-graph]').forEach(card=>{const stage=card.querySelector('.graph-stage');stage.id='stage-'+card.dataset.graph;draw(graphs[card.dataset.graph],stage);});}
+function renderAll(){
+ document.querySelectorAll('[data-graph]').forEach(card=>{const stage=card.querySelector('.graph-stage'),id=card.dataset.graph,g=graphs[id];stage.id='stage-'+id;
+  if(g.presentation==='compact-tree')PlanningMindmap.mount(g,stage,{onJump:jumpTo,onEdit:nodeId=>{openEditor(id,'graph',nodeId);startInline(nodeId);}});
+  else draw(g,stage);
+ });$('#graph-data').textContent=JSON.stringify(graphs,null,2).replace(/</g,'\\u003c');
+}
 function validate(g){if(!g||!Array.isArray(g.nodes)||!g.nodes.length||!Array.isArray(g.edges))throw Error('需要非空 nodes 和 edges 数组');const ids=new Set();for(const n of g.nodes){if(typeof n.id!=='string'||!n.id||ids.has(n.id))throw Error('节点ID不能为空或重复');ids.add(n.id);if(n.href!==undefined)cleanLink(n.href);if(typeof n.text!=='string')throw Error('节点文字必须为文本');for(const k of['x','y','w','h'])if(!Number.isFinite(n[k])||n[k]<0)throw Error('节点位置/大小必须为非负数字');if(n.w<60||n.h<35)throw Error('节点宽度至少60，高度至少35');}const ei=new Set();for(const e of g.edges){if(!e.id||ei.has(e.id))throw Error('连线ID不能为空或重复');ei.add(e.id);if(!ids.has(e.fromId)||!ids.has(e.toId))throw Error('连线端点不存在：'+e.id);if(typeof e.label!=='string')throw Error('连线标签必须为文本');}}
 function options(sel,items,current){sel.replaceChildren(...items.map(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;return o;}));sel.value=current;}
 function snapshot(){return {draft:clone(edit.draft),node:edit.node,edge:edit.edge};}
@@ -561,7 +688,10 @@ function pushHistory(before){edit.undo.push(before);if(edit.undo.length>60)edit.
 function updateHistoryButtons(){if($('#undo-edit')){$('#undo-edit').disabled=!edit.undo.length;$('#redo-edit').disabled=!edit.redo.length;}}
 function mutate(action){const before=snapshot();try{action();validate(edit.draft);if(JSON.stringify(before.draft)!==JSON.stringify(edit.draft))pushHistory(before);$('#editor-error').textContent='';paintEditor();}catch(e){edit.draft=before.draft;$('#editor-error').textContent=e.message;}}
 function historyStep(redo=false){finishInline();const source=redo?edit.redo:edit.undo,target=redo?edit.undo:edit.redo;if(!source.length)return;target.push(snapshot());Object.assign(edit,source.pop());paintEditor();}
-function nodeHeight(n){n.h=Math.max(n.h,n.text.split('\n').length*25+(n.href?42:20));}
+function nodeHeight(n){
+ if(edit?.draft.presentation==='compact-tree'){const level=PlanningMindmap.levels(edit.draft).get(n.id),size=level===1?17:level<=3?14:13;n.h=Math.max(n.h,PlanningMindmap.lines(n.text,n.w-(level<=2?36:24),size).length*18+(level<=2?16:8));}
+ else n.h=Math.max(n.h,n.text.split('\n').length*25+(n.href?42:20));
+}
 function fillControls(){
  if(edit?.mode!=='graph')return;
  const g=edit.draft,n=g.nodes.find(x=>x.id===edit.node)||g.nodes[0],edge=g.edges.find(x=>x.id===edit.edge)||g.edges[0];edit.node=n.id;edit.edge=edge?.id;
@@ -574,7 +704,7 @@ function fillControls(){
  $('#node-link-label').textContent=n.href?'已关联：'+n.href:'未设置链接';
  $('#edit-canvas').querySelectorAll('.node').forEach(x=>x.classList.toggle('selected',x.dataset.node===n.id));updateHistoryButtons();
 }
-function paintEditor(){draw(edit.draft,$('#edit-canvas'),edit.node,true);$('#edit-canvas svg').style.width=(edit.zoom||100)+'%';$('#zoom-label').textContent=(edit.zoom||100)+'%';fillControls();}
+function paintEditor(){$('#edit-canvas').classList.toggle('compact-mindmap-editor',edit.draft.presentation==='compact-tree');draw(edit.draft,$('#edit-canvas'),edit.node,true);$('#edit-canvas svg').style.width=(edit.zoom||100)+'%';$('#zoom-label').textContent=(edit.zoom||100)+'%';fillControls();}
 function selectNode(id){finishInline();edit.node=id;fillControls();}
 function finishInline(cancel=false){
  if(!inlineEdit)return;const current=inlineEdit;inlineEdit=null;const value=current.input.value;current.input.remove();
@@ -597,7 +727,7 @@ function addNode(sibling=false){
   const peers=g.edges.filter(e=>e.fromId===parent.id).map(e=>g.nodes.find(n=>n.id===e.toId));
   const x=peers.length?peers[0].x:parent.x+parent.w+90;let y=peers.length?Math.max(...peers.map(n=>n.y+n.h))+35:parent.y;
   while(g.nodes.some(n=>x<n.x+n.w+15&&x+260>n.x-15&&y<n.y+n.h+15&&y+85>n.y-15))y+=110;
-  newId=uid('node');g.nodes.push({id:newId,text:sibling?'同级节点':'子节点',x,y,w:260,h:85,href:''});g.edges.push({id:uid('edge'),fromId:parent.id,toId:newId,label:''});edit.node=newId;
+  newId=uid('node');g.nodes.push({id:newId,text:sibling?'同级节点':'子节点',x,y,w:260,h:85,href:''});g.edges.push({id:uid('edge'),fromId:parent.id,toId:newId,label:''});edit.node=newId;if(g.presentation==='compact-tree')PlanningMindmap.layout(g);
  });if(newId)startInline(newId);
 }
 function deleteNode(){finishInline();mutate(()=>{if(edit.draft.nodes.length===1)throw Error('至少保留一个节点');const old=edit.node,parent=edit.draft.edges.find(e=>e.toId===old)?.fromId;edit.draft.nodes=edit.draft.nodes.filter(n=>n.id!==old);edit.draft.edges=edit.draft.edges.filter(e=>e.fromId!==old&&e.toId!==old);edit.node=parent||edit.draft.nodes[0].id;});}
@@ -607,7 +737,7 @@ function openEditor(id,mode,nodeId){
  edit={id,mode,draft:clone(graphs[id]),node:nodeId||graphs[id]?.nodes[0].id,edge:graphs[id]?.edges[0]?.id,undo:[],redo:[],zoom:window.innerWidth<=900?280:100};$('#editor-error').textContent='';$('#editor-title').textContent=mode==='source'?'编辑 JSON 源码':'编辑导图';$('#editor').classList.toggle('visual-editor',mode==='graph');
  if(mode==='source'){const t=document.createElement('textarea');t.id='source-text';t.className='source-area';t.value=JSON.stringify(edit.draft,null,2);$('#editor-body').replaceChildren(t);}
  else{
- $('#editor-body').innerHTML=`<div class="mind-toolbar"><button id="add-child">＋ 子节点 <kbd>Tab</kbd></button><button id="add-sibling">＋ 同级 <kbd>Enter</kbd></button><button id="del-node">删除节点</button><button id="undo-edit">撤销</button><button id="redo-edit">重做</button><span class="toolbar-space"></span><button id="zoom-out" aria-label="缩小画布">−</button><output id="zoom-label">100%</output><button id="zoom-in" aria-label="放大画布">＋</button><button id="fit-edit">适应画布</button></div>
+ $('#editor-body').innerHTML=`<div class="mind-toolbar"><button id="add-child">＋ 子节点 <kbd>Tab</kbd></button><button id="add-sibling">＋ 同级 <kbd>Enter</kbd></button><button id="del-node">删除节点</button><button id="undo-edit">撤销</button><button id="redo-edit">重做</button>${edit.draft.presentation==='compact-tree'?'<button id="layout-edit">自动排布</button>':''}<span class="toolbar-space"></span><button id="zoom-out" aria-label="缩小画布">−</button><output id="zoom-label">100%</output><button id="zoom-in" aria-label="放大画布">＋</button><button id="fit-edit">适应画布</button></div>
  <p class="mind-help">双击改字 · 拖动位置 · Tab 子节点 · Enter 同级 · ⌘/Ctrl Z 撤销 · 编辑文字时 Shift+Enter 换行</p>
  <div class="editor-grid"><div id="edit-canvas" class="editor-canvas" tabindex="0" aria-label="导图编辑画布"></div><aside class="editor-form">
  <label>当前节点<select id="node-select"></select></label><label>文字<textarea id="node-text"></textarea></label>
@@ -619,6 +749,7 @@ function openEditor(id,mode,nodeId){
  $('#set-node').onclick=saveNode;$('#node-text').onchange=saveNode;
  $('#set-link').onclick=()=>setLink($('#node-link').value);$('#clear-link').onclick=()=>setLink('');$('#link-target').onchange=e=>{if(e.target.value)setLink(e.target.value);};
  $('#add-child').onclick=()=>addNode();$('#add-sibling').onclick=()=>addNode(true);$('#del-node').onclick=deleteNode;$('#undo-edit').onclick=()=>historyStep();$('#redo-edit').onclick=()=>historyStep(true);
+ if($('#layout-edit'))$('#layout-edit').onclick=()=>{finishInline();mutate(()=>PlanningMindmap.layout(edit.draft));};
  for(const [name,delta]of[['zoom-out',-20],['zoom-in',20],['fit-edit',0]])$('#'+name).onclick=()=>{finishInline();edit.zoom=delta?Math.min(400,Math.max(40,edit.zoom+delta)):100;$('#zoom-label').textContent=edit.zoom+'%';paintEditor();};
  $('#set-edge').onclick=()=>mutate(()=>{const edge=edit.draft.edges.find(e=>e.id===edit.edge);if(!edge)return;for(const k of['fromId','toId'])edge[k]=$('#edge-'+k).value;edge.label=$('#edge-label').value;});
  $('#add-edge').onclick=()=>mutate(()=>{if(edit.draft.nodes.length<2)throw Error('请先新增节点');const id=uid('edge');edit.draft.edges.push({id,fromId:edit.draft.nodes[0].id,toId:edit.draft.nodes[1].id,label:'关联'});edit.edge=id;});
@@ -634,8 +765,17 @@ function openEditor(id,mode,nodeId){
  }
  $('#editor').showModal();if(mode==='graph'){$('#edit-canvas').focus({preventScroll:true});paintEditor();[...$('#edit-canvas').querySelectorAll('.node')].find(n=>n.dataset.node===edit.node)?.scrollIntoView({block:'nearest',inline:'nearest'});}
 }
+function clearViewer(){viewerCamera?.destroy();viewerCamera=null;$('#viewer').querySelector('.mindmap-dialog-tools')?.remove();$('#viewer-body').classList.remove('mindmap-viewport','is-panning');$('#viewer-body').removeAttribute('tabindex');for(const key of['scale','panX','panY'])delete $('#viewer-body').dataset[key];}
+$('#viewer').addEventListener('close',clearViewer);
 document.addEventListener('click',e=>{const jump=e.target.closest('#viewer .node-jump');if(jump?.getAttribute('href')?.startsWith('#')){e.preventDefault();jumpTo(jump.getAttribute('href'));return;}const b=e.target.closest('[data-action]');if(!b)return;const card=b.closest('[data-graph]'),fig=b.closest('[data-ui]');if(b.dataset.action==='edit'||b.dataset.action==='source')openEditor(card.dataset.graph,b.dataset.action==='edit'?'graph':'source');
- else if(b.dataset.action==='zoom'||b.dataset.action==='zoom-ui'){$('#viewer-body').replaceChildren((card?.querySelector('svg')||fig.querySelector('svg')).cloneNode(true));$('#viewer').showModal();}
+ else if(b.dataset.action==='zoom'||b.dataset.action==='zoom-ui'){
+  clearViewer();const svg=(card?.querySelector('svg')||fig.querySelector('svg')).cloneNode(true);svg.removeAttribute('style');$('#viewer-body').replaceChildren(svg);$('#viewer').showModal();
+  if(card&&graphs[card.dataset.graph].presentation==='compact-tree'){
+   const bar=document.createElement('div');bar.className='mindmap-dialog-tools';bar.innerHTML='<button data-zoom="out">−</button><output>100%</output><button data-zoom="in">＋</button><button data-zoom="fit">适应窗口</button><button data-zoom="width">适应宽度</button><button data-zoom="actual">100%</button>';
+   $('#viewer-body').before(bar);viewerCamera=PlanningMindmap.viewport($('#viewer-body'),svg,s=>bar.querySelector('output').textContent=Math.round(s*100)+'%');
+   bar.onclick=e=>{const action=e.target.dataset.zoom;if(action==='in')viewerCamera.zoomIn();if(action==='out')viewerCamera.zoomOut();if(action==='fit')viewerCamera.fit();if(action==='width')viewerCamera.fit('width');if(action==='actual')viewerCamera.actual();};
+  }
+ }
  else if(b.dataset.action==='svg'){edit={mode:'svg',fig};$('#editor-title').textContent='编辑 SVG 源码';const t=document.createElement('textarea');t.id='source-text';t.className='source-area';t.value=fig.querySelector('.ui-art').innerHTML;$('#editor-body').replaceChildren(t);$('#editor-error').textContent='';$('#editor').showModal();}});
 $('#apply-edit').onclick=()=>{try{finishInline();if(edit.mode==='svg'){const raw=$('#source-text').value,doc=new DOMParser().parseFromString(raw,'image/svg+xml');if(doc.querySelector('parsererror')||doc.documentElement.localName!=='svg')throw Error('SVG格式错误');if(doc.querySelector('script,foreignObject,iframe')||[...doc.querySelectorAll('*')].some(el=>[...el.attributes].some(a=>/^on/i.test(a.name)||(/href$/i.test(a.name)&&!a.value.startsWith('#')))))throw Error('只支持无脚本、无外部引用的SVG');edit.fig.querySelector('.ui-art').replaceChildren(document.importNode(doc.documentElement,true));}else{const next=edit.mode==='source'?JSON.parse($('#source-text').value):edit.draft;validate(next);graphs[edit.id]=next;renderAll();}dirty=true;$('#editor').close();toast('已应用到页面；请下载当前 HTML 保存。');}catch(e){$('#editor-error').textContent=e.message;}};
 $('#cancel-edit').onclick=()=>{finishInline(true);$('#editor').close();};
@@ -670,6 +810,13 @@ window.addEventListener('beforeunload',e=>{if(dirty||($('#editor').open&&edit?.m
     root.querySelectorAll('dialog').forEach(d => d.removeAttribute('open'));
     root.querySelector('#editor-body').replaceChildren();
     root.querySelector('#viewer-body').replaceChildren();
+    root.querySelectorAll('.mindmap-controls,.mindmap-dialog-tools').forEach(e => e.remove());
+    root.querySelectorAll('.mindmap-viewport').forEach(e => {
+      e.classList.remove('mindmap-viewport', 'is-panning');
+      if (!e.className) e.removeAttribute('class');
+      e.removeAttribute('tabindex');
+      for (const key of ['scale', 'panX', 'panY']) delete e.dataset[key];
+    });
     root.querySelector('#editor-error').textContent = '';
     root.querySelector('#editor-title').textContent = '编辑图示';
     root.querySelector('#editor').classList.remove('visual-editor');

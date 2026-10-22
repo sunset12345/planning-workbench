@@ -1,11 +1,11 @@
 {
   "format": "game-feature-planning",
   "schemaVersion": 1,
-  "packageId": "5a09ba7a-49b3-4fc4-b5c5-6236bd95ca5a",
-  "exportedAt": "2026-10-21T18:11:45.268Z",
+  "packageId": "506aec77-8df3-4b37-a5f5-59e9df89a267",
+  "exportedAt": "2026-10-22T01:38:55.399Z",
   "source": {
     "htmlPath": "简单抽奖策划案.html",
-    "htmlSha256": "5f3469e7bd39abe885e7cafb6984f5f7299ec9f0b8a6774c78bf275a1642c54c",
+    "htmlSha256": "e26d1a51632c6d4db500d07684107866ba39e264b6702fd5acc987772242735c",
     "maintenanceOwner": "html",
     "workbenchOrigin": null
   },
@@ -21,7 +21,7 @@
   "document": {
     "id": "dd89b850-2878-4880-b173-595584d276dc",
     "title": "简单抽奖功能策划案",
-    "version": "V0.6",
+    "version": "V0.7",
     "ownerType": "feature",
     "ownerId": "0d543782-036f-4e65-b708-00456cdcbc44",
     "sections": [
@@ -35,7 +35,7 @@
             "title": "1. 修订记录",
             "subtype": "other",
             "anchor": "section-1-intro",
-            "contentHtml": "<div class=\"table-wrap\"><table><thead><tr><th>版本 / 日期</th><th>来源与修改</th></tr></thead><tbody><tr><td>V0.1 / 2026-10-22</td><td>用户要求简单抽奖案；自主设计玩法、HTML图示编辑、4页UI及3份制作需求Excel；规格和数值为建议初值。</td></tr><tr><td>V0.2 / 2026-10-22</td><td>根据用户反馈，增加双击编辑、快捷新增、拖动、撤销与节点超链接。</td></tr><tr><td>V0.3 / 2026-10-22</td><td>补齐类型/列表基数、参数化公式、状态和UI布局；折叠样例配置。</td></tr><tr><td>V0.4 / 2026-10-22</td><td>规则与公式标题改用自然名称，保留跳转。</td></tr><tr><td>V0.5 / 2026-10-22</td><td>移除首页数据类型摘要卡片，详细类型与数量约束集中在配置章节。</td></tr><tr><td>V0.6 / 2026-10-22</td><td>按用户要求移除文档与制作进度字段；补齐稳定标识、工作台导入数据和成套导出；同步三份制作需求表。玩法、公式、配置数值沿用V0.5。</td></tr></tbody></table></div>",
+            "contentHtml": "<div class=\"table-wrap\"><table><thead><tr><th>版本 / 日期</th><th>来源与修改</th></tr></thead><tbody><tr><td>V0.1 / 2026-10-22</td><td>用户要求简单抽奖案；自主设计玩法、HTML图示编辑、4页UI及3份制作需求Excel；规格和数值为建议初值。</td></tr><tr><td>V0.2 / 2026-10-22</td><td>根据用户反馈，增加双击编辑、快捷新增、拖动、撤销与节点超链接。</td></tr><tr><td>V0.3 / 2026-10-22</td><td>补齐类型/列表基数、参数化公式、状态和UI布局；折叠样例配置。</td></tr><tr><td>V0.4 / 2026-10-22</td><td>规则与公式标题改用自然名称，保留跳转。</td></tr><tr><td>V0.5 / 2026-10-22</td><td>移除首页数据类型摘要卡片，详细类型与数量约束集中在配置章节。</td></tr><tr><td>V0.6 / 2026-10-22</td><td>按用户要求移除文档与制作进度字段；补齐稳定标识、工作台导入数据和成套导出；同步三份制作需求表。玩法、公式、配置数值沿用V0.5。</td></tr><tr><td>V0.7 / 2026-10-22</td><td>按用户要求，将思维导图统一为“搜打撤远征融合玩法”的白底横向树形样式；增加分支/层级筛选、画布缩放平移和SVG下载；阅读与编辑沿用同一显示形式。更新正文、导入数据及资料包；抽奖规则和制作需求沿用V0.6。</td></tr></tbody></table></div>",
             "references": []
           }
         ]
@@ -50,7 +50,7 @@
             "title": "2. 可编辑思维导图",
             "subtype": "other",
             "anchor": "section-2-intro",
-            "contentHtml": "<p>双击节点即可进入画布直接改字。选中节点后 Tab 新增子节点，Enter 新增同级，拖动调整位置；支持撤销/重做。右侧可选择正文、UI、附件或粘贴网页超链接。点击节点“↗ 跳转”直接查看关联内容。应用修改后，下载当前 HTML 保存；本地文件不提供多人实时协作。</p><div class=\"graph-card\" data-graph=\"M01\"><p class=\"caption\">双击节点直接改字；点击节点右下角“↗ 跳转”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div>",
+            "contentHtml": "<p>从左向右查看功能分支和制作细项。可筛选分支与显示层级，滚轮缩放、拖动画布，或放大查看；手机支持双指缩放。点击节点“↗”查看关联说明。双击节点进入编辑，Tab 新增子节点、Enter 新增同级；支持拖动、自动排布、撤销/重做和修改链接。应用修改后下载当前 HTML 或完整资料包保存。</p><div class=\"graph-card\" data-graph=\"M01\"><p class=\"caption\">双击节点直接改字；点击节点“↗”查看关联内容。编辑后应用修改，并下载当前 HTML 保存。</p></div>",
             "references": [
               {
                 "kind": "diagram",
@@ -604,90 +604,90 @@
           {
             "id": "root",
             "text": "简单抽奖",
-            "x": 20,
-            "y": 270,
-            "w": 180,
-            "h": 75,
+            "x": 24,
+            "y": 36,
+            "w": 136,
+            "h": 38,
             "href": "#section-3",
             "targetId": "0d543782-036f-4e65-b708-00456cdcbc44"
           },
           {
             "id": "access",
             "text": "进入与每日免费",
-            "x": 280,
-            "y": 20,
-            "w": 260,
-            "h": 75,
+            "x": 230,
+            "y": 37.5,
+            "w": 146,
+            "h": 35,
             "href": "#r-01",
             "targetId": "0b81d66d-39df-4754-a65b-fa8995399e84"
           },
           {
             "id": "pay",
             "text": "消耗与抽取",
-            "x": 280,
-            "y": 210,
-            "w": 260,
-            "h": 75,
+            "x": 230,
+            "y": 127.5,
+            "w": 146,
+            "h": 35,
             "href": "#r-02",
             "targetId": "de01f745-d58a-4220-b9a2-e917d14d55e8"
           },
           {
             "id": "reward",
             "text": "结果与恢复",
-            "x": 280,
-            "y": 400,
-            "w": 260,
-            "h": 75,
+            "x": 230,
+            "y": 217.5,
+            "w": 146,
+            "h": 35,
             "href": "#r-04",
             "targetId": "0900ba68-b9b4-41c5-a2af-e41c423ef91d"
           },
           {
             "id": "produce",
             "text": "制作需求",
-            "x": 280,
-            "y": 590,
-            "w": 260,
-            "h": 75,
+            "x": 230,
+            "y": 307.5,
+            "w": 146,
+            "h": 35,
             "href": "#section-10",
             "targetId": "94199311-d206-4c73-8f32-8e94eda84004"
           },
           {
             "id": "access2",
             "text": "开放阈值 / 周期与免费次数\n免费数量：0或1\nUI-01状态优先级",
-            "x": 640,
-            "y": 20,
-            "w": 360,
-            "h": 117,
+            "x": 448,
+            "y": 24,
+            "w": 544,
+            "h": 62,
             "href": "#ui-01",
             "targetId": "583f6852-c989-4c15-8547-d1413632dc11"
           },
           {
             "id": "pay2",
             "text": "entries：List，N≥1\n单抽1条 / count固定整数\n消耗 / 概率与抽取",
-            "x": 640,
-            "y": 210,
-            "w": 470,
-            "h": 117,
+            "x": 448,
+            "y": 114,
+            "w": 544,
+            "h": 62,
             "href": "#ui-02",
             "targetId": "68cb2561-29c1-42f8-aff9-a680a6b5389d"
           },
           {
             "id": "reward2",
             "text": "DrawSuccess：单对象\n数量与余额 / 概率显示\nUI-03普通/稀有/恢复",
-            "x": 640,
-            "y": 400,
-            "w": 410,
-            "h": 117,
+            "x": 448,
+            "y": 204,
+            "w": 544,
+            "h": 62,
             "href": "#ui-03",
             "targetId": "728bab2c-270a-4e2b-9e0c-e3c86f314757"
           },
           {
             "id": "produce2",
             "text": "UI列表 / 单结果 / 状态变体\n3份独立制作需求Excel\n具体资源只作样例",
-            "x": 640,
-            "y": 590,
-            "w": 410,
-            "h": 117,
+            "x": 448,
+            "y": 294,
+            "w": 544,
+            "h": 62,
             "href": "需求表/简单抽奖_UI需求.xlsx"
           }
         ],
@@ -740,7 +740,9 @@
             "toId": "produce2",
             "label": ""
           }
-        ]
+        ],
+        "presentation": "compact-tree",
+        "layoutVersion": 1
       }
     },
     {
@@ -1091,7 +1093,7 @@
       "name": "使用说明.txt",
       "mediaType": "text/plain",
       "role": "readme",
-      "sha256": "c94654c6533049d10b469027b7d4fb83de41971216aa8cd14de15da2ff934a5c"
+      "sha256": "3bb0f84f9f7efced445093d0c36e152db51fafb266856a68b0c2a040794ed7c1"
     }
   ]
 }

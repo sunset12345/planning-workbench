@@ -8,7 +8,7 @@ import {chromium} from 'playwright';
 
 const root=path.resolve(import.meta.dirname,'..');
 const documentPath=path.join(root,'简单抽奖策划案.html');
-const temp=await fs.mkdtemp(path.join(os.tmpdir(),'lottery-v06-'));
+const temp=await fs.mkdtemp(path.join(os.tmpdir(),'lottery-v07-'));
 const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -35,7 +35,7 @@ try {
  // All ten chapters are completely represented, not just their summaries.
  assert(await page.evaluate(()=>[...document.querySelectorAll('.chapter')].every(s=>[...s.children].every(c=>c.tagName==='H2'||c.hasAttribute('data-block-id')))));
  // Baseline formulas and gameplay rules must retain their text.
- const baseline=await browser.newPage();await baseline.goto(pathToFileURL('/tmp/lottery-v05-before/简单抽奖策划案.html').href);
+ const baseline=await browser.newPage();await baseline.goto(pathToFileURL('/tmp/lottery-v06-mindmap-before/简单抽奖策划案.html').href);
  const before=await baseline.locator('#section-3').innerText();
  assert.equal(await page.locator('#section-3').innerText(),before);
  await baseline.close();

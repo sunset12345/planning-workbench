@@ -1,0 +1,16 @@
+/* Reference appearance: 搜打撤远征融合玩法. Scoped to functional mindmaps. */
+.mindmap-controls{display:block;margin:12px 0;color:#526079;font-weight:400}
+.mindmap-selectors,.mindmap-zoom-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.mindmap-selectors label{font-size:12px}.mindmap-selectors select{padding:7px 10px;margin-left:6px;border:1px solid #d9e0ee;border-radius:6px;background:#fff;color:#353940}
+.mindmap-controls p{font-size:12px;margin:10px 0}.mindmap-controls button{font-size:12px;padding:6px 10px;border-color:#d9e0ee;color:#353940}.mindmap-zoom-tools output{font-size:12px;min-width:38px;text-align:center}
+.graph-stage.compact-mindmap-stage{height:440px;min-height:300px;max-height:600px;background:#fff;border:1px solid #d9e0ee;border-radius:10px}
+.mindmap-viewport{position:relative;overflow:hidden!important;touch-action:none;user-select:none;cursor:grab}.mindmap-viewport.is-panning{cursor:grabbing}.mindmap-viewport:focus-visible{outline:2px solid #6684ff;outline-offset:2px}
+.mindmap-pan-layer{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.mindmap-pan-layer>svg.compact-mindmap-svg{display:block;min-width:0;max-width:none;height:auto}
+.compact-mindmap-svg .node>rect{stroke:none}.compact-mindmap-svg .node.selected>rect:first-child,.compact-mindmap-svg .node:focus-visible>rect:first-child{stroke:#557aff;stroke-width:1.5}
+.compact-mindmap-svg .node-jump:hover text{fill:#294edb;text-decoration:underline}.compact-mindmap-svg .node[data-level="2"]{cursor:pointer}
+.compact-mindmap-svg .node>text{pointer-events:none}
+#viewer-body.mindmap-viewport{height:calc(100% - 100px);min-height:300px;background:#fff}#viewer .mindmap-dialog-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0}.visual-editor .editor-canvas.compact-mindmap-editor{background:#fff}.compact-mindmap-svg .node-jump rect{stroke:none!important}
+.compact-mindmap-svg .edge{opacity:1}.compact-mindmap-svg .node-jump rect{fill:transparent}
+@media(max-width:900px){.graph-stage.compact-mindmap-stage{height:420px;max-height:60vh}.mindmap-selectors{align-items:flex-start;gap:8px}.mindmap-selectors label{width:100%}.mindmap-controls p{line-height:1.7}}
+@media print{.mindmap-controls{display:none!important}.graph-stage.compact-mindmap-stage{height:auto;max-height:none;min-height:0;overflow:visible!important;border:0}.mindmap-pan-layer{position:static;transform:none!important}.mindmap-pan-layer>svg.compact-mindmap-svg{width:100%!important;height:auto!important}}

@@ -63,7 +63,7 @@ def prepare_html(source, root):
     for filename, role in [('抽奖演示稿.html', 'demo'), ('使用说明.txt', 'readme')]:
         p = root / filename
         assets.append(dict(id=identity('attachment:' + filename), path=filename, name=filename, mediaType=mimetypes.guess_type(filename)[0] or 'text/plain', role=role, data=base64.b64encode(p.read_bytes()).decode()))
-    metadata = dict(format='game-feature-planning', schemaVersion=1, project=None, systems=[], features=[dict(id=feature_id, systemId=None, name='简单抽奖')], document=dict(id=doc_id, title='简单抽奖功能策划案', version='V0.6', ownerType='feature', ownerId=feature_id), diagrams={key: identity('diagram:' + key) for key in ['M01', 'F01', 'C01', 'UI-01', 'UI-02', 'UI-03', 'UI-04']})
+    metadata = dict(format='game-feature-planning', schemaVersion=1, project=None, systems=[], features=[dict(id=feature_id, systemId=None, name='简单抽奖')], document=dict(id=doc_id, title='简单抽奖功能策划案', version='V0.7', ownerType='feature', ownerId=feature_id), diagrams={key: identity('diagram:' + key) for key in ['M01', 'F01', 'C01', 'UI-01', 'UI-02', 'UI-03', 'UI-04']})
     encode = lambda value: json.dumps(value, ensure_ascii=False, indent=2).replace('<', '\\u003c')
     data = '<script type="application/json" id="planning-meta">' + encode(metadata) + '</script><script type="application/json" id="planning-assets">' + encode(assets) + '</script>'
     source = source.replace('<script type="application/json" id="graph-data">', data + '<script type="application/json" id="graph-data">')

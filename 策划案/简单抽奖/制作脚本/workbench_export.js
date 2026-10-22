@@ -17,6 +17,13 @@
     root.querySelectorAll('dialog').forEach(d => d.removeAttribute('open'));
     root.querySelector('#editor-body').replaceChildren();
     root.querySelector('#viewer-body').replaceChildren();
+    root.querySelectorAll('.mindmap-controls,.mindmap-dialog-tools').forEach(e => e.remove());
+    root.querySelectorAll('.mindmap-viewport').forEach(e => {
+      e.classList.remove('mindmap-viewport', 'is-panning');
+      if (!e.className) e.removeAttribute('class');
+      e.removeAttribute('tabindex');
+      for (const key of ['scale', 'panX', 'panY']) delete e.dataset[key];
+    });
     root.querySelector('#editor-error').textContent = '';
     root.querySelector('#editor-title').textContent = '编辑图示';
     root.querySelector('#editor').classList.remove('visual-editor');
